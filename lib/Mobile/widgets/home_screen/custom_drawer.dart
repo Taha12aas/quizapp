@@ -6,10 +6,10 @@ class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
 
   @override
-  _CustomDrawerState createState() => _CustomDrawerState();
+  CustomDrawerState createState() => CustomDrawerState();
 }
 
-class _CustomDrawerState extends State<CustomDrawer> {
+class CustomDrawerState extends State<CustomDrawer> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
