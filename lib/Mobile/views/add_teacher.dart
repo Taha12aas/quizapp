@@ -8,7 +8,7 @@ class AddTeacher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      appBar:customAppBar('إضافة مدرس'),
+      appBar:customAppBar('إضافة مدرس',false),
     );
   }
 }

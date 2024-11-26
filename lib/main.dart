@@ -21,7 +21,7 @@ class QuizApp extends StatelessWidget {
       },
       theme: ThemeData().copyWith(scaffoldBackgroundColor: kBackGround),
       debugShowCheckedModeBanner: false,
-      initialRoute: AddTeacher.id,
+      initialRoute: LogInView.id,
     );
   }
 }
