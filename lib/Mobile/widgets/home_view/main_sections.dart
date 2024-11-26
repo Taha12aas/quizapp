@@ -1,6 +1,6 @@
 
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/widgets/home_screen/main_categories_section.dart';
+import 'package:quizapp/Mobile/widgets/home_view/main_categories_section.dart';
 
 class MainSections extends StatelessWidget {
   const MainSections({

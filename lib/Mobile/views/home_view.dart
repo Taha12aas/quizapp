@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/widgets/home_screen/teacher_card.dart';
-import 'package:quizapp/Mobile/widgets/home_screen/custom_drawer.dart';
-import 'package:quizapp/Mobile/widgets/home_screen/main_sections.dart';
+import 'package:quizapp/Mobile/widgets/home_view/teacher_card.dart';
+import 'package:quizapp/Mobile/widgets/home_view/custom_drawer.dart';
+import 'package:quizapp/Mobile/widgets/home_view/main_sections.dart';
 import 'package:quizapp/custom_app_bar.dart';
 import 'package:quizapp/font_style.dart';
 

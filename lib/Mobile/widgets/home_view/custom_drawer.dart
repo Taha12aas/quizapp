@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/widgets/home_screen/custome_tile_drawer_item.dart';
+import 'package:quizapp/Mobile/widgets/home_view/custome_tile_drawer_item.dart';
 import 'package:quizapp/constants.dart';
 
 class CustomDrawer extends StatefulWidget {
