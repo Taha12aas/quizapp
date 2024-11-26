@@ -1,9 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:quizapp/Mobile/widgets/home_view/teacher_card.dart';
 import 'package:quizapp/Tablet/widgets/buttomclass.dart';
-import 'package:quizapp/constants.dart';
 import 'package:quizapp/custom_app_bar.dart';
 import 'package:quizapp/font_style.dart';
 
