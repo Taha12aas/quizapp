@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/views/log_in_view.dart';
+import 'package:quizapp/Mobile/views/teacher_subjects.dart';
 import 'package:quizapp/Mobile/views/teachers_view.dart';
 import 'package:quizapp/constants.dart';
 
@@ -18,10 +19,11 @@ class QuizApp extends StatelessWidget {
         HomeView.id: (context) => const HomeView(),
         LogInView.id: (context) => const LogInView(),
         TeachersView.id: (context) => const TeachersView(),
+        TeacherSubjects.id: (context) => const TeacherSubjects(),
       },
       theme: ThemeData().copyWith(scaffoldBackgroundColor: kBackGround),
       debugShowCheckedModeBanner: false,
-      initialRoute: TeachersView.id,
+      initialRoute: TeacherSubjects.id,
     );
   }
 }

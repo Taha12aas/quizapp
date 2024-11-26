@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/constants.dart';
 import 'package:quizapp/font_style.dart';
 
-class ButtomClass extends StatelessWidget {
-  const ButtomClass({
+class ButtonClass extends StatelessWidget {
+  const ButtonClass({
     super.key,
     this.onTap,
     required this.text,
@@ -14,7 +14,7 @@ class ButtomClass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: 2,
+        left: 5,
       ),
       child: InkWell(
         splashFactory: InkRipple.splashFactory,
