@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 
+void main(List<String> args) {
+  runApp(QuizApp());
+}
+
 class QuizApp extends StatelessWidget {
   const QuizApp({super.key});
 
