@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/home_view/teacher_card.dart';
-import 'package:quizapp/Tablet/widgets/buttomclass.dart';
+import 'package:quizapp/Mobile/widgets/teachers_view/button_class.dart';
 import 'package:quizapp/custom_app_bar.dart';
 import 'package:quizapp/font_style.dart';
 
@@ -27,7 +27,7 @@ class TeachersView extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: 15,
                 itemBuilder: (context, index) {
-                  return ButtomClass(
+                  return ButtonClass(
                     text: 'صف الاول',
                     onTap: () {},
                   );
