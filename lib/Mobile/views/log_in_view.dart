@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
-import 'package:quizapp/font_style.dart';
+import 'package:quizapp/constants.dart';
 import 'package:quizapp/responsive_text.dart';
 
 class LogInView extends StatelessWidget {
@@ -21,10 +21,14 @@ class LogInView extends StatelessWidget {
           Text(
             'Quiz App',
             textAlign: TextAlign.center,
-            style: FontStyleApp.textStyleOrangeBold25.copyWith(
+            style: TextStyle(
               fontSize: getResponsiveText(context, 30),
+              fontFamily: 'JosefinSans',
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.w700,
+              color: kOrangeColor
             ),
-          )
+          ),
         ],
       ),
     );
