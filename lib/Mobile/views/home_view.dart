@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/home_screen/build_teacher_card.dart';
 import 'package:quizapp/Mobile/widgets/home_screen/custom_drawer.dart';
 import 'package:quizapp/Mobile/widgets/home_screen/main_categories_section.dart';
-import 'package:quizapp/custom_app_bar.dart';
+import 'package:quizapp/main_view_app_bar.dart';
 import 'package:quizapp/font_style.dart';
 
 class HomeView extends StatelessWidget {
@@ -11,7 +11,7 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar(context),
+      appBar: mainViewAppBar(context),
       drawer: const CustomDrawer(),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
