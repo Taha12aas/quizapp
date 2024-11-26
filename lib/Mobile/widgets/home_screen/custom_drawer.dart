@@ -1,18 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/home_screen/custome_tile_drawer_item.dart';
+import 'package:quizapp/constants.dart';
 
-class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({
-    super.key,
-  });
+class CustomDrawer extends StatefulWidget {
+  const CustomDrawer({super.key});
+
+  @override
+  _CustomDrawerState createState() => _CustomDrawerState();
+}
+
+class _CustomDrawerState extends State<CustomDrawer> {
+  int _selectedIndex = 0;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Drawer(
       child: ListView(
-        children: const [
-          DrawerHeader(
-            decoration: BoxDecoration(color: Color(0xff373737)),
+        children: [
+          const DrawerHeader(
+            decoration: BoxDecoration(color: kAshenColor),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -32,18 +44,26 @@ class CustomDrawer extends StatelessWidget {
           CustomeTileDrawerItem(
             text: 'الصفحة الرئيسية',
             icon: Icons.home,
+            isSelected: _selectedIndex == 0,
+            onTap: () => _onItemTapped(0),
           ),
           CustomeTileDrawerItem(
             text: 'إضافة مدرسين',
             icon: Icons.add_circle_outline_sharp,
+            isSelected: _selectedIndex == 1,
+            onTap: () => _onItemTapped(1),
           ),
           CustomeTileDrawerItem(
             text: 'حذف مدرسين',
             icon: Icons.delete,
+            isSelected: _selectedIndex == 2,
+            onTap: () => _onItemTapped(2),
           ),
           CustomeTileDrawerItem(
             text: 'About',
             icon: Icons.info_outline,
+            isSelected: _selectedIndex == 3,
+            onTap: () => _onItemTapped(3),
           ),
         ],
       ),
