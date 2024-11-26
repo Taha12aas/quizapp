@@ -7,13 +7,12 @@ import 'package:quizapp/font_style.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
-
+  static String id = 'HomeView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(context),
       drawer: const CustomDrawer(),
-      backgroundColor: const Color(0xFF191E2C),
       body: const Padding(
         padding: EdgeInsets.all(16.0),
         child: Column(
