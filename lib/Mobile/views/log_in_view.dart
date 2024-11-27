@@ -3,6 +3,7 @@ import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
+import 'package:quizapp/constants.dart';
 import 'package:quizapp/font_style.dart';
 import 'package:quizapp/responsive_text.dart';
 
@@ -56,6 +57,26 @@ class LogInView extends StatelessWidget {
             const RegisterOrLogIn(
               label1: 'ليس لديك حساب ؟',
               label2: 'اضغط هنا لانشاء حساب',
+            ),
+            SizedBox(
+              height: MediaQuery.sizeOf(context).height * .25,
+            ),
+            ElevatedButton.icon(
+              style: ElevatedButton.styleFrom(
+                overlayColor: Colors.orange[50],
+                side: const BorderSide(color: kOrangeColor, width: 2),
+                shadowColor: Colors.transparent,
+                padding: const EdgeInsets.symmetric(vertical: 23),
+                elevation: 0,
+                backgroundColor: Colors.transparent,
+              ),
+              onPressed: () {},
+              label: Text(
+                'تسجيل الدخول',
+                style: FontStyleApp.textFieldPadding.copyWith(
+                  fontSize: getResponsiveText(context, 18),
+                ),
+              ),
             )
           ],
         ),
