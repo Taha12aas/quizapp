@@ -18,7 +18,7 @@ class LogInView extends StatelessWidget {
           const SizedBox(
             height: 40,
           ),
-          Text(/////////////سليم وقطععععع
+          Text(
             'Quiz App',
             textAlign: TextAlign.center,
             style: TextStyle(
