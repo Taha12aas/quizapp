@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
+import 'package:quizapp/Mobile/widgets/log_in_view/text_field_icons.dart';
 import 'package:quizapp/constants.dart';
 
 class AuthTextField extends StatelessWidget {
@@ -51,42 +52,6 @@ class AuthTextField extends StatelessWidget {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(18),
       borderSide: BorderSide(color: color, width: 3),
-    );
-  }
-}
-
-class TextFieldIconS extends StatelessWidget {
-  const TextFieldIconS({
-    super.key,
-    required this.iconData,
-  });
-
-  final IconData iconData;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        const SizedBox(
-          width: 10,
-        ),
-        Icon(
-          iconData,
-          color: Colors.black,
-        ),
-        const SizedBox(
-          width: 10,
-        ),
-        Container(
-          color: Colors.black,
-          height: 25,
-          width: 2,
-        ),
-        const SizedBox(
-          width: 10,
-        )
-      ],
     );
   }
 }
