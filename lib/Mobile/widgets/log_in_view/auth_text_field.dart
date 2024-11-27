@@ -17,6 +17,7 @@ class AuthTextField extends StatelessWidget {
     ValueNotifier<bool> obsc = ValueNotifier(true);
     return ValueListenableBuilder(
       valueListenable: obsc,
+      child: TextFieldIconS(iconData: iconData),
       builder: (context, value, child) {
         return TextField(
           obscureText: obscureText! ? value : obscureText!,
@@ -25,7 +26,7 @@ class AuthTextField extends StatelessWidget {
             hintText: hintText,
             fillColor: Colors.white,
             filled: true,
-            prefixIcon: TextFieldIconS(iconData: iconData),
+            prefixIcon: child,
             suffixIcon: obscureText!
                 ? IconButton(
                     padding: const EdgeInsets.only(right: 10),

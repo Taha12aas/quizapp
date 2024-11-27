@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/constants.dart';
-import 'package:quizapp/responsive_text.dart';
 
 class FontStyleApp {
   static const textStyleOrange15 = TextStyle(
@@ -15,5 +14,10 @@ class FontStyleApp {
     color: Colors.white,
     fontWeight: FontWeight.bold,
     fontSize: 18,
+  );
+  static const textFieldPadding = TextStyle(
+    color: kOrangeColor,
+    fontWeight: FontWeight.bold,
+    fontSize: 10,
   );
 }
