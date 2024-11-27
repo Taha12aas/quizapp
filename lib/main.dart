@@ -19,7 +19,8 @@ class QuizApp extends StatelessWidget {
         LogInView.id: (context) => const LogInView(),
         AddTeacher.id: (context) => const AddTeacher(),
       },
-      theme: ThemeData().copyWith(scaffoldBackgroundColor: kBackGround),
+      theme:
+          ThemeData(scaffoldBackgroundColor: kBackGround, fontFamily: 'Exo2'),
       debugShowCheckedModeBanner: false,
       initialRoute: LogInView.id,
     );

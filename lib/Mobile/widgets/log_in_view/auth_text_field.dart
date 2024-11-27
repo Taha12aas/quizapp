@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:quizapp/constants.dart';
 
@@ -7,11 +6,10 @@ class AuthTextField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.iconData,
-    required this.textDirection, required this.obscureText,
+    required this.obscureText,
   });
   final String hintText;
   final IconData iconData;
-  final TextDirection textDirection;
   final bool obscureText;
   @override
   Widget build(BuildContext context) {

@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'package:quizapp/constants.dart';
+import 'package:quizapp/responsive_text.dart';
 
 class FontStyleApp {
   static const textStyleOrange15 = TextStyle(
@@ -9,4 +9,11 @@ class FontStyleApp {
       TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: kOrangeColor);
   static const textStylewite15 = TextStyle(
       fontWeight: FontWeight.normal, fontSize: 15, color: Colors.white);
+  static const appName =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: kOrangeColor);
+  static const labels = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+  );
 }
