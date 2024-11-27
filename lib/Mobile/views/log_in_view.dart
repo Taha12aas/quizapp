@@ -23,7 +23,6 @@ class LogInView extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: getResponsiveText(context, 30),
-              fontFamily: 'BoldItalic',
               fontStyle: FontStyle.italic,
               fontWeight: FontWeight.w700,
               color: kOrangeColor
