@@ -44,7 +44,6 @@ class LogInView extends StatelessWidget {
             const AuthTextField(
               hintText: 'رقم الهاتف',
               iconData: FontAwesomeIcons.phone,
-              obscureText: false,
             ),
             const SizedBox(
               height: 18,

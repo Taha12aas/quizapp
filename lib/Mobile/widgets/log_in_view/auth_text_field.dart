@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/constants.dart';
 
 class AuthTextField extends StatelessWidget {
@@ -6,33 +7,49 @@ class AuthTextField extends StatelessWidget {
     super.key,
     required this.hintText,
     required this.iconData,
-    required this.obscureText,
+    this.obscureText = false,
   });
   final String hintText;
   final IconData iconData;
-  final bool obscureText;
+  final bool? obscureText;
   @override
   Widget build(BuildContext context) {
-    return TextField(
-      obscureText: obscureText,
-      style: const TextStyle(fontWeight: FontWeight.bold),
-      decoration: InputDecoration(
-        hintText: hintText,
-        fillColor: Colors.white,
-        filled: true,
-        prefixIcon: TextFieldIconS(iconData: iconData),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: const BorderSide(color: Colors.white),
-        ),
-        disabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(18),
-          borderSide: const BorderSide(color: kOrangeColor, width: 3),
-        ),
-      ),
+    ValueNotifier<bool> obsc = ValueNotifier(true);
+    return ValueListenableBuilder(
+      valueListenable: obsc,
+      builder: (context, value, child) {
+        return TextField(
+          obscureText: obscureText! ? value : obscureText!,
+          style: const TextStyle(fontWeight: FontWeight.bold),
+          decoration: InputDecoration(
+            hintText: hintText,
+            fillColor: Colors.white,
+            filled: true,
+            prefixIcon: TextFieldIconS(iconData: iconData),
+            suffixIcon: obscureText!
+                ? IconButton(
+                    padding: const EdgeInsets.only(right: 10),
+                    onPressed: () {
+                      obsc.value = !obsc.value;
+                    },
+                    icon: Icon(value
+                        ? FontAwesomeIcons.eye
+                        : FontAwesomeIcons.eyeSlash),
+                  )
+                : null,
+            enabledBorder: statueBorder(Colors.white),
+            disabledBorder: statueBorder(Colors.white),
+            focusedBorder: statueBorder(kOrangeColor),
+          ),
+        );
+      },
+    );
+  }
+
+  OutlineInputBorder statueBorder(Color color) {
+    return OutlineInputBorder(
+      borderRadius: BorderRadius.circular(18),
+      borderSide: BorderSide(color: color, width: 3),
     );
   }
 }
