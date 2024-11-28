@@ -8,7 +8,7 @@ class TeacherCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // double screenWidth = MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
     return Container(
       width: double.infinity,
@@ -25,8 +25,7 @@ class TeacherCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(
               'assets/images/TeachersTaha.jpg',
-              // عرض الصورة
-              height: screenHeight * 0.074, // ارتفاع الصورة
+              height: screenHeight * 0.074,
               fit: BoxFit.cover,
             ),
           ),
@@ -42,21 +41,17 @@ class TeacherCard extends StatelessWidget {
                       'طه حوراني',
                       style: FontStyleApp.textStyleOrange15
                           .copyWith(fontSize: getResponsiveText(context, 15)),
-                      // نص برتقالي
                     ),
-                    const SizedBox(
-                      width: 10,
-                    ),
+                    SizedBox(width: screenWidth * 0.02),
                     Text(
                       ': اسم المدرس',
                       style: FontStyleApp.textStylewite15
                           .copyWith(fontSize: getResponsiveText(context, 15)),
-                      // نص أبيض
                     ),
                   ],
                 ),
-                const SizedBox(
-                  height: 10,
+                SizedBox(
+                  height: screenHeight * 0.02,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,

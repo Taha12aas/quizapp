@@ -1,55 +1,62 @@
-
 import 'package:flutter/material.dart';
 import 'package:quizapp/constants.dart';
 import 'package:quizapp/font_style.dart';
 import 'package:quizapp/responsive_text.dart';
 
 class CardSubjects extends StatelessWidget {
-  const CardSubjects({
-    super.key,
-    required this.screenHeight,
-    required this.screenWidth,
-  });
-
-  final double screenHeight;
-  final double screenWidth;
+  const CardSubjects({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
       width: double.infinity,
       height: screenHeight * 0.12,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12), color: kAshenColor),
+        borderRadius: BorderRadius.circular(12),
+        color: kAshenColor,
+      ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          const SizedBox(
-            width: 10,
-          ),
+          SizedBox(width: screenWidth * 0.02),
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(
               'assets/images/Teachers.png',
-              // عرض الصورة
-              height: screenHeight * 0.074, // ارتفاع الصورة
+              height: screenHeight * 0.074,
+              width: screenHeight * 0.074,
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(
-            width: screenWidth * 0.2,
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'علوم',
+                  style: FontStyleApp.textStyleOrange15.copyWith(
+                    fontSize: getResponsiveText(context, 15),
+                  ),
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                SizedBox(width: screenWidth * 0.01),
+                Text(
+                  ' : اسم المادة',
+                  style: FontStyleApp.textStylewite15.copyWith(
+                    fontSize: getResponsiveText(context, 15),
+                  ),
+                  softWrap: false,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
-          Text(
-            'طه حوراني',
-            style: FontStyleApp.textStyleOrange15
-                .copyWith(fontSize: getResponsiveText(context, 15)),
-          ),
-          Text(': اسم المدرس',
-              style: FontStyleApp.textStyleOrange15
-                  .copyWith(fontSize: getResponsiveText(context, 15))),
-          const SizedBox(
-            width: 15,
-          )
+          SizedBox(width: screenWidth * 0.02),
         ],
       ),
     );
