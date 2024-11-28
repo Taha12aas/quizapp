@@ -11,20 +11,22 @@ class TeacherSubjects extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar('المواد', true),
-      body: const Padding(
-        padding: EdgeInsets.all(8.0),
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
+            const Text(
               ' : تصنيف حسب الصفوف ',
               style: FontStyleApp.textStyleOrangeBold25,
             ),
-            ListViewButtonClass(),
-            SizedBox(
+            const ListViewButtonClass(),
+            const SizedBox(
               height: 20,
             ),
-            CardSubjects()
+            CardSubjects(
+              onTap: () {},
+            )
           ],
         ),
       ),

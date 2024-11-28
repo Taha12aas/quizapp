@@ -25,5 +25,8 @@ AppBar customAppBar(String title, bool isfoundsearchicon) {
             )
           : const SizedBox()
     ],
+    iconTheme: const IconThemeData(
+      color: Colors.white,
+    ),
   );
 }

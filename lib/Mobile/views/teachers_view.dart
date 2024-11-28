@@ -11,20 +11,22 @@ class TeachersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar('المدرسين', true),
-      body: const Padding(
-        padding: EdgeInsets.only(top: 15, bottom: 8, left: 8, right: 8),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 15, bottom: 8, left: 8, right: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            Text(
+            const Text(
               ' : تصنيف حسب الصفوف ',
               style: FontStyleApp.textStyleOrangeBold25,
             ),
-            ListViewButtonClass(),
-            SizedBox(
+            const ListViewButtonClass(),
+            const SizedBox(
               height: 15,
             ),
-            TeacherCard()
+            TeacherCard(
+              onTap: () {},
+            )
           ],
         ),
       ),

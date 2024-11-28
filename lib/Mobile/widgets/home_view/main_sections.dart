@@ -1,5 +1,6 @@
-
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/teacher_subjects.dart';
+import 'package:quizapp/Mobile/views/teachers_view.dart';
 import 'package:quizapp/Mobile/widgets/home_view/main_categories_section.dart';
 
 class MainSections extends StatelessWidget {
@@ -9,17 +10,23 @@ class MainSections extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         MainCategoriesSection(
-          image: 'assets/images/subjects.png',
-          label: 'المدرسين',
-        ),
-        MainCategoriesSection(
-          image: 'assets/images/Teachers.png',
-          label: 'المواد',
-        ),
+                  onTap: () {
+                    Navigator.pushNamed(context, TeachersView.id);
+                  },
+                  image: 'assets/images/subjects.png',
+                  label: 'المدرسين',
+                ),
+                MainCategoriesSection(
+                  image: 'assets/images/Teachers.png',
+                  label: 'المواد',
+                  onTap: () {
+                    Navigator.pushNamed(context, TeacherSubjects.id);
+                  },
+                ),
       ],
     );
   }

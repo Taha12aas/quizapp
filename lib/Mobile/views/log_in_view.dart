@@ -62,8 +62,8 @@ class LogInView extends StatelessWidget {
               height: MediaQuery.sizeOf(context).height * .25,
             ),
             ElevatedButton.icon(
-              icon: Icon(
-                Icons.login, // حدد أيقونة هنا
+              icon: const Icon(
+                Icons.login,
                 color: kOrangeColor,
               ),
               style: ElevatedButton.styleFrom(
