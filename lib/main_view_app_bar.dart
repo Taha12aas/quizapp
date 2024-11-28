@@ -11,10 +11,13 @@ PreferredSizeWidget mainViewAppBar(BuildContext context) {
           bottomRight: Radius.circular(12),
         ),
       ),
-      padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+      padding: const EdgeInsets.only(top: 10, left: 8, right: 8),
       child: Builder(
         builder: (BuildContext innerContext) => Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment:
+              MainAxisAlignment.spaceBetween, // Keep buttons on the edges
+          crossAxisAlignment:
+              CrossAxisAlignment.end, // Align items to the bottom
           children: [
             IconButton(
               icon: const Icon(Icons.menu, color: Colors.white),
@@ -22,13 +25,12 @@ PreferredSizeWidget mainViewAppBar(BuildContext context) {
                 Scaffold.of(innerContext).openDrawer();
               },
             ),
-            const Expanded(
-              child: Center(
-                child: Icon(
-                  Icons.school,
-                  color: Colors.orange,
-                  size: 30,
-                ),
+            const Align(
+              alignment: Alignment.bottomCenter, // Align the icon at the bottom
+              child: Icon(
+                Icons.school,
+                color: Colors.orange,
+                size: 50,
               ),
             ),
             IconButton(

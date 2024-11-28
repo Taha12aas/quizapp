@@ -17,7 +17,9 @@ AppBar customAppBar(String title, bool isfoundsearchicon) {
     actions: [
       isfoundsearchicon
           ? const Padding(
-              padding: EdgeInsets.only(right: 12),
+              padding: EdgeInsets.only(
+                right: 12,
+              ),
               child: Icon(
                 Icons.search,
                 color: Colors.white,

@@ -11,6 +11,7 @@ class ListViewButtonClass extends StatelessWidget {
     return SizedBox(
       height: 60,
       child: ListView.builder(
+        reverse: true,
         padding: const EdgeInsets.only(top: 10),
         scrollDirection: Axis.horizontal,
         itemCount: 15,
