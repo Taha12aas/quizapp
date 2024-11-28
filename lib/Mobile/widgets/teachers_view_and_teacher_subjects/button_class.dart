@@ -12,6 +12,8 @@ class ButtonClass extends StatelessWidget {
   final String text;
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return Padding(
       padding: const EdgeInsets.only(
         left: 5,
@@ -22,9 +24,9 @@ class ButtonClass extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-              color: kOrangeColor,
+              color: kOrangeBlackColor,
               borderRadius: BorderRadius.circular(12)),
-          width: 82,
+          width: screenWidth * 0.25,
           child: Center(
               child: Text(
             text,

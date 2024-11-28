@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/constants.dart';
 import 'package:quizapp/font_style.dart';
+import 'package:quizapp/responsive_text.dart';
 
 class TeacherCard extends StatelessWidget {
   const TeacherCard({super.key});
@@ -23,13 +24,13 @@ class TeacherCard extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(8),
             child: Image.asset(
-              'assets/images/Teachers.png',
+              'assets/images/TeachersTaha.jpg',
               // عرض الصورة
               height: screenHeight * 0.074, // ارتفاع الصورة
               fit: BoxFit.cover,
             ),
           ),
-          const Expanded(
+          Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -39,18 +40,22 @@ class TeacherCard extends StatelessWidget {
                   children: [
                     Text(
                       'طه حوراني',
-                      style: FontStyleApp.textStyleOrange15, // نص برتقالي
+                      style: FontStyleApp.textStyleOrange15
+                          .copyWith(fontSize: getResponsiveText(context, 15)),
+                      // نص برتقالي
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
                       ': اسم المدرس',
-                      style: FontStyleApp.textStylewite15, // نص أبيض
+                      style: FontStyleApp.textStylewite15
+                          .copyWith(fontSize: getResponsiveText(context, 15)),
+                      // نص أبيض
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 10,
                 ),
                 Row(
@@ -58,14 +63,16 @@ class TeacherCard extends StatelessWidget {
                   children: [
                     Text(
                       'رياضيات',
-                      style: FontStyleApp.textStyleOrange15,
+                      style: FontStyleApp.textStyleOrange15
+                          .copyWith(fontSize: getResponsiveText(context, 15)),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       width: 10,
                     ),
                     Text(
                       ': اسم المادة',
-                      style: FontStyleApp.textStylewite15,
+                      style: FontStyleApp.textStylewite15
+                          .copyWith(fontSize: getResponsiveText(context, 15)),
                     ),
                   ],
                 ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/home_view/teacher_card.dart';
-import 'package:quizapp/Mobile/widgets/teachers_view/button_class.dart';
+import 'package:quizapp/Mobile/widgets/teachers_view_and_teacher_subjects/list_view_buttin_class.dart';
 import 'package:quizapp/custom_app_bar.dart';
 import 'package:quizapp/font_style.dart';
 
@@ -10,34 +10,21 @@ class TeachersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('المدرسين',true),
-      body: Padding(
-        padding: const EdgeInsets.only(top: 15, bottom: 8, left: 8, right: 8),
+      appBar: customAppBar('المدرسين', true),
+      body: const Padding(
+        padding: EdgeInsets.only(top: 15, bottom: 8, left: 8, right: 8),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text(
+            Text(
               ' : تصنيف حسب الصفوف ',
               style: FontStyleApp.textStyleOrangeBold25,
             ),
+            ListViewButtonClass(),
             SizedBox(
-              height: 70,
-              child: ListView.builder(
-                padding: const EdgeInsets.only(top: 10),
-                scrollDirection: Axis.horizontal,
-                itemCount: 15,
-                itemBuilder: (context, index) {
-                  return ButtonClass(
-                    text: 'صف الاول',
-                    onTap: () {},
-                  );
-                },
-              ),
-            ),
-            const SizedBox(
               height: 15,
             ),
-            const TeacherCard()
+            TeacherCard()
           ],
         ),
       ),

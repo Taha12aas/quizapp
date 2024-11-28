@@ -62,8 +62,12 @@ class LogInView extends StatelessWidget {
               height: MediaQuery.sizeOf(context).height * .25,
             ),
             ElevatedButton.icon(
+              icon: Icon(
+                Icons.login, // حدد أيقونة هنا
+                color: kOrangeColor,
+              ),
               style: ElevatedButton.styleFrom(
-                overlayColor: Colors.orange[50],
+                foregroundColor: Colors.orange[50],
                 side: const BorderSide(color: kOrangeColor, width: 2),
                 shadowColor: Colors.transparent,
                 padding: const EdgeInsets.symmetric(vertical: 23),
