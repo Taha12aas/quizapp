@@ -4,15 +4,15 @@ import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/card_subj
 import 'package:quizapp/custom_app_bar.dart';
 import 'package:quizapp/font_style.dart';
 
-class Subjects extends StatelessWidget {
-  const Subjects({super.key});
-  static String id = 'TeacherSubjects';
+class SubjectsView extends StatelessWidget {
+  const SubjectsView({super.key});
+  static String id = 'SubjectsView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar('المواد', true),
       body: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

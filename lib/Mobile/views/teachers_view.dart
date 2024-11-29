@@ -13,7 +13,7 @@ class TeachersView extends StatelessWidget {
     return Scaffold(
       appBar: customAppBar('المدرسين', true),
       body: Padding(
-        padding: const EdgeInsets.only(top: 15, bottom: 8, left: 8, right: 8),
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [

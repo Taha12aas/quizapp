@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/list_view_card_subjects.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/teacher_profile_card.dart';
 import 'package:quizapp/custom_app_bar.dart';
+
 class TeacherSubjects extends StatelessWidget {
   const TeacherSubjects({super.key});
   static String id = 'TeacherSubjects';
@@ -10,7 +11,7 @@ class TeacherSubjects extends StatelessWidget {
     return Scaffold(
       appBar: customAppBar('مواد المدرس', true),
       body: const Padding(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -27,4 +28,3 @@ class TeacherSubjects extends StatelessWidget {
     );
   }
 }
-

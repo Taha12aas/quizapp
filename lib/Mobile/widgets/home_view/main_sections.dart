@@ -24,7 +24,7 @@ class MainSections extends StatelessWidget {
           image: 'assets/images/Teachers.png',
           label: 'المواد',
           onTap: () {
-            Navigator.pushNamed(context, Subjects.id);
+            Navigator.pushNamed(context, SubjectsView.id);
           },
         ),
       ],

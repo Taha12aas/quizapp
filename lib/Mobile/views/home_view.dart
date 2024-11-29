@@ -15,7 +15,7 @@ class HomeView extends StatelessWidget {
       appBar: mainViewAppBar(context),
       drawer: const CustomDrawer(),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
