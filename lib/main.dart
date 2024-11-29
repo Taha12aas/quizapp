@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/views/add_teacher.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/views/log_in_view.dart';
-import 'package:quizapp/Mobile/views/subjects_view.dart';
-import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
+import 'package:quizapp/Mobile/views/teacher_subjects.dart';
 import 'package:quizapp/Mobile/views/teachers_view.dart';
 import 'package:quizapp/constants.dart';
 
@@ -24,6 +23,7 @@ class QuizApp extends StatelessWidget {
         Subjects.id: (context) => const Subjects(),
         TeachersView.id: (context) => const TeachersView(),
         TeacherSubjects.id: (context) => const TeacherSubjects(),
+        TeachersView.id: (context) => const TeachersView(),
       },
       theme:
           ThemeData(scaffoldBackgroundColor: kBackGround, fontFamily: 'Exo2'),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
-import 'package:quizapp/Mobile/views/register_view.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
@@ -9,10 +8,9 @@ import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
 import 'package:quizapp/font_style.dart';
 import 'package:quizapp/responsive_text.dart';
 
-class LogInView extends StatelessWidget {
-  const LogInView({super.key});
-  static String id = 'LogInView';
-
+class RegisterView extends StatelessWidget {
+  const RegisterView({super.key});
+  static String id = 'RegisterView';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,7 +37,7 @@ class LogInView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'تسجيل الدخول',
+                        'انشاء حساب',
                         textAlign: TextAlign.end,
                         style: FontStyleApp.labels
                             .copyWith(fontSize: getResponsiveText(context, 18)),
@@ -57,11 +55,17 @@ class LogInView extends StatelessWidget {
                     iconData: FontAwesomeIcons.lock,
                     obscureText: true,
                   ),
+                  const SizedBox(height: 18),
+                  const AuthTextField(
+                    hintText: 'تأكيد كلمة المرور',
+                    iconData: FontAwesomeIcons.lock,
+                    obscureText: true,
+                  ),
                   RegisterOrLogIn(
-                    label1: 'ليس لديك حساب ؟',
-                    label2: 'اضغط هنا لانشاء حساب',
+                    label1: 'لديك حساب؟',
+                    label2: 'اضغط هنا لتسجيل الدخول',
                     onPressed: () {
-                      Navigator.pushNamed(context, RegisterView.id);
+                      Navigator.pop(context);
                     },
                   ),
                   const Spacer(),
