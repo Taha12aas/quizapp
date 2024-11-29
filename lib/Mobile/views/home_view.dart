@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custom_drawer.dart';
 import 'package:quizapp/Mobile/widgets/home_view/main_sections.dart';
 import 'package:quizapp/Mobile/widgets/home_view/teacher_card.dart';
@@ -24,7 +25,9 @@ class HomeView extends StatelessWidget {
                 style: FontStyleApp.textStyleOrangeBold25),
             const SizedBox(height: 10),
             TeacherCard(
-              onTap: () {},
+              onTap: () {
+                Navigator.pushNamed(context, TeacherSubjects.id);
+              },
             )
           ],
         ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/widgets/teachers_view_and_teacher_subjects/button_class.dart';
+import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/button_class.dart';
 
 class ListViewButtonClass extends StatelessWidget {
   const ListViewButtonClass({
