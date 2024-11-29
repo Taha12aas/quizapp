@@ -26,7 +26,7 @@ class QuizApp extends StatelessWidget {
       theme:
           ThemeData(scaffoldBackgroundColor: kBackGround, fontFamily: 'Exo2'),
       debugShowCheckedModeBanner: false,
-      initialRoute: HomeView.id,
+      initialRoute: LogInView.id,
     );
   }
 }

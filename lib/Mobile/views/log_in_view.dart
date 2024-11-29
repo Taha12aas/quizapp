@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
+import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
-import 'package:quizapp/constants.dart';
 import 'package:quizapp/font_style.dart';
 import 'package:quizapp/responsive_text.dart';
 
@@ -61,27 +61,7 @@ class LogInView extends StatelessWidget {
             SizedBox(
               height: MediaQuery.sizeOf(context).height * .25,
             ),
-            ElevatedButton.icon(
-              icon: const Icon(
-                Icons.login,
-                color: kOrangeColor,
-              ),
-              style: ElevatedButton.styleFrom(
-                foregroundColor: Colors.orange[50],
-                side: const BorderSide(color: kOrangeColor, width: 2),
-                shadowColor: Colors.transparent,
-                padding: const EdgeInsets.symmetric(vertical: 23),
-                elevation: 0,
-                backgroundColor: Colors.transparent,
-              ),
-              onPressed: () {},
-              label: Text(
-                'تسجيل الدخول',
-                style: FontStyleApp.textFieldPadding.copyWith(
-                  fontSize: getResponsiveText(context, 18),
-                ),
-              ),
-            )
+            const CustomButton()
           ],
         ),
       ),
