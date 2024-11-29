@@ -61,12 +61,12 @@ class LogInView extends StatelessWidget {
                     label2: 'اضغط هنا لانشاء حساب',
                   ),
                   const Spacer(),
-                   CustomButton(
+                  CustomButton(
                     onPressed: () {
                       Navigator.pushNamed(context, HomeView.id);
                     },
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 50),
                 ],
               ),
             ),
