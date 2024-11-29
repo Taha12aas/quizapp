@@ -6,8 +6,9 @@ import 'package:quizapp/responsive_text.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
+    required this.onPressed,
   });
-
+  final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -25,7 +26,7 @@ class CustomButton extends StatelessWidget {
           elevation: 0,
           backgroundColor: Colors.transparent,
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         label: Text(
           'تسجيل الدخول',
           style: FontStyleApp.textFieldPadding.copyWith(

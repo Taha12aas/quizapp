@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
+import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
@@ -60,7 +61,11 @@ class LogInView extends StatelessWidget {
                     label2: 'اضغط هنا لانشاء حساب',
                   ),
                   const Spacer(),
-                  const CustomButton(),
+                   CustomButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, HomeView.id);
+                    },
+                  ),
                   const SizedBox(height: 16),
                 ],
               ),
