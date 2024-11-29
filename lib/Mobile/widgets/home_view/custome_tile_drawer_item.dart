@@ -12,7 +12,7 @@ class CustomeTileDrawerItem extends StatelessWidget {
   final String text;
   final IconData icon;
   final bool isSelected;
-  final VoidCallback onTap; 
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +36,13 @@ class CustomeTileDrawerItem extends StatelessWidget {
               Text(
                 text,
                 style: TextStyle(
-                  color: isSelected
-                      ? Colors.orange
-                      : Colors.black, 
+                  color: isSelected ? Colors.orange : Colors.black,
                 ),
               ),
               const SizedBox(width: 10),
               Icon(
                 icon,
-                color: isSelected
-                    ? Colors.orange
-                    : Colors.black, 
+                color: isSelected ? Colors.orange : Colors.black,
               ),
               const SizedBox(width: 10),
             ],
