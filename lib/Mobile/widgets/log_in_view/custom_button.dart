@@ -11,24 +11,27 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      icon: const Icon(
-        Icons.login,
-        color: kOrangeColor,
-      ),
-      style: ElevatedButton.styleFrom(
-        foregroundColor: Colors.orange[50],
-        side: const BorderSide(color: kOrangeColor, width: 2),
-        shadowColor: Colors.transparent,
-        padding: const EdgeInsets.symmetric(vertical: 23),
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-      ),
-      onPressed: () {},
-      label: Text(
-        'تسجيل الدخول',
-        style: FontStyleApp.textFieldPadding.copyWith(
-          fontSize: getResponsiveText(context, 18),
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton.icon(
+        icon: const Icon(
+          Icons.login,
+          color: kOrangeColor,
+        ),
+        style: ElevatedButton.styleFrom(
+          foregroundColor: Colors.orange[50],
+          side: const BorderSide(color: kOrangeColor, width: 2),
+          shadowColor: Colors.transparent,
+          padding: const EdgeInsets.symmetric(vertical: 16),
+          elevation: 0,
+          backgroundColor: Colors.transparent,
+        ),
+        onPressed: () {},
+        label: Text(
+          'تسجيل الدخول',
+          style: FontStyleApp.textFieldPadding.copyWith(
+            fontSize: getResponsiveText(context, 18),
+          ),
         ),
       ),
     );
