@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 PreferredSizeWidget mainViewAppBar(BuildContext context) {
   return PreferredSize(
     preferredSize: const Size.fromHeight(55),
-    child: Container(
+    child: Container(///sss
       decoration: const BoxDecoration(
         color: Color(0xff373737),
         borderRadius: BorderRadius.only(
