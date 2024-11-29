@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/constants.dart';
 
 class CustomeTileDrawerItem extends StatelessWidget {
   const CustomeTileDrawerItem({
@@ -21,11 +22,11 @@ class CustomeTileDrawerItem extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(8),
-        focusColor: Colors.orange,
+        focusColor: kOrangeBlackColor,
         child: Container(
           decoration: BoxDecoration(
             color: isSelected
-                ? Colors.orange.withOpacity(0.1)
+                ? kOrangeBlackColor.withOpacity(0.1)
                 : const Color.fromARGB(0, 0, 0, 0),
             borderRadius: BorderRadius.circular(8),
           ),
@@ -36,13 +37,13 @@ class CustomeTileDrawerItem extends StatelessWidget {
               Text(
                 text,
                 style: TextStyle(
-                  color: isSelected ? Colors.orange : Colors.black,
+                  color: isSelected ? kOrangeColor : Colors.black,
                 ),
               ),
               const SizedBox(width: 10),
               Icon(
                 icon,
-                color: isSelected ? Colors.orange : Colors.black,
+                color: isSelected ? kOrangeColor : Colors.black,
               ),
               const SizedBox(width: 10),
             ],
