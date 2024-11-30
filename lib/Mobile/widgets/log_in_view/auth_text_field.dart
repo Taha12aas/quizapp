@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
+import 'package:quizapp/Mobile/widgets/log_in_view/statue_border.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/text_field_icons.dart';
 import 'package:quizapp/constants.dart';
 
@@ -45,13 +46,6 @@ class AuthTextField extends StatelessWidget {
           ),
         );
       },
-    );
-  }
-
-  OutlineInputBorder statueBorder(Color color) {
-    return OutlineInputBorder(
-      borderRadius: BorderRadius.circular(18),
-      borderSide: BorderSide(color: color, width: 3),
     );
   }
 }

@@ -20,4 +20,9 @@ class FontStyleApp {
     fontWeight: FontWeight.bold,
     fontSize: 10,
   );
+  static const snakBarLabel = TextStyle(
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+    fontSize: 18,
+  );
 }
