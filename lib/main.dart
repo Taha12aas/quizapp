@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/views/add_teacher.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/views/log_in_view.dart';
+import 'package:quizapp/Mobile/views/register_view.dart';
 import 'package:quizapp/Mobile/views/subjects_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
 import 'package:quizapp/Mobile/views/teachers_view.dart';
@@ -19,6 +20,7 @@ class QuizApp extends StatelessWidget {
     return MaterialApp(
       routes: {
         HomeView.id: (context) => const HomeView(),
+        RegisterView.id: (context) => const RegisterView(),
         LogInView.id: (context) => const LogInView(),
         AddTeacher.id: (context) => const AddTeacher(),
         SubjectsView.id: (context) => const SubjectsView(),

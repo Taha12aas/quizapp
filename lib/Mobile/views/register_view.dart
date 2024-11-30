@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
-import 'package:quizapp/Mobile/views/home_view.dart';
+import 'package:quizapp/Mobile/views/log_in_view.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
@@ -74,7 +74,7 @@ class RegisterView extends StatelessWidget {
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                           showSnackBar(context, 'تم انشاء الحساب بنجاح'));
-                      Navigator.pushNamed(context, HomeView.id);
+                      Navigator.pushNamed(context, LogInView.id);
                     },
                   ),
                   const SizedBox(height: 65),
