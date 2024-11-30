@@ -6,7 +6,6 @@ import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
-import 'package:quizapp/constants.dart';
 import 'package:quizapp/font_style.dart';
 import 'package:quizapp/responsive_text.dart';
 import 'package:quizapp/show_snack_bar.dart';
