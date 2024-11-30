@@ -3,6 +3,7 @@ import 'package:quizapp/Mobile/views/add_teacher.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/views/log_in_view.dart';
 import 'package:quizapp/Mobile/views/register_view.dart';
+import 'package:quizapp/Mobile/views/search_view.dart';
 import 'package:quizapp/Mobile/views/subjects_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
 import 'package:quizapp/Mobile/views/teachers_view.dart';
@@ -26,6 +27,7 @@ class QuizApp extends StatelessWidget {
         SubjectsView.id: (context) => const SubjectsView(),
         TeacherSubjects.id: (context) => const TeacherSubjects(),
         TeachersView.id: (context) => const TeachersView(),
+        SearchView.id:(context)=>const SearchView()
       },
       theme:
           ThemeData(scaffoldBackgroundColor: kBackGround, fontFamily: 'Exo2'),

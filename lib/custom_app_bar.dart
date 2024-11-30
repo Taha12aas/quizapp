@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/constants.dart';
 import 'package:quizapp/font_style.dart';
 
-AppBar customAppBar(String title, bool isfoundsearchicon) {
+AppBar customAppBar(
+    String title, bool isfoundsearchicon, VoidCallback onPressed) {
   return AppBar(
     centerTitle: true,
     shape: const RoundedRectangleBorder(
@@ -16,13 +17,16 @@ AppBar customAppBar(String title, bool isfoundsearchicon) {
     ),
     actions: [
       isfoundsearchicon
-          ? const Padding(
-              padding: EdgeInsets.only(
+          ? Padding(
+              padding: const EdgeInsets.only(
                 right: 12,
               ),
-              child: Icon(
-                Icons.search,
-                color: Colors.white,
+              child: IconButton(
+                onPressed: onPressed,
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.white,
+                ),
               ),
             )
           : const SizedBox()

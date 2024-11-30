@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/search_view.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/list_view_buttin_class.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/card_subjects.dart';
 import 'package:quizapp/custom_app_bar.dart';
@@ -10,7 +11,13 @@ class SubjectsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('المواد', true),
+      appBar: customAppBar(
+        'المواد',
+        true,
+        () {
+          Navigator.pushNamed(context, SearchView.id);
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: Column(

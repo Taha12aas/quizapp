@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/search_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
 import 'package:quizapp/Mobile/widgets/home_view/teacher_card.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/list_view_buttin_class.dart';
@@ -11,7 +12,9 @@ class TeachersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('المدرسين', true),
+      appBar: customAppBar('المدرسين', true,() {
+        Navigator.pushNamed(context, SearchView.id);
+      },),
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: Column(
