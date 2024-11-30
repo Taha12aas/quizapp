@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/add_teacher.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custome_tile_drawer_item.dart';
 import 'package:quizapp/constants.dart';
 
@@ -51,7 +52,10 @@ class CustomDrawerState extends State<CustomDrawer> {
             text: 'إضافة مدرسين',
             icon: Icons.add_circle_outline_sharp,
             isSelected: _selectedIndex == 1,
-            onTap: () => _onItemTapped(1),
+            onTap: () {
+              _onItemTapped(1);
+              Navigator.pushNamed(context, AddTeacher.id);
+            },
           ),
           CustomeTileDrawerItem(
             text: 'حذف مدرسين',
