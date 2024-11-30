@@ -46,7 +46,10 @@ class CustomDrawerState extends State<CustomDrawer> {
             text: 'الصفحة الرئيسية',
             icon: Icons.home,
             isSelected: _selectedIndex == 0,
-            onTap: () => _onItemTapped(0),
+            onTap: () {
+              _onItemTapped(0);
+              Navigator.pop(context);
+            } ,
           ),
           CustomeTileDrawerItem(
             text: 'إضافة مدرسين',
@@ -55,19 +58,28 @@ class CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               _onItemTapped(1);
               Navigator.pushNamed(context, AddTeacher.id);
+               Scaffold.of(context).closeDrawer();
             },
           ),
           CustomeTileDrawerItem(
             text: 'حذف مدرسين',
             icon: Icons.delete,
             isSelected: _selectedIndex == 2,
-            onTap: () => _onItemTapped(2),
+            onTap: () {
+              _onItemTapped(2);
+              Navigator.pushNamed(context, AddTeacher.id);
+               Scaffold.of(context).closeDrawer();
+            },
           ),
           CustomeTileDrawerItem(
             text: 'About',
             icon: Icons.info_outline,
             isSelected: _selectedIndex == 3,
-            onTap: () => _onItemTapped(3),
+            onTap: () {
+              _onItemTapped(3);
+              Navigator.pushNamed(context, AddTeacher.id);
+               Scaffold.of(context).closeDrawer();
+            },
           ),
         ],
       ),

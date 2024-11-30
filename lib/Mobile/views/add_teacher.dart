@@ -19,7 +19,7 @@ class AddTeacher extends StatelessWidget {
         child: Column(crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             const SizedBox(
-              height: 45,
+              height: 54,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
