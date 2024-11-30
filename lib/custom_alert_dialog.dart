@@ -14,7 +14,7 @@ class CustomAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 68,vertical: 15),
+      contentPadding: const EdgeInsets.symmetric(horizontal: 98, vertical: 15),
       actions: [
         Center(
           child: SizedBox(
