@@ -5,6 +5,7 @@ import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
+import 'package:quizapp/custom_alert_dialog.dart';
 import 'package:quizapp/font_style.dart';
 import 'package:quizapp/responsive_text.dart';
 import 'package:quizapp/show_snack_bar.dart';
@@ -71,14 +72,25 @@ class RegisterView extends StatelessWidget {
                   ),
                   const Spacer(),
                   CustomButton(
+                    iconData: Icons.login,
                     label: 'انشاء حساب',
                     onPressed: () {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                          showSnackBar(context, 'تم انشاء الحساب بنجاح'));
-                      Navigator.pushNamedAndRemoveUntil(
-                        context,
-                        LogInView.id,
-                        (route) => false,
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return CustomAlertDialog(
+                            onPressed: () {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                showSnackBar(context, 'تم انشاء الحساب بنجاح'),
+                              );
+                              Navigator.pushNamedAndRemoveUntil(
+                                context,
+                                LogInView.id,
+                                (route) => false,
+                              );
+                            },
+                          );
+                        },
                       );
                     },
                   ),

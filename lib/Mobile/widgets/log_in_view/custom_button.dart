@@ -6,17 +6,18 @@ import 'package:quizapp/responsive_text.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.onPressed, required this.label,
+    required this.onPressed, required this.label, required this.iconData,
   });
   final VoidCallback onPressed;
   final String label;
+  final IconData iconData;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton.icon(
-        icon: const Icon(
-          Icons.login,
+        icon:  Icon(
+          iconData,
           color: kOrangeColor,
         ),
         style: ElevatedButton.styleFrom(

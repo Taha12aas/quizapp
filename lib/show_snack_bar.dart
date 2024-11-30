@@ -6,7 +6,7 @@ import 'package:quizapp/responsive_text.dart';
 SnackBar showSnackBar(BuildContext context,String content) {
   return SnackBar(
     padding: const EdgeInsets.symmetric(vertical: 6),
-    duration: const Duration(seconds: 1),
+    duration: const Duration(seconds: 2),
     shape: const RoundedRectangleBorder(
       side: BorderSide(color: kOrangeColor),
       borderRadius: BorderRadius.all(
