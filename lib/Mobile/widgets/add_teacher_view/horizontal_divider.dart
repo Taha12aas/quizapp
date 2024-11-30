@@ -12,7 +12,7 @@ class HorizontalDivider extends StatelessWidget {
     return Container(
       color: Colors.white,
       height: 2,
-      width: getResponsiveText(context, 56),
+      width: getResponsiveText(context, size),
     );
   }
 }

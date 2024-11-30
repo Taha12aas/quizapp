@@ -62,7 +62,7 @@ class AddTeacher extends StatelessWidget {
                   horizntalSize: 89,
                 ),
               ],
-            )
+            ),
           ],
         ),
       ),
