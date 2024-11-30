@@ -6,7 +6,6 @@ import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
-import 'package:quizapp/constants.dart';
 import 'package:quizapp/custom_alert_dialog.dart';
 import 'package:quizapp/font_style.dart';
 import 'package:quizapp/responsive_text.dart';
@@ -72,19 +71,7 @@ class LogInView extends StatelessWidget {
                     iconData: Icons.login,
                     label: 'تسجيل الدخول',
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return CustomAlertDialog(
-                            onPressed: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                showSnackBar(context, 'تم تسجيل الدخول بنجاح'),
-                              );
-                              Navigator.pushNamed(context, HomeView.id);
-                            },
-                          );
-                        },
-                      );
+                      showAlertDialogAndNavigate(context);
                     },
                   ),
                   const SizedBox(height: 65),
@@ -94,6 +81,22 @@ class LogInView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<dynamic> showAlertDialogAndNavigate(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return CustomAlertDialog(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              showSnackBar(context, 'تم تسجيل الدخول بنجاح'),
+            );
+            Navigator.pushNamed(context, HomeView.id);
+          },
+        );
+      },
     );
   }
 }

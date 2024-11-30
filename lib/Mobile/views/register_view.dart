@@ -75,23 +75,7 @@ class RegisterView extends StatelessWidget {
                     iconData: Icons.login,
                     label: 'انشاء حساب',
                     onPressed: () {
-                      showDialog(
-                        context: context,
-                        builder: (context) {
-                          return CustomAlertDialog(
-                            onPressed: () {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                showSnackBar(context, 'تم انشاء الحساب بنجاح'),
-                              );
-                              Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                LogInView.id,
-                                (route) => false,
-                              );
-                            },
-                          );
-                        },
-                      );
+                      showAlertDialogAndNavigate(context);
                     },
                   ),
                   const SizedBox(height: 65),
@@ -101,6 +85,26 @@ class RegisterView extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Future<dynamic> showAlertDialogAndNavigate(BuildContext context) {
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return CustomAlertDialog(
+          onPressed: () {
+            ScaffoldMessenger.of(context).showSnackBar(
+              showSnackBar(context, 'تم انشاء الحساب بنجاح'),
+            );
+            Navigator.pushNamedAndRemoveUntil(
+              context,
+              LogInView.id,
+              (route) => false,
+            );
+          },
+        );
+      },
     );
   }
 }
