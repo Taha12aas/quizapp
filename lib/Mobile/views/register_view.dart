@@ -7,6 +7,7 @@ import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
 import 'package:quizapp/font_style.dart';
 import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/show_snack_bar.dart';
 
 class RegisterView extends StatelessWidget {
   const RegisterView({super.key});
@@ -71,10 +72,12 @@ class RegisterView extends StatelessWidget {
                   const Spacer(),
                   CustomButton(
                     onPressed: () {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          showSnackBar(context, 'تم انشاء الحساب بنجاح'));
                       Navigator.pushNamed(context, HomeView.id);
                     },
                   ),
-                  const SizedBox(height: 50),
+                  const SizedBox(height: 65),
                 ],
               ),
             ),
