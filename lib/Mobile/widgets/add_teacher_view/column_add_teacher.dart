@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/horizontal_divider.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/info_text_field.dart';
