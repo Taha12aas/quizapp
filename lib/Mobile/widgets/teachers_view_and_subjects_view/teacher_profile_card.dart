@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
 import 'package:quizapp/constants.dart';
 import 'package:quizapp/font_style.dart';
+import 'package:quizapp/responsive_text.dart';
 
 class TeacherProfileCard extends StatelessWidget {
   const TeacherProfileCard({
@@ -10,31 +10,46 @@ class TeacherProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
     return Container(
-      width: 250,
-      padding: const EdgeInsets.symmetric(vertical: 2),
+      width: screenWidth * 0.6,
+      padding: EdgeInsets.symmetric(vertical: screenWidth * 0.001),
       decoration: BoxDecoration(
         color: kAshenColor,
         borderRadius: BorderRadius.circular(60),
       ),
-      child: const Row(
+      child: Row(
         children: [
           Expanded(
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Text('ريم سواس', style: FontStyleApp.textStylewite15),
-                Text(' : الاسم', style: FontStyleApp.textStyleOrange15),
+                Text(
+                  'ريم سواس',
+                  style: FontStyleApp.textStylewite15.copyWith(
+                    fontSize: getResponsiveText(context, 15),
+                  ),
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  ' : الاسم',
+                  style: FontStyleApp.textStyleOrange15.copyWith(
+                    fontSize: getResponsiveText(context, 15),
+                  ),
+                ),
               ],
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
-          CircleAvatar(
+          const CircleAvatar(
             radius: 30.0,
-            backgroundImage:
-                AssetImage('assets/images/TeachersTaha.jpg'),
+            backgroundImage: AssetImage('assets/images/TeachersTaha.jpg'),
           ),
         ],
       ),

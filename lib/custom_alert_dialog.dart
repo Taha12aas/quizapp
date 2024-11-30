@@ -16,15 +16,10 @@ class CustomAlertDialog extends StatelessWidget {
     return AlertDialog(
       contentPadding: EdgeInsets.symmetric(horizontal: 68,vertical: 15),
       actions: [
-        Center(
-          child: SizedBox(
-            width: 150,
-            child: CustomButton(
-              onPressed: onPressed,
-              label: 'موافق',
-              iconData: Icons.check,
-            ),
-          ),
+        CustomButton(
+          onPressed:onPressed,
+          label: 'موافق',
+          iconData: Icons.check,
         )
       ],
       shape: RoundedRectangleBorder(
@@ -32,11 +27,15 @@ class CustomAlertDialog extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       backgroundColor: kAshenColor,
-      title: Text('أدخل رمز التحقق',
-          textAlign: TextAlign.center,
-          style: FontStyleApp.snakBarLabel
-              .copyWith(fontSize: getResponsiveText(context, 18))),
-      content: const AlertDialogTextField(),
+      title:  Text(
+        'أدخل رمز التحقق',
+        textAlign: TextAlign.center,
+        style: FontStyleApp.snakBarLabel.copyWith(fontSize: getResponsiveText(context, 18))
+      ),
+      content: const AuthTextField(
+        hintText: '####',
+        iconData: Icons.format_list_numbered_sharp,
+      ),
     );
   }
 }
