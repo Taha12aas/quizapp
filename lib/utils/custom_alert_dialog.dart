@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/alert_dialog_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
-import 'package:quizapp/constants.dart';
-import 'package:quizapp/font_style.dart';
-import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class CustomAlertDialog extends StatelessWidget {
   const CustomAlertDialog({

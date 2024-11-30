@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/constants.dart';
+import 'package:quizapp/utils/constants.dart';
 
 class LogoImage extends StatelessWidget {
   const LogoImage({

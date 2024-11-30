@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/statue_border.dart';
-import 'package:quizapp/constants.dart';
+import 'package:quizapp/utils/constants.dart';
 
 class AlertDialogTextField extends StatelessWidget {
   const AlertDialogTextField({

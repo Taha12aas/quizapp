@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/constants.dart';
-import 'package:quizapp/font_style.dart';
-import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class TeacherProfileCard extends StatelessWidget {
   const TeacherProfileCard({

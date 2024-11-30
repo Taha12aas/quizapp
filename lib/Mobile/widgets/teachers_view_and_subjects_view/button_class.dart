@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/constants.dart';
-import 'package:quizapp/font_style.dart';
+import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/font_style.dart';
 
 class ButtonClass extends StatelessWidget {
   const ButtonClass({

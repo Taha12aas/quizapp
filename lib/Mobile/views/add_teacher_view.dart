@@ -3,12 +3,12 @@ import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/column_add_teacher.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/horizontal_divider.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/info_text_field.dart';
-import 'package:quizapp/custom_app_bar.dart';
-import 'package:quizapp/font_style.dart';
-import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/utils/custom_app_bar.dart';
+import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
-class AddTeacher extends StatelessWidget {
-  const AddTeacher({super.key});
+class AddTeacherView extends StatelessWidget {
+  const AddTeacherView({super.key});
 
   static String id = 'AddTeacher';
   @override

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class HorizontalDivider extends StatelessWidget {
   const HorizontalDivider({

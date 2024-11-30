@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/custom_app_bar.dart';
+import 'package:quizapp/utils/custom_app_bar.dart';
 
 class SearchView extends StatelessWidget {
   const SearchView({super.key});

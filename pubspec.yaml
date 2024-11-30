@@ -29,6 +29,7 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   cupertino_icons: ^1.0.6
+  drop_down_list: ^0.0.8
   flutter:
     sdk: flutter
   font_awesome_icon_class: ^0.0.6

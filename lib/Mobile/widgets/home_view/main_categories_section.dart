@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/constants.dart';
-import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 //Container الموجود في الصفحة الرئيسة
 class MainCategoriesSection extends StatelessWidget {
