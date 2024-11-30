@@ -68,6 +68,7 @@ class LogInView extends StatelessWidget {
                   ),
                   const Spacer(),
                   CustomButton(
+                    label: 'تسجيل الدخول',
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         showSnackBar(context, 'تم تسجيل الدخول بنجاح'),

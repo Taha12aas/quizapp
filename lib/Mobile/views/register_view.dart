@@ -71,10 +71,15 @@ class RegisterView extends StatelessWidget {
                   ),
                   const Spacer(),
                   CustomButton(
+                    label: 'انشاء حساب',
                     onPressed: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                           showSnackBar(context, 'تم انشاء الحساب بنجاح'));
-                      Navigator.pushNamed(context, LogInView.id);
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        LogInView.id,
+                        (route) => false,
+                      );
                     },
                   ),
                   const SizedBox(height: 65),
