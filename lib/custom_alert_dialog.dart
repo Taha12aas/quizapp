@@ -15,12 +15,11 @@ class CustomAlertDialog extends StatelessWidget {
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     return AlertDialog(
-      contentPadding:
-          EdgeInsets.symmetric(horizontal: screenWidth * 0.3, vertical: 15),
+      contentPadding: EdgeInsets.symmetric(horizontal: 73, vertical: 15),
       actions: [
         Center(
           child: SizedBox(
-            width: 150,
+            width: screenWidth * 0.3,
             child: CustomButton(
               onPressed: onPressed,
               label: 'موافق',
