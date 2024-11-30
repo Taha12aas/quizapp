@@ -13,8 +13,10 @@ class CustomAlertDialog extends StatelessWidget {
   final VoidCallback onPressed;
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
     return AlertDialog(
-      contentPadding: const EdgeInsets.symmetric(horizontal: 98, vertical: 15),
+      contentPadding:
+          EdgeInsets.symmetric(horizontal: screenWidth * 0.3, vertical: 15),
       actions: [
         Center(
           child: SizedBox(
