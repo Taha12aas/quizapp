@@ -17,6 +17,7 @@ class ColumnObjectCheck extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
         Text(
@@ -29,7 +30,7 @@ class ColumnObjectCheck extends StatelessWidget {
           height: 10,
         ),
         SizedBox(
-            width:MediaQuery.of(context).size.width*0.42,
+            width:MediaQuery.of(context).size.width*0.40,
             child:  DropdownCheckObject(
               hint:hint,
               items: itemsObject,
