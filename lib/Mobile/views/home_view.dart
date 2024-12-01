@@ -3,8 +3,8 @@ import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custom_drawer.dart';
 import 'package:quizapp/Mobile/widgets/home_view/main_sections.dart';
 import 'package:quizapp/Mobile/widgets/home_view/teacher_card.dart';
-import 'package:quizapp/main_view_app_bar.dart';
-import 'package:quizapp/font_style.dart';
+import 'package:quizapp/utils/main_view_app_bar.dart';
+import 'package:quizapp/utils/font_style.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -24,7 +24,7 @@ class HomeView extends StatelessWidget {
             const Text(' :  أحدث النشاطات',
                 style: FontStyleApp.textStyleOrangeBold25),
             const SizedBox(height: 10),
-            TeacherCard(
+            TeacherCard(subject: 'رياضيات',teacherName: 'طه حوراني',
               onTap: () {
                 Navigator.pushNamed(context, TeacherSubjects.id);
               },

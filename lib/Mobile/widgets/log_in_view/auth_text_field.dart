@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/statue_border.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/text_field_icons.dart';
-import 'package:quizapp/constants.dart';
+import 'package:quizapp/utils/constants.dart';
 
 class AuthTextField extends StatelessWidget {
   const AuthTextField({

@@ -6,10 +6,10 @@ import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
-import 'package:quizapp/custom_alert_dialog.dart';
-import 'package:quizapp/font_style.dart';
-import 'package:quizapp/responsive_text.dart';
-import 'package:quizapp/show_snack_bar.dart';
+import 'package:quizapp/utils/custom_alert_dialog.dart';
+import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
+import 'package:quizapp/utils/show_snack_bar.dart';
 
 class LogInView extends StatelessWidget {
   const LogInView({super.key});

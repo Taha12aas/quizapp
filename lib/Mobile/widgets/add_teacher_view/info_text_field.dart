@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/text_filed_icon.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/statue_border.dart';
-import 'package:quizapp/constants.dart';
+import 'package:quizapp/utils/constants.dart';
 
 class InfoTextField extends StatelessWidget {
   const InfoTextField({

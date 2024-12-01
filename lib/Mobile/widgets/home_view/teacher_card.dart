@@ -1,11 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/constants.dart';
-import 'package:quizapp/font_style.dart';
-import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class TeacherCard extends StatelessWidget {
-  const TeacherCard({super.key, required this.onTap});
+  const TeacherCard(
+      {super.key,
+      required this.onTap,
+      required this.teacherName,
+      required this.subject});
   final void Function()? onTap;
+
+  final String teacherName;
+  final String subject;
   @override
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
@@ -41,7 +48,7 @@ class TeacherCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'طه حوراني',
+                        teacherName,
                         style: FontStyleApp.textStyleOrange15
                             .copyWith(fontSize: getResponsiveText(context, 15)),
                       ),
@@ -60,7 +67,7 @@ class TeacherCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
-                        'رياضيات',
+                        subject,
                         style: FontStyleApp.textStyleOrange15
                             .copyWith(fontSize: getResponsiveText(context, 15)),
                       ),

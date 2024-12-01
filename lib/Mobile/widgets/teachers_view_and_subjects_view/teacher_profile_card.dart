@@ -1,7 +1,7 @@
-
 import 'package:flutter/material.dart';
-import 'package:quizapp/constants.dart';
-import 'package:quizapp/font_style.dart';
+import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class TeacherProfileCard extends StatelessWidget {
   const TeacherProfileCard({
@@ -10,33 +10,52 @@ class TeacherProfileCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 250,
-      padding: const EdgeInsets.symmetric(vertical: 2),
-      decoration: BoxDecoration(
-        color: kAshenColor,
-        borderRadius: BorderRadius.circular(60),
-      ),
-      child: const Row(
-        children: [
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Text('ريم سواس', style: FontStyleApp.textStylewite15),
-                Text(' : الاسم', style: FontStyleApp.textStyleOrange15),
-              ],
+    // final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+
+    return InkWell(
+      borderRadius: BorderRadius.circular(50),
+      onTap: () {},
+      child: Container(
+        width: screenWidth * 0.75,
+        padding: EdgeInsets.symmetric(vertical: screenWidth * 0.001),
+        decoration: BoxDecoration(
+          color: kAshenColor,
+          borderRadius: BorderRadius.circular(60),
+        ),
+        child: Row(
+          children: [
+            Expanded(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    'ريم سواس',
+                    style: FontStyleApp.textStylewite15.copyWith(
+                      fontSize: getResponsiveText(context, 15),
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 5,
+                  ),
+                  Text(
+                    ' : الاسم',
+                    style: FontStyleApp.textStyleOrange15.copyWith(
+                      fontSize: getResponsiveText(context, 15),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-          SizedBox(
-            width: 10,
-          ),
-          CircleAvatar(
-            radius: 30.0,
-            backgroundImage:
-                AssetImage('assets/images/TeachersTaha.jpg'),
-          ),
-        ],
+            const SizedBox(
+              width: 10,
+            ),
+            const CircleAvatar(
+              radius: 30.0,
+              backgroundImage: AssetImage('assets/images/TeachersTaha.jpg'),
+            ),
+          ],
+        ),
       ),
     );
   }

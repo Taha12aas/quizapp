@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/constants.dart';
-import 'package:quizapp/font_style.dart';
-import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class CardSubjects extends StatelessWidget {
-  const CardSubjects({super.key, required this.onTap});
+  const CardSubjects({super.key, required this.onTap, required this.subject, required this.teacherImag});
   final void Function() onTap;
+    
+  final String subject;
+  final String teacherImag;
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -27,8 +30,8 @@ class CardSubjects extends StatelessWidget {
             SizedBox(width: screenWidth * 0.02),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                'assets/images/Teachers.png',
+              child: Image.asset(teacherImag
+                ,
                 height: screenHeight * 0.074,
                 width: screenHeight * 0.074,
                 fit: BoxFit.cover,
@@ -40,7 +43,7 @@ class CardSubjects extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    'علوم',
+                    subject,
                     style: FontStyleApp.textStyleOrange15.copyWith(
                       fontSize: getResponsiveText(context, 15),
                     ),

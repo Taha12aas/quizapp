@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/views/add_teacher.dart';
+import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custome_tile_drawer_item.dart';
-import 'package:quizapp/constants.dart';
+import 'package:quizapp/utils/constants.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -49,7 +49,7 @@ class CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               _onItemTapped(0);
               Navigator.pop(context);
-            } ,
+            },
           ),
           CustomeTileDrawerItem(
             text: 'إضافة مدرسين',
@@ -57,8 +57,8 @@ class CustomDrawerState extends State<CustomDrawer> {
             isSelected: _selectedIndex == 1,
             onTap: () {
               _onItemTapped(1);
-              Navigator.pushNamed(context, AddTeacher.id);
-               Scaffold.of(context).closeDrawer();
+              Navigator.pushNamed(context, AddTeacherView.id);
+              Scaffold.of(context).closeDrawer();
             },
           ),
           CustomeTileDrawerItem(
@@ -67,8 +67,7 @@ class CustomDrawerState extends State<CustomDrawer> {
             isSelected: _selectedIndex == 2,
             onTap: () {
               _onItemTapped(2);
-              Navigator.pushNamed(context, AddTeacher.id);
-               Scaffold.of(context).closeDrawer();
+              Scaffold.of(context).closeDrawer();
             },
           ),
           CustomeTileDrawerItem(
@@ -77,8 +76,7 @@ class CustomDrawerState extends State<CustomDrawer> {
             isSelected: _selectedIndex == 3,
             onTap: () {
               _onItemTapped(3);
-              Navigator.pushNamed(context, AddTeacher.id);
-               Scaffold.of(context).closeDrawer();
+              Scaffold.of(context).closeDrawer();
             },
           ),
         ],
