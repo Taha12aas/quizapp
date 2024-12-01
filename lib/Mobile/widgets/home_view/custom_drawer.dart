@@ -69,6 +69,7 @@ class CustomDrawerState extends State<CustomDrawer> {
             onTap: () {
               _onItemTapped(2);
               Scaffold.of(context).closeDrawer();
+              showCustomDropDownDelete(context);
             },
           ),
           CustomeTileDrawerItem(

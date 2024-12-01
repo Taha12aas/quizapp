@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/home_view/DropDownSearch/teacher_card_drop_down_search_item.dart';
+import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
 
-void showCustomDropDownSearch(BuildContext context) {
+void showCustomDropDownDelete(BuildContext context) {
   showModalBottomSheet(
     scrollControlDisabledMaxHeightRatio: 900,
     backgroundColor: kBackGround,
@@ -49,10 +49,14 @@ void showCustomDropDownSearch(BuildContext context) {
                       child: Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: TeacherCardDropDownSearchItem(
-                          teacherImge: 'assets/images/TeachersTaha.jpg',
+                          teacherImge: 'assets/images/deleteuser.png',
                           onTap: () {
-                            Navigator.pushNamed(
-                                context, GeneratedQuestionsView.id);
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) {
+                                return CustomAlertDialogButton();
+                              },
+                            );
                           },
                           teacherName: 'طه حوراني',
                         ),
@@ -68,4 +72,37 @@ void showCustomDropDownSearch(BuildContext context) {
       );
     },
   );
+}
+
+class CustomAlertDialogButton extends StatelessWidget {
+  const CustomAlertDialogButton({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      title: const Directionality(
+          textDirection: TextDirection.rtl,
+          child: Text('تنبيه')),
+      content: const Directionality(
+          textDirection: TextDirection.rtl,
+          child: Text('هل تريد حذف طه حوراني؟')),
+      actions: [
+        Center(
+          child: SizedBox(
+            width: 150,
+            child: CustomButton(
+              onPressed: () {
+                Navigator.of(context)
+                    .pop(); // لإغلاق الـ AlertDialog
+              },
+              label: 'حذف',
+              iconData: Icons.check,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 }
