@@ -30,7 +30,7 @@ class QuizApp extends StatelessWidget {
       theme:
           ThemeData(scaffoldBackgroundColor: kBackGround, fontFamily: 'Exo2'),
       debugShowCheckedModeBanner: false,
-      initialRoute: AddTeacher.id,
+      initialRoute: LogInView.id,
     );
   }
 }
