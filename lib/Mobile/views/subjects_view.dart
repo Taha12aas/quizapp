@@ -10,7 +10,7 @@ class SubjectsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('المواد', true, context),
+      appBar: customAppBar('المواد'),
       body: const Padding(
         padding: EdgeInsets.all(18),
         child: Column(

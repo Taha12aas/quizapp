@@ -11,7 +11,7 @@ class TeachersView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('المدرسين', true, context),
+      appBar: customAppBar('المدرسين'),
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: Column(

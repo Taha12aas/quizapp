@@ -14,7 +14,7 @@ class AddTeacherView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('إضافة مدرس', false, context),
+      appBar: customAppBar('إضافة مدرس'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Column(

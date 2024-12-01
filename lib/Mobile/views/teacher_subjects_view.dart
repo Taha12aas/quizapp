@@ -11,8 +11,6 @@ class TeacherSubjects extends StatelessWidget {
     return Scaffold(
       appBar: customAppBar(
         'مواد المدرس',
-        true,
-        context,
       ),
       body: const Padding(
         padding: EdgeInsets.all(18),
