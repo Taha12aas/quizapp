@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/home_view/DropDownSearch/teacher_card_drop_down_search_item.dart';
 import 'package:quizapp/utils/constants.dart';
@@ -50,7 +50,10 @@ void showCustomDropDownSearch(BuildContext context) {
                         padding: const EdgeInsets.all(8.0),
                         child: TeacherCardDropDownSearchItem(
                           teacherImge: 'assets/images/TeachersTaha.jpg',
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, GeneratedQuestionsView.id);
+                          },
                           teacherName: 'طه',
                         ),
                       ),
