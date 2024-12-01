@@ -17,7 +17,7 @@ class TeacherProfileCard extends StatelessWidget {
       borderRadius: BorderRadius.circular(50),
       onTap: () {},
       child: Container(
-        width: screenWidth * 0.6,
+        width: screenWidth * 0.75,
         padding: EdgeInsets.symmetric(vertical: screenWidth * 0.001),
         decoration: BoxDecoration(
           color: kAshenColor,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/card_subjects.dart';
 
 class ListViewCardSubjects extends StatelessWidget {
@@ -16,7 +17,9 @@ class ListViewCardSubjects extends StatelessWidget {
           child: CardSubjects(
             subject: 'رياضات',
             teacherImag: 'assets/images/Teachers.png',
-            onTap: () {},
+            onTap: () {
+              Navigator.pushNamed(context, GeneratedQuestionsView.id);
+            },
           ),
         );
       },
