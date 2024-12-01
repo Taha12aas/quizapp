@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/drop_down_check_object.dart';
-import 'package:quizapp/font_style.dart';
-import 'package:quizapp/responsive_text.dart';
+import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
+
 
 class ColumnObjectCheck extends StatelessWidget {
   const ColumnObjectCheck({
