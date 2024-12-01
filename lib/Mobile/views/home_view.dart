@@ -24,7 +24,7 @@ class HomeView extends StatelessWidget {
             const Text(' :  أحدث النشاطات',
                 style: FontStyleApp.textStyleOrangeBold25),
             const SizedBox(height: 10),
-            TeacherCard(
+            TeacherCard(subject: 'رياضيات',teacherName: 'طه حوراني',
               onTap: () {
                 Navigator.pushNamed(context, TeacherSubjects.id);
               },
