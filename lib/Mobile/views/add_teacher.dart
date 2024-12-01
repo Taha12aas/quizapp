@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
+import 'package:quizapp/Mobile/widgets/add_teacher_view/button_add_object.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/column_add_teacher.dart';
+import 'package:quizapp/Mobile/widgets/add_teacher_view/column_object_check.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/horizontal_divider.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/info_text_field.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
@@ -9,12 +11,28 @@ import 'package:quizapp/utils/responsive_text.dart';
 
 class AddTeacher extends StatelessWidget {
   const AddTeacher({super.key});
-
+  static const List<String> itemsClass = [
+    'صف أول',
+    'صف ثاني',
+    'صف ثالث',
+    'صف رابع',
+    'صف خامس',
+    'صف سادس'
+  ];
+  static const List<String> itemsObject = [
+    'علوم',
+    'رياضيات',
+    'انكليزي',
+    'عربي',
+    'فرنسي',
+    'تاريخ',
+    'جغرافيا'
+  ];
   static String id = 'AddTeacher';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: customAppBar('إضافة مدرس'),
+      appBar: customAppBar('إضافة مدرس', false),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18),
         child: Column(

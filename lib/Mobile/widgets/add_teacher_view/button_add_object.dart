@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:quizapp/constants.dart';
+import 'package:quizapp/font_style.dart';
+import 'package:quizapp/responsive_text.dart';
+
+class ButtonAddObject extends StatelessWidget {
+  const ButtonAddObject({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {},
+      style: ElevatedButton.styleFrom(
+          backgroundColor: kOrangeColor,
+          minimumSize: Size(MediaQuery.of(context).size.width * 0.9,
+              MediaQuery.of(context).size.height * 0.07)),
+      child: Text(
+        'إضافة مادة',
+        style: FontStyleApp.textStylewite15
+            .copyWith(fontSize: getResponsiveText(context, 18)),
+      ),
+    );
+  }
+}
