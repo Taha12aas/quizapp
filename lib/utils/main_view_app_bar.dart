@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/utils/custom_app_bar.dart';
 
 PreferredSizeWidget mainViewAppBar(BuildContext context) {
   return PreferredSize(
     preferredSize: const Size.fromHeight(55),
     child: Container(
-      ///sss
       decoration: const BoxDecoration(
         color: Color(0xff373737),
         borderRadius: BorderRadius.only(
@@ -37,7 +37,9 @@ PreferredSizeWidget mainViewAppBar(BuildContext context) {
             IconButton(
               tooltip: 'search',
               icon: const Icon(Icons.search, color: Colors.white),
-              onPressed: () {},
+              onPressed: () {
+                showCustomDropDownSearch(context);
+              },
             ),
           ],
         ),
