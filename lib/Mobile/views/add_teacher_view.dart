@@ -84,7 +84,7 @@ class AddTeacherView extends StatelessWidget {
             const SizedBox(
               height: 50,
             ),
-            const Row(
+            const Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ColumnObjectCheck(
                     itemsObject: itemsObject, title: 'المادة', hint: 'علوم'),
@@ -96,6 +96,16 @@ class AddTeacherView extends StatelessWidget {
               ],
             ),const SizedBox(height: 20,),
             const ButtonAddObject(),
+            const SizedBox(height: 20,),
+            Container(
+              height: 50,
+              color: Colors.white,
+              child: const Column(
+                children: [
+
+                ],
+              ),
+            )
           ],
         ),
       ),
