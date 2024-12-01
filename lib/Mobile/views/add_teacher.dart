@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/column_add_teacher.dart';
-import 'package:quizapp/Mobile/widgets/add_teacher_view/column_object_check.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/horizontal_divider.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/info_text_field.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
@@ -38,7 +37,10 @@ class AddTeacher extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              const Text('data',style: TextStyle(fontSize: 100),),
+              const Text(
+                'data',
+                style: TextStyle(fontSize: 100),
+              ),
               const SizedBox(
                 height: 54,
               ),
@@ -85,7 +87,6 @@ class AddTeacher extends StatelessWidget {
               const SizedBox(
                 height: 50,
               ),
-
             ],
           ),
         ),
