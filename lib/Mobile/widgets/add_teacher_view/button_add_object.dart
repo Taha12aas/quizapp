@@ -14,7 +14,7 @@ class ButtonAddObject extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           backgroundColor: kOrangeColor,
           minimumSize: Size(MediaQuery.of(context).size.width * 0.9,
-              MediaQuery.of(context).size.height * 0.07)),
+              MediaQuery.of(context).size.height * 0.068)),
       child: Text(
         'إضافة مادة',
         style: FontStyleApp.textStylewite15
