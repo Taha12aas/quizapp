@@ -35,6 +35,7 @@ class AddTeacherView extends StatelessWidget {
     return Scaffold(
       appBar: customAppBar('إضافة مدرس'),
       body: SingleChildScrollView(
+        physics: NeverScrollableScrollPhysics(),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Column(
@@ -88,17 +89,20 @@ class AddTeacherView extends StatelessWidget {
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [Spacer(flex: 2,),
+                children: [
+                  Spacer(
+                    flex: 2,
+                  ),
                   ColumnSubjectCheck(
                       itemsSubject: itemsSubject,
                       title: ': المادة',
                       hint: 'علوم'),
-              Spacer(),
+                  Spacer(),
                   ColumnSubjectCheck(
                       itemsSubject: itemsClass,
                       title: ': الصف',
                       hint: 'الصف الاول'),
-                      Spacer()
+                  Spacer()
                 ],
               ),
               const SizedBox(
@@ -116,7 +120,7 @@ class AddTeacherView extends StatelessWidget {
               ),
               const ButtonAddSubjectAddsave(
                 title: 'حفظ',
-              )
+              ),
             ],
           ),
         ),
