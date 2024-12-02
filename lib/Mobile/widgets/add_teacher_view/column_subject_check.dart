@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/drop_down_check_subject.dart';
+import 'package:quizapp/Mobile/widgets/add_teacher_view/horizontal_divider.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
 
@@ -26,6 +27,7 @@ class ColumnSubjectCheck extends StatelessWidget {
           style: FontStyleApp.labels
               .copyWith(fontSize: getResponsiveText(context, 18)),
         ),
+        HorizontalDivider(size: getResponsiveText(context, 50)),
         const SizedBox(
           height: 10,
         ),

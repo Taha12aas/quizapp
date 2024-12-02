@@ -19,7 +19,7 @@ class ContainerClassAndSubject extends StatelessWidget {
       margin: EdgeInsets.zero,
       padding: EdgeInsets.only(
           right: MediaQuery.of(context).size.width * 0.001,
-          left: MediaQuery.of(context).size.width * 0.045),
+          left: MediaQuery.of(context).size.width * 0.070),
       color: color,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
@@ -27,15 +27,15 @@ class ContainerClassAndSubject extends StatelessWidget {
           Text(
             subject,
             style: TextStyle(
-                fontSize: getResponsiveText(context, 12), color: Colors.black),
+                fontSize: getResponsiveText(context, 18), color: Colors.black),
           ),
           SizedBox(
-            width: MediaQuery.of(context).size.width * 0.11,
+            width: MediaQuery.of(context).size.width * 0.08,
           ),
           Text(
             classs,
             style: TextStyle(
-                fontSize: getResponsiveText(context, 12), color: Colors.black),
+                fontSize: getResponsiveText(context, 18), color: Colors.black),
           ),
           SizedBox(
             width: MediaQuery.of(context).size.width * 0.075,
