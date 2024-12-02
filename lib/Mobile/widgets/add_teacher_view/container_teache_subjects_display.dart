@@ -14,13 +14,13 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
     return Container(
       margin: EdgeInsets.zero,
       width: MediaQuery.of(context).size.width * 0.99,
-      height: MediaQuery.of(context).size.height * 0.2,
+      height: MediaQuery.of(context).size.height * 0.22,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(18),
         color: Colors.white,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10),
+        padding: const EdgeInsets.symmetric(vertical: 17),
         child: Column(
           children: [
             Container(
