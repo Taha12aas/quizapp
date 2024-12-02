@@ -16,30 +16,25 @@ class ContainerClassAndSubject extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: MediaQuery.of(context).size.height * 0.04,
-      margin: EdgeInsets.zero,
-      padding: EdgeInsets.only(
-          right: MediaQuery.of(context).size.width * 0.001,
-          left: MediaQuery.of(context).size.width * 0.070),
       color: color,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
+          const Spacer(
+            flex: 2,
+          ),
           Text(
             subject,
             style: TextStyle(
                 fontSize: getResponsiveText(context, 18), color: Colors.black),
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.08,
-          ),
+          const Spacer(),
           Text(
             classs,
             style: TextStyle(
                 fontSize: getResponsiveText(context, 18), color: Colors.black),
           ),
-          SizedBox(
-            width: MediaQuery.of(context).size.width * 0.075,
-          ),
+          const Spacer(),
           IconButton(
             onPressed: () {},
             icon: Icon(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/container_class_and_subject.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/responsive_text.dart';
@@ -21,26 +22,36 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
           children: [
             Container(
-              padding: const EdgeInsets.only(right: 50, left: 150),
               color: kOrangeColor,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisAlignment: MainAxisAlignment.end,
                 children: [
+                  const Spacer(
+                    flex: 2,
+                  ),
                   Text(
                     'المادة',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: getResponsiveText(context, 20),
+                        fontSize: getResponsiveText(context, 19),
                         color: Colors.white),
                   ),
+                  const Spacer(),
                   Text('الصف',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: getResponsiveText(context, 20),
+                          fontSize: getResponsiveText(context, 19),
                           color: Colors.white)),
+                  const Spacer(),
+                  IconButton(
+                    onPressed: () {},
+                    icon: Icon(
+                      FontAwesomeIcons.circleMinus,
+                      size: getResponsiveText(context, 12),
+                    ),
+                  ),
                 ],
               ),
             ),
