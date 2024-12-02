@@ -88,18 +88,17 @@ class AddTeacherView extends StatelessWidget {
               ),
               const Row(
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
+                children: [Spacer(flex: 2,),
                   ColumnSubjectCheck(
                       itemsSubject: itemsSubject,
-                      title: 'المادة',
+                      title: ': المادة',
                       hint: 'علوم'),
-                  SizedBox(
-                    width: 25,
-                  ),
+              Spacer(),
                   ColumnSubjectCheck(
                       itemsSubject: itemsClass,
-                      title: 'الصف',
+                      title: ': الصف',
                       hint: 'الصف الاول'),
+                      Spacer()
                 ],
               ),
               const SizedBox(

@@ -32,12 +32,14 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                   Text(
                     'المادة',
                     style: TextStyle(
-                        fontSize: getResponsiveText(context, 12),
+                        fontWeight: FontWeight.bold,
+                        fontSize: getResponsiveText(context, 20),
                         color: Colors.white),
                   ),
                   Text('الصف',
                       style: TextStyle(
-                          fontSize: getResponsiveText(context, 12),
+                          fontWeight: FontWeight.bold,
+                          fontSize: getResponsiveText(context, 20),
                           color: Colors.white)),
                 ],
               ),
