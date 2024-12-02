@@ -12,7 +12,7 @@ AppBar customAppBar(String title) {
     backgroundColor: kAshenColor,
     title: Text(
       title,
-      style: FontStyleApp.textStylewite15,
+      style: FontStyleApp.textStylewite15.copyWith(fontWeight: FontWeight.w800),
     ),
     iconTheme: const IconThemeData(
       color: Colors.white,

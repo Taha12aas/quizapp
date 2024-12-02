@@ -14,9 +14,9 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
     return Container(
       margin: EdgeInsets.zero,
       width: MediaQuery.of(context).size.width * 0.99,
-      height: MediaQuery.of(context).size.height * 0.22,
+      height: MediaQuery.of(context).size.height * 0.21,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(18),
+        borderRadius: BorderRadius.circular(12),
         color: Colors.white,
       ),
       child: Padding(
@@ -29,38 +29,45 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   const Spacer(
-                    flex: 2,
+                    flex: 4,
                   ),
                   Text(
                     'المادة',
                     style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: getResponsiveText(context, 19),
+                        fontSize: getResponsiveText(context, 16),
                         color: Colors.white),
                   ),
                   const Spacer(),
                   Text('الصف',
                       style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: getResponsiveText(context, 19),
+                          fontSize: getResponsiveText(context, 16),
                           color: Colors.white)),
-                  const Spacer(),
+                  const Spacer(
+                    flex: 1,
+                  ),
                   IconButton(
                     onPressed: () {},
                     icon: Icon(
                       FontAwesomeIcons.circleMinus,
-                      size: getResponsiveText(context, 12),
+                      size: getResponsiveText(context, 18),
                     ),
                   ),
                 ],
               ),
             ),
-            const ContainerClassAndSubject(classs: 'الأول', subject: 'عربي'),
-            const ContainerClassAndSubject(
-              classs: 'الثاني',
-              subject: 'علوم',
-              color: Color.fromARGB(255, 226, 230, 232),
-            )
+            Expanded(
+              child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  final color =
+                      index.isEven ? Colors.white : const Color(0xffE4E4E4);
+                  return ContainerClassAndSubject(
+                      color: color, classs: 'الأول', subject: 'عربي');
+                },
+              ),
+            ),
           ],
         ),
       ),

@@ -21,25 +21,25 @@ class ContainerClassAndSubject extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           const Spacer(
-            flex: 2,
+            flex: 4,
           ),
           Text(
             subject,
             style: TextStyle(
-                fontSize: getResponsiveText(context, 18), color: Colors.black),
+                fontSize: getResponsiveText(context, 15), color: Colors.black),
           ),
           const Spacer(),
           Text(
             classs,
             style: TextStyle(
-                fontSize: getResponsiveText(context, 18), color: Colors.black),
+                fontSize: getResponsiveText(context, 15), color: Colors.black),
           ),
           const Spacer(),
           IconButton(
             onPressed: () {},
             icon: Icon(
               FontAwesomeIcons.circleMinus,
-              size: getResponsiveText(context, 12),
+              size: getResponsiveText(context, 18),
             ),
           ),
         ],

@@ -9,7 +9,8 @@ class ColumnAddTeacher extends StatelessWidget {
     super.key,
     required this.labelText,
     required this.hintText,
-    required this.iconData, required this.horizntalSize,
+    required this.iconData,
+    required this.horizntalSize,
   });
   final double horizntalSize;
   final String labelText;
@@ -29,7 +30,7 @@ class ColumnAddTeacher extends StatelessWidget {
               style: FontStyleApp.labels
                   .copyWith(fontSize: getResponsiveText(context, 18)),
             ),
-             HorizontalDivider(
+            HorizontalDivider(
               size: horizntalSize,
             ),
             const SizedBox(

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DropdownCheckSubject extends StatefulWidget {
-  const DropdownCheckSubject(
-      {super.key, required this.items, required this.hint});
+  const DropdownCheckSubject({
+    super.key,
+    required this.items,
+  });
   final List<String> items;
-  final String hint;
 
   @override
   State<DropdownCheckSubject> createState() => _DropdownCheckSubjectState();
