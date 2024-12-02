@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
 class DropdownCheckSubject extends StatefulWidget {
-  const DropdownCheckSubject({super.key, required this.items, required this.hint});
-   final List<String> items;
+  const DropdownCheckSubject(
+      {super.key, required this.items, required this.hint});
+  final List<String> items;
   final String hint;
 
   @override
@@ -10,16 +11,16 @@ class DropdownCheckSubject extends StatefulWidget {
 }
 
 class _DropdownCheckSubjectState extends State<DropdownCheckSubject> {
-   String? selectedValue; 
+  String? selectedValue;
 
- // القيمة المحددة
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
+      isExpanded: true, // يجعل القائمة ممتدة أفقياً
       decoration: InputDecoration(
-        filled: true, // لتفعيل الخلفية
+        filled: true, // تفعيل الخلفية
         fillColor: Colors.white, // لون الخلفية
-        hintStyle: const TextStyle(color: Colors.black), // لون الهينت
+        hintStyle: const TextStyle(color: Colors.black),
         contentPadding:
             const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),
         enabledBorder: OutlineInputBorder(
@@ -32,16 +33,22 @@ class _DropdownCheckSubjectState extends State<DropdownCheckSubject> {
           borderSide: const BorderSide(color: Colors.orange, width: 2.0),
         ),
       ),
-      hint:  Text(widget.hint,), // الهينت
       value: selectedValue,
-      onChanged: (String? newValue) {},
+      onChanged: (String? newValue) {
+        setState(() {
+          selectedValue = newValue;
+        });
+      },
       items: widget.items.map((String item) {
         return DropdownMenuItem<String>(
           value: item,
-          child: Text(
-            item,
-            style:
-                const TextStyle(color: Colors.black), // لون العنصر عند الاختيار
+          child: Align(
+            alignment: Alignment.centerRight, // محاذاة العنصر لليمين
+            child: Text(
+              item,
+              textAlign: TextAlign.right,
+              style: const TextStyle(color: Colors.black),
+            ),
           ),
         );
       }).toList(),
