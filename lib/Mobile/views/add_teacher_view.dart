@@ -61,7 +61,7 @@ class AddTeacherView extends StatelessWidget {
                 height: 18,
               ),
               const InfoTextField(
-                hintText: 'طه الفاخوري',
+                hintText: 'أسم المدرس',
                 iconData: FontAwesomeIcons.userPlus,
               ),
               const SizedBox(
@@ -71,13 +71,13 @@ class AddTeacherView extends StatelessWidget {
                 children: [
                   ColumnAddTeacher(
                     labelText: ': العنوان',
-                    hintText: 'جنوب الملعب',
+                    hintText: 'ادخل عنوان',
                     iconData: FontAwesomeIcons.locationDot,
                     horizntalSize: 64,
                   ),
                   ColumnAddTeacher(
                     labelText: ': رقم الهاتف',
-                    hintText: '0962449054',
+                    hintText: 'ادخل رقم',
                     iconData: FontAwesomeIcons.phone,
                     horizntalSize: 89,
                   ),
