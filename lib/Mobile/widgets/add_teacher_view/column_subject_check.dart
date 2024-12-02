@@ -1,18 +1,18 @@
 
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/widgets/add_teacher_view/drop_down_check_object.dart';
+import 'package:quizapp/Mobile/widgets/add_teacher_view/drop_down_check_subject.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
 
 
-class ColumnObjectCheck extends StatelessWidget {
-  const ColumnObjectCheck({
+class ColumnSubjectCheck extends StatelessWidget {
+  const ColumnSubjectCheck({
     super.key,
-    required this.itemsObject, required this.title, required this.hint,
+    required this.itemsSubject, required this.title, required this.hint,
   });
   final String title;
   final String hint;
-  final List<String> itemsObject;
+  final List<String> itemsSubject;
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +31,9 @@ class ColumnObjectCheck extends StatelessWidget {
         ),
         SizedBox(
             width:MediaQuery.of(context).size.width*0.40,
-            child:  DropdownCheckObject(
+            child:  DropdownCheckSubject(
               hint:hint,
-              items: itemsObject,
+              items: itemsSubject,
             ))
       ],
     );
