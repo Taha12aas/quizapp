@@ -34,95 +34,92 @@ class AddTeacherView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar('إضافة مدرس'),
-      body: SingleChildScrollView(
-        physics: NeverScrollableScrollPhysics(),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.04,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(
-                    ': الاسم',
-                    textAlign: TextAlign.end,
-                    style: FontStyleApp.labels
-                        .copyWith(fontSize: getResponsiveText(context, 18)),
-                  ),
-                ],
-              ),
-              const HorizontalDivider(
-                size: 50,
-              ),
-              const SizedBox(
-                height: 18,
-              ),
-              const InfoTextField(
-                hintText: 'طه الفاخوري',
-                iconData: FontAwesomeIcons.userPlus,
-              ),
-              const SizedBox(
-                height: 16,
-              ),
-              const Row(
-                children: [
-                  ColumnAddTeacher(
-                    labelText: ': العنوان',
-                    hintText: 'جنوب الملعب',
-                    iconData: FontAwesomeIcons.locationDot,
-                    horizntalSize: 64,
-                  ),
-                  ColumnAddTeacher(
-                    labelText: ': رقم الهاتف',
-                    hintText: '0962449054',
-                    iconData: FontAwesomeIcons.phone,
-                    horizntalSize: 89,
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.035,
-              ),
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  Spacer(
-                    flex: 2,
-                  ),
-                  ColumnSubjectCheck(
-                      itemsSubject: itemsSubject,
-                      title: ': المادة',
-                      hint: 'علوم'),
-                  Spacer(),
-                  ColumnSubjectCheck(
-                      itemsSubject: itemsClass,
-                      title: ': الصف',
-                      hint: 'الصف الاول'),
-                  Spacer()
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const ButtonAddSubjectAddsave(
-                title: 'إضافة مادة',
-              ),
-              const SizedBox(
-                height: 35,
-              ),
-              const ContainerTeacherSubjectsDisplay(),
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.1,
-              ),
-              const ButtonAddSubjectAddsave(
-                title: 'حفظ',
-              ),
-            ],
-          ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 18),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.04,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(
+                  ': الاسم',
+                  textAlign: TextAlign.end,
+                  style: FontStyleApp.labels
+                      .copyWith(fontSize: getResponsiveText(context, 18)),
+                ),
+              ],
+            ),
+            const HorizontalDivider(
+              size: 50,
+            ),
+            const SizedBox(
+              height: 18,
+            ),
+            const InfoTextField(
+              hintText: 'طه الفاخوري',
+              iconData: FontAwesomeIcons.userPlus,
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            const Row(
+              children: [
+                ColumnAddTeacher(
+                  labelText: ': العنوان',
+                  hintText: 'جنوب الملعب',
+                  iconData: FontAwesomeIcons.locationDot,
+                  horizntalSize: 64,
+                ),
+                ColumnAddTeacher(
+                  labelText: ': رقم الهاتف',
+                  hintText: '0962449054',
+                  iconData: FontAwesomeIcons.phone,
+                  horizntalSize: 89,
+                ),
+              ],
+            ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.035,
+            ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Spacer(
+                  flex: 2,
+                ),
+                ColumnSubjectCheck(
+                    itemsSubject: itemsSubject,
+                    title: ': المادة',
+                    hint: 'علوم'),
+                Spacer(),
+                ColumnSubjectCheck(
+                    itemsSubject: itemsClass,
+                    title: ': الصف',
+                    hint: 'الصف الاول'),
+                Spacer()
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const ButtonAddSubjectAddsave(
+              title: 'إضافة مادة',
+            ),
+            const SizedBox(
+              height: 35,
+            ),
+            const ContainerTeacherSubjectsDisplay(),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.021,
+            ),
+            const ButtonAddSubjectAddsave(
+              title: 'حفظ',
+            ),
+          ],
         ),
       ),
     );
