@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
-import 'package:quizapp/Mobile/widgets/add_teacher_view/button_add_subject.dart';
-import 'package:quizapp/Mobile/widgets/add_teacher_view/column_add_teacher.dart';
+import 'package:quizapp/Mobile/widgets/add_teacher_view/column_teacher_info.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/column_subject_check.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/container_teache_subjects_display.dart';
+import 'package:quizapp/Mobile/widgets/add_teacher_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/horizontal_divider.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/info_text_field.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
@@ -69,13 +69,13 @@ class AddTeacherView extends StatelessWidget {
               ),
               const Row(
                 children: [
-                  ColumnAddTeacher(
+                  ColumnTeacherInfo(
                     labelText: ': العنوان',
                     hintText: 'ادخل عنوان',
                     iconData: FontAwesomeIcons.locationDot,
                     horizntalSize: 64,
                   ),
-                  ColumnAddTeacher(
+                  ColumnTeacherInfo(
                     labelText: ': رقم الهاتف',
                     hintText: 'ادخل رقم',
                     iconData: FontAwesomeIcons.phone,
@@ -107,7 +107,7 @@ class AddTeacherView extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const ButtonAddSubjectAddsave(
+              const CustomButton(
                 title: 'إضافة مادة',
               ),
               const SizedBox(
@@ -117,7 +117,7 @@ class AddTeacherView extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.021,
               ),
-              const ButtonAddSubjectAddsave(
+              const CustomButton(
                 title: 'حفظ',
               ),
             ],

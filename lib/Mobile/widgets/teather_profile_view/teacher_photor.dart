@@ -9,7 +9,7 @@ class TeacherPhoto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CircleAvatar(
-      radius: MediaQuery.sizeOf(context).height * .1,
+      radius: MediaQuery.sizeOf(context).height * .07,
       backgroundImage: const AssetImage('assets/images/TeachersTaha.jpg'),
       child: Align(
         alignment: Alignment.bottomLeft,

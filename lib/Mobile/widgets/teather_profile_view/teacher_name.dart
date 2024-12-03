@@ -14,7 +14,7 @@ class TeacherName extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        IconButton(
+        IconButton(padding: const EdgeInsets.only(top: 8),
             onPressed: () {},
             icon: const Icon(
               Icons.app_registration_rounded,
@@ -23,7 +23,7 @@ class TeacherName extends StatelessWidget {
         Text(
           'طه الفاخوري',
           style: FontStyleApp.teacherName.copyWith(
-            fontSize: getResponsiveText(context, 18),
+            fontSize: getResponsiveText(context, 16),
           ),
         ),
         const SizedBox(

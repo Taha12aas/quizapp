@@ -14,7 +14,7 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
     return Container(
       margin: EdgeInsets.zero,
       width: MediaQuery.of(context).size.width * 0.99,
-      height: MediaQuery.of(context).size.height * 0.21,
+      height: MediaQuery.of(context).size.height * 0.18,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: Colors.white,

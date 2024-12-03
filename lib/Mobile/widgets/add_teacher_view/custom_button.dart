@@ -3,8 +3,8 @@ import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
 
-class ButtonAddSubjectAddsave extends StatelessWidget {
-  const ButtonAddSubjectAddsave({
+class CustomButton extends StatelessWidget {
+  const CustomButton({
     super.key,
     required this.title,
   });
@@ -16,7 +16,7 @@ class ButtonAddSubjectAddsave extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           backgroundColor: kOrangeColor,
           minimumSize: Size(MediaQuery.of(context).size.width * 0.96,
-              MediaQuery.of(context).size.height * 0.068)),
+              MediaQuery.of(context).size.height * 0.057)),
       child: Text(
         title,
         style: FontStyleApp.textStylewite15
