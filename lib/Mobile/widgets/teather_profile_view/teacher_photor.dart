@@ -2,8 +2,8 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/utils/constants.dart';
 
-class PhotoTeacher extends StatelessWidget {
-  const PhotoTeacher({
+class TeacherPhoto extends StatelessWidget {
+  const TeacherPhoto({
     super.key,
   });
 

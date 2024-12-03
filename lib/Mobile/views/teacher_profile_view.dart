@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/widgets/teather_profile_view/photo_teacher.dart';
+import 'package:quizapp/Mobile/widgets/teather_profile_view/teacher_photor.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 
 class TeacherProfileView extends StatelessWidget {
@@ -14,7 +14,7 @@ class TeacherProfileView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             SizedBox(height: 20,),
-            PhotoTeacher(),
+            TeacherPhoto(),
 
           ],
         ),
