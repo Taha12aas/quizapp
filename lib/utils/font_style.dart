@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/utils/constants.dart';
 
 class FontStyleApp {
+  static const teacherName =
+      TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white);
   static const textStyleOrange15 = TextStyle(
       fontWeight: FontWeight.normal, fontSize: 15, color: kOrangeColor);
       static const textStyleOrange18 = TextStyle(
