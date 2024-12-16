@@ -44,42 +44,51 @@ class TeacherCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        teacherName,
-                        style: FontStyleApp.textStyleOrange15
-                            .copyWith(fontSize: getResponsiveText(context, 15)),
-                      ),
-                      SizedBox(width: screenWidth * 0.02),
-                      Text(
-                        ': اسم المدرس',
-                        style: FontStyleApp.textStylewite15
-                            .copyWith(fontSize: getResponsiveText(context, 15)),
-                      ),
-                    ],
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            teacherName,
+                            style: FontStyleApp.textStyleOrange15
+                                .copyWith(fontSize: getResponsiveText(context, 15)),
+                          ),
+                        ),
+                        SizedBox(width: screenWidth * 0.02),
+                        Flexible(
+                          child: Text(
+                            ': اسم المدرس',
+                            style: FontStyleApp.textStylewite15
+                                .copyWith(fontSize: getResponsiveText(context, 15)),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                  SizedBox(
-                    height: screenHeight * 0.02,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Text(
-                        subject,
-                        style: FontStyleApp.textStyleOrange15
-                            .copyWith(fontSize: getResponsiveText(context, 15)),
-                      ),
-                      const SizedBox(
-                        width: 10,
-                      ),
-                      Text(
-                        ': اسم المادة',
-                        style: FontStyleApp.textStylewite15
-                            .copyWith(fontSize: getResponsiveText(context, 15)),
-                      ),
-                    ],
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            subject,
+                            style: FontStyleApp.textStyleOrange15
+                                .copyWith(fontSize: getResponsiveText(context, 15)),
+                          ),
+                        ),
+                        const SizedBox(
+                          width: 10,
+                        ),
+                        Flexible(
+                          child: Text(
+                            ': اسم المادة',
+                            style: FontStyleApp.textStylewite15
+                                .copyWith(fontSize: getResponsiveText(context, 15)),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),

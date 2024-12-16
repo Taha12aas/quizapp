@@ -16,12 +16,14 @@ class RegisterOrLogIn extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        TextButton(
-          onPressed: onPressed,
-          child: Text(
-            label2,
-            style: FontStyleApp.textFieldPadding.copyWith(
-              fontSize: getResponsiveText(context, 12),
+        Flexible(
+          child: TextButton(
+            onPressed: onPressed,
+            child: Text(
+              label2,
+              style: FontStyleApp.textFieldPadding.copyWith(
+                fontSize: getResponsiveText(context, 12),
+              ),
             ),
           ),
         ),

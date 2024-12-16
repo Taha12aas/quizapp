@@ -40,11 +40,13 @@ class LogInView extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text(
-                        'تسجيل الدخول',
-                        textAlign: TextAlign.end,
-                        style: FontStyleApp.labels
-                            .copyWith(fontSize: getResponsiveText(context, 18)),
+                      Flexible(
+                        child: Text(
+                          'تسجيل الدخول',
+                          textAlign: TextAlign.end,
+                          style: FontStyleApp.labels
+                              .copyWith(fontSize: getResponsiveText(context, 18)),
+                        ),
                       ),
                     ],
                   ),
