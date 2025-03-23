@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
@@ -17,16 +18,22 @@ class TeacherCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return InkWell(
-      borderRadius: BorderRadius.circular(14),
+    return Bounceable(
       onTap: onTap,
       child: Container(
         width: double.infinity,
         height: screenHeight * 0.12,
         padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              blurRadius: 5.0,
+              offset: const Offset(3, 3),
+            )
+          ],
           borderRadius: BorderRadius.circular(16),
-          color: kAshenColor,
+          color: kAshen,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -51,16 +58,16 @@ class TeacherCard extends StatelessWidget {
                         Flexible(
                           child: Text(
                             teacherName,
-                            style: FontStyleApp.textStyleOrange15
-                                .copyWith(fontSize: getResponsiveText(context, 15)),
+                            style: FontStyleApp.orange15.copyWith(
+                                fontSize: getResponsiveText(context, 15)),
                           ),
                         ),
                         SizedBox(width: screenWidth * 0.02),
                         Flexible(
                           child: Text(
                             ': اسم المدرس',
-                            style: FontStyleApp.textStylewite15
-                                .copyWith(fontSize: getResponsiveText(context, 15)),
+                            style: FontStyleApp.wite15.copyWith(
+                                fontSize: getResponsiveText(context, 15)),
                           ),
                         ),
                       ],
@@ -73,8 +80,8 @@ class TeacherCard extends StatelessWidget {
                         Flexible(
                           child: Text(
                             subject,
-                            style: FontStyleApp.textStyleOrange15
-                                .copyWith(fontSize: getResponsiveText(context, 15)),
+                            style: FontStyleApp.orange15.copyWith(
+                                fontSize: getResponsiveText(context, 15)),
                           ),
                         ),
                         const SizedBox(
@@ -83,8 +90,8 @@ class TeacherCard extends StatelessWidget {
                         Flexible(
                           child: Text(
                             ': اسم المادة',
-                            style: FontStyleApp.textStylewite15
-                                .copyWith(fontSize: getResponsiveText(context, 15)),
+                            style: FontStyleApp.wite15.copyWith(
+                                fontSize: getResponsiveText(context, 15)),
                           ),
                         ),
                       ],

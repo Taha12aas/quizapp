@@ -17,7 +17,9 @@ class TeacherSubjects extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TeacherProfileCard(),
+            TeacherProfileCard(
+              text: 'salimo',
+            ),
             SizedBox(
               height: 20,
             ),

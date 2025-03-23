@@ -16,9 +16,9 @@ class YearQuestions extends StatelessWidget {
       valueListenable: valueNotifier,
       builder: (context, value, child) {
         return Container(
-          height: MediaQuery.sizeOf(context).height * .06,
+          height: MediaQuery.sizeOf(context).height * .07,
           decoration: BoxDecoration(
-            color: kAshenColor,
+            color: kAshen,
             borderRadius: BorderRadius.circular(16),
           ),
           child: Row(
@@ -31,18 +31,20 @@ class YearQuestions extends StatelessWidget {
                 icon: value
                     ? const Icon(
                         Icons.file_download_done,
-                        color: Colors.white,
+                        color: kWhite,
                       )
                     : const Icon(
-                        Icons.sim_card_download_sharp,
-                        color: Colors.white,
+                        Icons.download,
+                        color: kOrange,
                       ),
               ),
               const Spacer(),
-              Text(
-                year,
-                style: FontStyleApp.snakBarLabel.copyWith(
-                  fontSize: getResponsiveText(context, 18),
+              FittedBox(
+                child: Text(
+                  year,
+                  style: FontStyleApp.white18.copyWith(
+                    fontSize: getResponsiveText(context, 18),
+                  ),
                 ),
               ),
               const SizedBox(width: 20)

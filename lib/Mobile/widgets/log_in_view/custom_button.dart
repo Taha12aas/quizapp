@@ -6,7 +6,9 @@ import 'package:quizapp/utils/responsive_text.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-    required this.onPressed, required this.label, required this.iconData,
+    required this.onPressed,
+    required this.label,
+    required this.iconData,
   });
   final VoidCallback onPressed;
   final String label;
@@ -16,13 +18,13 @@ class CustomButton extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: ElevatedButton.icon(
-        icon:  Icon(
+        icon: Icon(
           iconData,
-          color: kOrangeColor,
+          color: kOrange,
         ),
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.orange[50],
-          side: const BorderSide(color: kOrangeColor, width: 2),
+          side: const BorderSide(color: kOrange, width: 2),
           shadowColor: Colors.transparent,
           padding: const EdgeInsets.symmetric(vertical: 16),
           elevation: 0,
@@ -31,7 +33,7 @@ class CustomButton extends StatelessWidget {
         onPressed: onPressed,
         label: Text(
           label,
-          style: FontStyleApp.textFieldPadding.copyWith(
+          style: FontStyleApp.orange10.copyWith(
             fontSize: getResponsiveText(context, 18),
           ),
         ),

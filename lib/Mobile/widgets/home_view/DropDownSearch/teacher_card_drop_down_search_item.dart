@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
@@ -28,7 +27,7 @@ class TeacherCardDropDownSearchItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: kAshenColor,
+          color: kAshen,
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -36,24 +35,30 @@ class TeacherCardDropDownSearchItem extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  ' اسم المدرس  :  ',
-                  style: FontStyleApp.textStylewite15
-                      .copyWith(fontSize: getResponsiveText(context, 15)),
+                FittedBox(
+                  child: Text(
+                    ' اسم المدرس  :  ',
+                    style: FontStyleApp.wite15
+                        .copyWith(fontSize: getResponsiveText(context, 15)),
+                  ),
                 ),
-                Text(
-                  teacherName,
-                  style: FontStyleApp.textStyleOrange15
-                      .copyWith(fontSize: getResponsiveText(context, 15)),
+                FittedBox(
+                  child: Text(
+                    teacherName,
+                    style: FontStyleApp.orange15
+                        .copyWith(fontSize: getResponsiveText(context, 15)),
+                  ),
                 ),
               ],
             ),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                teacherImge,
-                height: screenHeight * 0.074,
-                fit: BoxFit.cover,
+            FittedBox(
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(8),
+                child: Image.asset(
+                  teacherImge,
+                  height: screenHeight * 0.074,
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
           ],

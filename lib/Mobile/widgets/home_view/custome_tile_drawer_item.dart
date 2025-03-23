@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class CustomeTileDrawerItem extends StatelessWidget {
   const CustomeTileDrawerItem({
@@ -22,11 +23,11 @@ class CustomeTileDrawerItem extends StatelessWidget {
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(8),
-        focusColor: kOrangeBlackColor,
+        focusColor: kOrangeBlack,
         child: Container(
           decoration: BoxDecoration(
             color: isSelected
-                ? kOrangeBlackColor.withOpacity(0.1)
+                ? kOrangeBlack.withOpacity(0.1)
                 : const Color.fromARGB(0, 0, 0, 0),
             borderRadius: BorderRadius.circular(8),
           ),
@@ -37,13 +38,14 @@ class CustomeTileDrawerItem extends StatelessWidget {
               Text(
                 text,
                 style: TextStyle(
-                  color: isSelected ? kOrangeColor : Colors.black,
+                  fontSize: getResponsiveText(context, 15),
+                  color: isSelected ? kOrange : Colors.black,
                 ),
               ),
               const SizedBox(width: 10),
               Icon(
                 icon,
-                color: isSelected ? kOrangeColor : Colors.black,
+                color: isSelected ? kOrange : Colors.black,
               ),
               const SizedBox(width: 10),
             ],

@@ -18,11 +18,11 @@ class SubjectsView extends StatelessWidget {
           children: [
             Text(
               ' : تصنيف حسب الصفوف ',
-              style: FontStyleApp.textStyleOrangeBold25,
+              style: FontStyleApp.whiteBold18,
             ),
             ListViewButtonClass(),
             SizedBox(
-              height: 20,
+              height: 30,
             ),
             Expanded(child: ListViewCardSubjects())
           ],

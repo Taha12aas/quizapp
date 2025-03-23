@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/column_subject_check.dart';
@@ -5,7 +7,7 @@ import 'package:quizapp/Mobile/widgets/add_teacher_view/column_teacher_info.dart
 import 'package:quizapp/Mobile/widgets/add_teacher_view/container_teache_subjects_display.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/teather_profile_view/teacher_name.dart';
-import 'package:quizapp/Mobile/widgets/teather_profile_view/teacher_photor.dart';
+import 'package:quizapp/Mobile/widgets/teather_profile_view%20copy/teacher_photor.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 
 class TeacherProfileView extends StatelessWidget {
@@ -41,12 +43,16 @@ class TeacherProfileView extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const SizedBox(
-                  height: 5,
+                  height: 20,
                 ),
-                const TeacherPhoto(),
+                TeacherPhoto(
+                  image: '',
+                  onPressed: () {},
+                  selectedImage: File(''),
+                ),
                 const TeacherName(),
                 const SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 const Row(
                   children: [
@@ -69,10 +75,6 @@ class TeacherProfileView extends StatelessWidget {
                 ),
                 const CustomButton(title: 'تغير كلمة المرور'),
                 const SizedBox(
-                  height: 25,
-                ),
-                const ContainerTeacherSubjectsDisplay(),
-                const SizedBox(
                   height: 20,
                 ),
                 Row(
@@ -87,20 +89,30 @@ class TeacherProfileView extends StatelessWidget {
                       width: MediaQuery.of(context).size.width * 0.022,
                     ),
                     const ColumnSubjectCheck(
-                      horizntalSize: 55,
+                      horizntalSize: 50,
                       itemsSubject: itemsClass,
                       title: ': الصف',
                     ),
                   ],
                 ),
                 const SizedBox(
-                  height: 18,
+                  height: 20,
                 ),
                 const CustomButton(title: 'إضافة مادة'),
                 const SizedBox(
-                  height: 18,
+                  height: 20,
                 ),
-                const CustomButton(title: 'حفظ')
+                const ContainerTeacherSubjectsDisplay(
+                  classes: ['اول', 'ثاني'],
+                  subjects: ['علوم', 'رياضيات'],
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+                const CustomButton(title: 'حفظ'),
+                const SizedBox(
+                  height: 20,
+                ),
               ],
             ),
           ),

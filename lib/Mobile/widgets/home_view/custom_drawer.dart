@@ -3,6 +3,7 @@ import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/widgets/home_view/DropDownSearch/show_custom_drop_down_delete.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custome_tile_drawer_item.dart';
 import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -25,8 +26,8 @@ class CustomDrawerState extends State<CustomDrawer> {
     return Drawer(
       child: ListView(
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: kAshenColor),
+          DrawerHeader(
+            decoration: BoxDecoration(color: kAshen),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
@@ -36,10 +37,26 @@ class CustomDrawerState extends State<CustomDrawer> {
                   child: Icon(Icons.person, color: Colors.white, size: 40),
                 ),
                 SizedBox(height: 10),
-                Text('طه حوراني',
-                    style: TextStyle(color: Colors.white, fontSize: 18)),
-                Text('0987042775',
-                    style: TextStyle(color: Colors.white, fontSize: 13)),
+                Text(
+                  'طه حوراني',
+                  style: TextStyle(
+                    color: kWhite,
+                    fontSize: getResponsiveText(
+                      context,
+                      18,
+                    ),
+                  ),
+                ),
+                Text(
+                  '0987042775',
+                  style: TextStyle(
+                    color: kWhite,
+                    fontSize: getResponsiveText(
+                      context,
+                      13,
+                    ),
+                  ),
+                ),
               ],
             ),
           ),

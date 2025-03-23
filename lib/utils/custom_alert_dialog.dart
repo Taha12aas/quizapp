@@ -28,13 +28,13 @@ class CustomAlertDialog extends StatelessWidget {
         )
       ],
       shape: RoundedRectangleBorder(
-        side: const BorderSide(color: kOrangeColor, width: 2),
+        side: const BorderSide(color: kOrange, width: 2),
         borderRadius: BorderRadius.circular(16),
       ),
-      backgroundColor: kAshenColor,
+      backgroundColor: kAshen,
       title: Text('أدخل رمز التحقق',
           textAlign: TextAlign.center,
-          style: FontStyleApp.snakBarLabel
+          style: FontStyleApp.white18
               .copyWith(fontSize: getResponsiveText(context, 18))),
       content: const AlertDialogTextField(),
     );

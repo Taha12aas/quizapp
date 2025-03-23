@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
 
 //Container الموجود في الصفحة الرئيسة
@@ -18,13 +20,23 @@ class MainCategoriesSection extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     double screenHeight = MediaQuery.of(context).size.height;
-    return InkWell(
-      borderRadius: BorderRadius.circular(10),
+    return Bounceable(
       onTap: onTap,
       child: Container(
-        width: screenWidth * 0.40,
+        width: screenWidth * 0.41,
         decoration: BoxDecoration(
-          color: kAshenColor,
+          color: kAshen,
+          border: Border.all(
+            color: kOrangeBlack,
+            width: 1.0,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              blurRadius: 5.0,
+              offset: const Offset(3, 3),
+            ),
+          ],
           borderRadius: BorderRadius.circular(12),
         ),
         child: Padding(
@@ -34,14 +46,14 @@ class MainCategoriesSection extends StatelessWidget {
             children: [
               Image.asset(image, height: screenHeight * 0.08),
               const SizedBox(height: 10),
-              Text(
-                label,
-                style: TextStyle(
-                  color: kOrangeColor,
-                  fontSize: getResponsiveText(context, 30),
-                  fontWeight: FontWeight.bold,
+              FittedBox(
+                child: Text(
+                  label,
+                  style: FontStyleApp.orange18.copyWith(
+                    fontSize: getResponsiveText(context, 23),
+                  ),
                 ),
-              ),
+              )
             ],
           ),
         ),

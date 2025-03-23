@@ -7,15 +7,19 @@ AppBar customAppBar(String title) {
     centerTitle: true,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
-          bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)),
+        bottomLeft: Radius.circular(16),
+        bottomRight: Radius.circular(16),
+      ),
     ),
-    backgroundColor: kAshenColor,
+    backgroundColor: kAshen,
     title: Text(
       title,
-      style: FontStyleApp.textStylewite15.copyWith(fontWeight: FontWeight.w800),
+      style: FontStyleApp.whiteBold18.copyWith(
+        fontWeight: FontWeight.bold,
+      ),
     ),
     iconTheme: const IconThemeData(
-      color: Colors.white,
+      color: kWhite,
     ),
   );
 }

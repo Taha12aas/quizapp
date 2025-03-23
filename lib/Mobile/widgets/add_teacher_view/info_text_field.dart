@@ -25,7 +25,7 @@ class InfoTextField extends StatelessWidget {
         suffixIcon: TextFieldIconS(iconData: iconData),
         enabledBorder: statueBorder(Colors.white),
         disabledBorder: statueBorder(Colors.white),
-        focusedBorder: statueBorder(kOrangeColor),
+        focusedBorder: statueBorder(kOrange),
       ),
     );
   }

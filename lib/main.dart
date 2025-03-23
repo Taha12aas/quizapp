@@ -29,10 +29,13 @@ class QuizApp extends StatelessWidget {
         TeacherSubjects.id: (context) => const TeacherSubjects(),
         TeachersView.id: (context) => const TeachersView(),
         GeneratedQuestionsView.id: (context) => const GeneratedQuestionsView(),
-        TeacherProfileView.id : (context) => const TeacherProfileView(),
+        TeacherProfileView.id: (context) => const TeacherProfileView(),
       },
-      theme:
-          ThemeData(scaffoldBackgroundColor: kBackGround, fontFamily: 'Exo2'),
+      theme: ThemeData(
+          scaffoldBackgroundColor: kBackGround,
+          fontFamily: 'Exo2',
+          iconButtonTheme: IconButtonThemeData(
+              style: ButtonStyle(iconColor: WidgetStateProperty.all(kWhite)))),
       debugShowCheckedModeBanner: false,
       initialRoute: LogInView.id,
     );

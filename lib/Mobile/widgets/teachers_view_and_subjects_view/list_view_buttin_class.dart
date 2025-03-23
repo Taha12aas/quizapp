@@ -14,13 +14,11 @@ class ListViewButtonClass extends StatelessWidget {
         reverse: true,
         padding: const EdgeInsets.only(top: 10),
         scrollDirection: Axis.horizontal,
-        itemCount: 15,
+        itemCount: 6,
         itemBuilder: (context, index) {
           return ButtonClass(
             text: 'صف اول',
-            onTap: () {
-              
-            },
+            onTap: () {},
           );
         },
       ),

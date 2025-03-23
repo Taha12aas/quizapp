@@ -17,13 +17,15 @@ class TeachersView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            const Text(
-              ' : تصنيف حسب الصفوف ',
-              style: FontStyleApp.textStyleOrangeBold25,
+            const FittedBox(
+              child: Text(
+                ' : تصنيف حسب الصفوف ',
+                style: FontStyleApp.whiteBold18,
+              ),
             ),
             const ListViewButtonClass(),
             const SizedBox(
-              height: 15,
+              height: 30,
             ),
             TeacherCard(
               subject: 'رياضيات',

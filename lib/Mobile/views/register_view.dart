@@ -22,26 +22,25 @@ class RegisterView extends StatelessWidget {
               BoxConstraints(minHeight: MediaQuery.sizeOf(context).height),
           child: IntrinsicHeight(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
+              padding: const EdgeInsets.only(left: 18, right: 18, top: 80),
               child: Column(
                 children: [
-                  const SizedBox(height: 40),
                   const LogoImage(),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   Text(
                     'Quiz App',
                     textAlign: TextAlign.center,
-                    style: FontStyleApp.appName
+                    style: FontStyleApp.orange30
                         .copyWith(fontSize: getResponsiveText(context, 30)),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Text(
                         'انشاء حساب',
                         textAlign: TextAlign.end,
-                        style: FontStyleApp.labels
+                        style: FontStyleApp.white18
                             .copyWith(fontSize: getResponsiveText(context, 18)),
                       ),
                     ],

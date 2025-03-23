@@ -6,10 +6,8 @@ import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/register_or_log_in.dart';
-import 'package:quizapp/utils/custom_alert_dialog.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
-import 'package:quizapp/utils/show_snack_bar.dart';
 
 class LogInView extends StatelessWidget {
   const LogInView({super.key});
@@ -24,19 +22,18 @@ class LogInView extends StatelessWidget {
               BoxConstraints(minHeight: MediaQuery.sizeOf(context).height),
           child: IntrinsicHeight(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18),
+              padding: const EdgeInsets.only(left: 18, right: 18, top: 100),
               child: Column(
                 children: [
-                  const SizedBox(height: 40),
                   const LogoImage(),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 20),
                   Text(
                     'Quiz App',
                     textAlign: TextAlign.center,
-                    style: FontStyleApp.appName
+                    style: FontStyleApp.orange30
                         .copyWith(fontSize: getResponsiveText(context, 30)),
                   ),
-                  const SizedBox(height: 40),
+                  const SizedBox(height: 30),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
@@ -44,8 +41,8 @@ class LogInView extends StatelessWidget {
                         child: Text(
                           'تسجيل الدخول',
                           textAlign: TextAlign.end,
-                          style: FontStyleApp.labels
-                              .copyWith(fontSize: getResponsiveText(context, 18)),
+                          style: FontStyleApp.white18.copyWith(
+                              fontSize: getResponsiveText(context, 18)),
                         ),
                       ),
                     ],
@@ -73,7 +70,11 @@ class LogInView extends StatelessWidget {
                     iconData: Icons.login,
                     label: 'تسجيل الدخول',
                     onPressed: () {
-                      showAlertDialogAndNavigate(context);
+                      Navigator.pushNamedAndRemoveUntil(
+                        context,
+                        HomeView.id,
+                        (route) => false,
+                      );
                     },
                   ),
                   const SizedBox(height: 65),
@@ -83,22 +84,6 @@ class LogInView extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  Future<dynamic> showAlertDialogAndNavigate(BuildContext context) {
-    return showDialog(
-      context: context,
-      builder: (context) {
-        return CustomAlertDialog(
-          onPressed: () {
-            ScaffoldMessenger.of(context).showSnackBar(
-              showSnackBar(context, 'تم تسجيل الدخول بنجاح'),
-            );
-            Navigator.pushNamed(context, HomeView.id);
-          },
-        );
-      },
     );
   }
 }

@@ -11,7 +11,7 @@ void showCustomDropDownDelete(BuildContext context) {
     backgroundColor: kBackGround,
     context: context,
     shape: const RoundedRectangleBorder(
-      side: BorderSide(color: kOrangeColor),
+      side: BorderSide(color: kOrange),
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(20.0),
       ),
@@ -27,7 +27,7 @@ void showCustomDropDownDelete(BuildContext context) {
               padding: EdgeInsets.all(16.0),
               child: Text(
                 'ابحث عن المدرس',
-                style: FontStyleApp.textStyleOrange18,
+                style: FontStyleApp.orange18,
               ),
             ),
             const Padding(
@@ -83,8 +83,7 @@ class CustomAlertDialogButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return AlertDialog(
       title: const Directionality(
-          textDirection: TextDirection.rtl,
-          child: Text('تنبيه')),
+          textDirection: TextDirection.rtl, child: Text('تنبيه')),
       content: const Directionality(
           textDirection: TextDirection.rtl,
           child: Text('هل تريد حذف طه حوراني؟')),
@@ -94,8 +93,7 @@ class CustomAlertDialogButton extends StatelessWidget {
             width: 150,
             child: CustomButton(
               onPressed: () {
-                Navigator.of(context)
-                    .pop(); // لإغلاق الـ AlertDialog
+                Navigator.of(context).pop(); // لإغلاق الـ AlertDialog
               },
               label: 'حذف',
               iconData: Icons.check,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
@@ -9,18 +10,25 @@ class CustomButton extends StatelessWidget {
     required this.title,
   });
   final String title;
+
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {},
-      style: ElevatedButton.styleFrom(
-          backgroundColor: kOrangeColor,
-          minimumSize: Size(MediaQuery.of(context).size.width * 0.96,
-              MediaQuery.of(context).size.height * 0.057)),
-      child: Text(
-        title,
-        style: FontStyleApp.textStylewite15
-            .copyWith(fontSize: getResponsiveText(context, 20)),
+    return Bounceable(
+      onTap: () {},
+      child: Container(
+        width: double.infinity,
+        height: MediaQuery.of(context).size.height * 0.057,
+        decoration: BoxDecoration(
+          color: kOrange,
+          borderRadius: BorderRadius.circular(18),
+        ),
+        child: Center(
+          child: Text(
+            title,
+            style: FontStyleApp.wite15
+                .copyWith(fontSize: getResponsiveText(context, 20)),
+          ),
+        ),
       ),
     );
   }

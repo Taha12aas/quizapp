@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
 
 class CardSubjects extends StatelessWidget {
-  const CardSubjects({super.key, required this.onTap, required this.subject, required this.teacherImag});
+  const CardSubjects(
+      {super.key,
+      required this.onTap,
+      required this.subject,
+      required this.teacherImag});
   final void Function() onTap;
-    
+
   final String subject;
   final String teacherImag;
   @override
@@ -14,48 +19,48 @@ class CardSubjects extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return InkWell(
+    return Bounceable(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(10),
       child: Container(
         width: double.infinity,
         height: screenHeight * 0.12,
         decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              blurRadius: 5.0,
+              offset: const Offset(3, 3),
+            )
+          ],
           borderRadius: BorderRadius.circular(12),
-          color: kAshenColor,
+          color: kAshen,
         ),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(width: screenWidth * 0.02),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(teacherImag
-                ,
-                height: screenHeight * 0.074,
-                width: screenHeight * 0.074,
-                fit: BoxFit.cover,
-              ),
-            ),
             Expanded(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(
-                    subject,
-                    style: FontStyleApp.textStyleOrange15.copyWith(
-                      fontSize: getResponsiveText(context, 15),
+                  FittedBox(
+                    child: Text(
+                      subject,
+                      style: FontStyleApp.orange15.copyWith(
+                        fontSize: getResponsiveText(context, 15),
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(width: screenWidth * 0.01),
-                  Text(
-                    ' : اسم المادة',
-                    style: FontStyleApp.textStylewite15.copyWith(
-                      fontSize: getResponsiveText(context, 15),
+                  FittedBox(
+                    child: Text(
+                      ' : اسم المادة',
+                      style: FontStyleApp.wite15.copyWith(
+                        fontSize: getResponsiveText(context, 15),
+                      ),
+                      overflow: TextOverflow.ellipsis,
                     ),
-                    overflow: TextOverflow.ellipsis,
                   ),
                   SizedBox(width: screenWidth * 0.03),
                 ],

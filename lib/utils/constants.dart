@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 
-const kOrangeColor = Color(0xffF18536);
-const kAshenColor = Color(0xff373737);
-const kBackGround = Color(0xff191E2C);
-const kOrangeBlackColor = Color(0xff251E1A);
-const klogo = 'assets/images/logo.png';
+const kOrange =
+    Color.fromARGB(255, 235, 112, 47); //Color.fromARGB(255, 235, 112, 47);
+const kAshen = Color(0xff2A2F3A);
+const kBackGround = Color(0xff1B202A);
+const kOrangeBlack = Color(0xff251E1A);
+const kBlack = Colors.black;
+const kWhite = Colors.white;
+const kred = Colors.red;
+const klogo = 'assets/images/loogo.png';

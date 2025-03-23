@@ -49,7 +49,7 @@ class AddTeacherView extends StatelessWidget {
                   Text(
                     ': الاسم',
                     textAlign: TextAlign.end,
-                    style: FontStyleApp.labels
+                    style: FontStyleApp.white18
                         .copyWith(fontSize: getResponsiveText(context, 18)),
                   ),
                 ],
@@ -113,7 +113,10 @@ class AddTeacherView extends StatelessWidget {
               const SizedBox(
                 height: 35,
               ),
-              const ContainerTeacherSubjectsDisplay(),
+              const ContainerTeacherSubjectsDisplay(
+                classes: ['صف'],
+                subjects: ['علوم'],
+              ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.021,
               ),

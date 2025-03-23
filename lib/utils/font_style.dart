@@ -1,32 +1,33 @@
-import 'package:flutter/material.dart';
+import 'package:arabic_font/arabic_font.dart';
 import 'package:quizapp/utils/constants.dart';
 
 class FontStyleApp {
-  static const teacherName =
-      TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: Colors.white);
-  static const textStyleOrange15 = TextStyle(
-      fontWeight: FontWeight.normal, fontSize: 15, color: kOrangeColor);
-      static const textStyleOrange18 = TextStyle(
-      fontWeight: FontWeight.normal, fontSize: 18, color: kOrangeColor);
-  static const textStyleOrangeBold25 =
-      TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: kOrangeColor);
-  static const textStylewite15 =
-      TextStyle(fontWeight: FontWeight.bold, fontSize: 15, color: Colors.white);
-  static const appName =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.w700, color: kOrangeColor);
-  static const labels = TextStyle(
-    color: Colors.white,
-    fontWeight: FontWeight.bold,
-    fontSize: 18,
-  );
-  static const textFieldPadding = TextStyle(
-    color: kOrangeColor,
-    fontWeight: FontWeight.bold,
-    fontSize: 10,
-  );
-  static const snakBarLabel = TextStyle(
-    color: Colors.white,
-    fontWeight: FontWeight.bold,
-    fontSize: 18,
-  );
+  static const whiteBold18 = ArabicTextStyle(
+      arabicFont: ArabicFont.aalooBhaijaan, fontSize: 18, color: kWhite);
+
+  static const orange15 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 15, color: kOrange);
+
+  static const orange18 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 18, color: kOrange);
+
+  static const orange25 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 25, color: kOrange);
+
+  static const wite15 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 15, color: kWhite);
+
+  static const orange30 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 30, color: kOrange);
+
+  static const white18 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 18, color: kWhite);
+  static const white15 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 15, color: kWhite);
+
+  static const blackBold16 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 16, color: kBlack);
+
+  static const orange10 = ArabicTextStyle(
+      arabicFont: ArabicFont.dinNextLTArabic, fontSize: 10, color: kOrange);
 }

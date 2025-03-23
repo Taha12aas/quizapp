@@ -11,7 +11,7 @@ void showCustomDropDownSearch(BuildContext context) {
     backgroundColor: kBackGround,
     context: context,
     shape: const RoundedRectangleBorder(
-      side: BorderSide(color: kOrangeColor),
+      side: BorderSide(color: kOrange),
       borderRadius: BorderRadius.vertical(
         top: Radius.circular(20.0),
       ),
@@ -27,7 +27,7 @@ void showCustomDropDownSearch(BuildContext context) {
               padding: EdgeInsets.all(16.0),
               child: Text(
                 'ابحث عن المدرس',
-                style: FontStyleApp.textStyleOrange18,
+                style: FontStyleApp.orange18,
               ),
             ),
             const Padding(

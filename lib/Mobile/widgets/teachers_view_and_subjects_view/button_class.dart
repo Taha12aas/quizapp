@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bounceable/flutter_bounceable.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
+import 'package:quizapp/utils/responsive_text.dart';
 
 class ButtonClass extends StatelessWidget {
   const ButtonClass({
@@ -18,19 +20,18 @@ class ButtonClass extends StatelessWidget {
       padding: const EdgeInsets.only(
         left: 5,
       ),
-      child: InkWell(
-        splashFactory: InkRipple.splashFactory,
-        borderRadius: BorderRadius.circular(12),
+      child: Bounceable(
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
-              color: kOrangeBlackColor,
-              borderRadius: BorderRadius.circular(12)),
+              color: kAshen, borderRadius: BorderRadius.circular(12)),
           width: screenWidth * 0.25,
           child: Center(
               child: Text(
             text,
-            style: FontStyleApp.textStyleOrange15,
+            style: FontStyleApp.orange15.copyWith(
+              fontSize: getResponsiveText(context, 15),
+            ),
           )),
         ),
       ),
