@@ -27,16 +27,16 @@ class CustomDrawerState extends State<CustomDrawer> {
       child: ListView(
         children: [
           DrawerHeader(
-            decoration: BoxDecoration(color: kAshen),
+            decoration: const BoxDecoration(color: kAshen),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 30,
                   backgroundColor: Colors.orange,
                   child: Icon(Icons.person, color: Colors.white, size: 40),
                 ),
-                SizedBox(height: 10),
+                const SizedBox(height: 10),
                 Text(
                   'طه حوراني',
                   style: TextStyle(

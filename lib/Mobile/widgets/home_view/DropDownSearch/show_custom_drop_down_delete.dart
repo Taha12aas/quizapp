@@ -7,7 +7,6 @@ import 'package:quizapp/utils/font_style.dart';
 
 void showCustomDropDownDelete(BuildContext context) {
   showModalBottomSheet(
-    scrollControlDisabledMaxHeightRatio: 900,
     backgroundColor: kBackGround,
     context: context,
     shape: const RoundedRectangleBorder(
@@ -37,29 +36,26 @@ void showCustomDropDownDelete(BuildContext context) {
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
-              child: SizedBox(
-                height: 500,
+            Expanded(
+              child: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 15, vertical: 2),
                 child: ListView.builder(
                   shrinkWrap: true,
                   itemBuilder: (context, index) {
-                    return SizedBox(
-                      height: 100,
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: TeacherCardDropDownSearchItem(
-                          teacherImge: 'assets/images/deleteuser.png',
-                          onTap: () {
-                            showDialog(
-                              context: context,
-                              builder: (BuildContext context) {
-                                return const CustomAlertDialogButton();
-                              },
-                            );
-                          },
-                          teacherName: 'طه حوراني',
-                        ),
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TeacherCardDropDownSearchItem(
+                        teacherImge: 'assets/images/deleteuser.png',
+                        onTap: () {
+                          showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return const CustomAlertDialogButton();
+                            },
+                          );
+                        },
+                        teacherName: 'طه حوراني',
                       ),
                     );
                   },
@@ -88,17 +84,23 @@ class CustomAlertDialogButton extends StatelessWidget {
           textDirection: TextDirection.rtl,
           child: Text('هل تريد حذف طه حوراني؟')),
       actions: [
-        Center(
-          child: SizedBox(
-            width: 150,
-            child: CustomButton(
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // لإغلاق الـ AlertDialog
+                Navigator.of(context).pop();
+              },
+              child: const Text('إلغاء', style: TextStyle(color: kOrange)),
+            ),
+            CustomButton(
+              onPressed: () {
+                Navigator.of(context).pop();
               },
               label: 'حذف',
               iconData: Icons.check,
             ),
-          ),
+          ],
         ),
       ],
     );
