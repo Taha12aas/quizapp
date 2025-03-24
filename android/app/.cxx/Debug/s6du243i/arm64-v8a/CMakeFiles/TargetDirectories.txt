@@ -1,0 +1,2 @@
+C:/Users/pc/Documents/GitHub/quizapp/android/app/.cxx/Debug/s6du243i/arm64-v8a/CMakeFiles/edit_cache.dir
+C:/Users/pc/Documents/GitHub/quizapp/android/app/.cxx/Debug/s6du243i/arm64-v8a/CMakeFiles/rebuild_cache.dir
