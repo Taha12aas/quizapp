@@ -1,0 +1,2 @@
+C:/Users/SaLiMoPc/Documents/GitHub/quizapp/android/app/.cxx/Debug/5r16711j/x86/CMakeFiles/edit_cache.dir
+C:/Users/SaLiMoPc/Documents/GitHub/quizapp/android/app/.cxx/Debug/5r16711j/x86/CMakeFiles/rebuild_cache.dir
