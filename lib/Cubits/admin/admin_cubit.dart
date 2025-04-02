@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizapp/Cubits/admin/admin_statuses.dart';
 import 'package:quizapp/models/admin_model.dart';
@@ -7,15 +9,18 @@ class AdminCubit extends Cubit<AdminStatuses> {
   AdminCubit() : super(AdminInitStatus());
   Future<void> featchAdmin(int adminNumber) async {
     try {
+      List<Map<String, dynamic>> res =
+          await AdminService.fetchAdmin(adminNumber);
       emit(AdminLoadingStatus());
       emit(
         AdminSuccessStatus(
           admin: AdminModel.fromJson(
-            await AdminService.fetchAdmin(adminNumber),
+            res[0],
           ),
         ),
       );
     } catch (e) {
+      log(e.toString());
       emit(AdminFaliureStatus(error: e.toString()));
     }
   }

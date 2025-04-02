@@ -46,9 +46,11 @@ class LogInTextField extends StatelessWidget {
                     onPressed: () {
                       obsc.value = !obsc.value;
                     },
-                    icon: Icon(value
-                        ? FontAwesomeIcons.eye
-                        : FontAwesomeIcons.eyeSlash),
+                    icon: Icon(
+                        color: kBlack,
+                        value
+                            ? FontAwesomeIcons.eye
+                            : FontAwesomeIcons.eyeSlash),
                   )
                 : null,
             enabledBorder: statueBorder(Colors.white),
