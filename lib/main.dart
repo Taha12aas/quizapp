@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
@@ -9,8 +10,23 @@ import 'package:quizapp/Mobile/views/teacher_profile_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
 import 'package:quizapp/Mobile/views/teachers_view.dart';
 import 'package:quizapp/utils/constants.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main(List<String> args) {
+void main(List<String> args)async {
+    WidgetsFlutterBinding.ensureInitialized();
+  // تعيين شريط النظام بشكل صريح
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: kBackGround, // إزالة اللون الأبيض في شريط الحالة
+    systemNavigationBarColor:
+        kBackGround, // إزالة اللون الأبيض في شريط التنقل السفلي
+    systemNavigationBarIconBrightness:
+        Brightness.dark, // ضبط سطوع الأيقونات في شريط التنقل
+  ));
+  await Supabase.initialize(
+    url: 'https://gewushokramjbiqcbpng.supabase.co',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imdld3VzaG9rcmFtamJpcWNicG5nIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzQwNjQ1MjksImV4cCI6MjA0OTY0MDUyOX0.9v7QMV8NgGhSgBnGRqZKxr2GNSLY1dZcgvm-ioIkdXg',
+  );
   runApp(const QuizApp());
 }
 

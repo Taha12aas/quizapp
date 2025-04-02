@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/widgets/home_view/DropDownSearch/show_custom_drop_down_delete.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custome_tile_drawer_item.dart';
+import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
 import 'package:quizapp/utils/constants.dart';
-import 'package:quizapp/utils/responsive_text.dart';
 
 class CustomDrawer extends StatefulWidget {
   const CustomDrawer({super.key});
@@ -26,40 +26,11 @@ class CustomDrawerState extends State<CustomDrawer> {
     return Drawer(
       child: ListView(
         children: [
-          DrawerHeader(
-            decoration: const BoxDecoration(color: kAshen),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                const CircleAvatar(
-                  radius: 30,
-                  backgroundColor: Colors.orange,
-                  child: Icon(Icons.person, color: Colors.white, size: 40),
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'طه حوراني',
-                  style: TextStyle(
-                    color: kWhite,
-                    fontSize: getResponsiveText(
-                      context,
-                      18,
-                    ),
-                  ),
-                ),
-                Text(
-                  '0987042775',
-                  style: TextStyle(
-                    color: kWhite,
-                    fontSize: getResponsiveText(
-                      context,
-                      13,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
+          const DrawerHeader(
+              decoration: BoxDecoration(color: kAshen),
+              child: Center(
+                child: SizedBox(width: 200, child: LogoImage()),
+              )),
           CustomeTileDrawerItem(
             text: 'الصفحة الرئيسية',
             icon: Icons.home,
@@ -90,11 +61,29 @@ class CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           CustomeTileDrawerItem(
-            text: 'About',
-            icon: Icons.info_outline,
+            text: 'تغيير رقم الهاتف',
+            icon: Icons.phone,
             isSelected: _selectedIndex == 3,
             onTap: () {
               _onItemTapped(3);
+              Scaffold.of(context).closeDrawer();
+            },
+          ),
+          CustomeTileDrawerItem(
+            text: 'تغيير كلمة السر',
+            icon: Icons.lock,
+            isSelected: _selectedIndex == 4,
+            onTap: () {
+              _onItemTapped(4);
+              Scaffold.of(context).closeDrawer();
+            },
+          ),
+          CustomeTileDrawerItem(
+            text: 'About',
+            icon: Icons.info_outline,
+            isSelected: _selectedIndex == 5,
+            onTap: () {
+              _onItemTapped(5);
               Scaffold.of(context).closeDrawer();
             },
           ),
