@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class TextFieldIconS extends StatelessWidget {
-  const TextFieldIconS({
+class TextFieldIcons extends StatelessWidget {
+  const TextFieldIcons({
     super.key,
     required this.iconData,
   });

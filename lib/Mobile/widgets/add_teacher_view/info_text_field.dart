@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/widgets/add_teacher_view/text_filed_icon.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/statue_border.dart';
+import 'package:quizapp/Mobile/widgets/log_in_view/text_field_icons.dart';
 import 'package:quizapp/utils/constants.dart';
 
 class InfoTextField extends StatelessWidget {
@@ -22,7 +22,7 @@ class InfoTextField extends StatelessWidget {
         hintStyle: const TextStyle(color: Colors.black),
         fillColor: Colors.white,
         filled: true,
-        suffixIcon: TextFieldIconS(iconData: iconData),
+        suffixIcon: TextFieldIcons(iconData: iconData),
         enabledBorder: statueBorder(Colors.white),
         disabledBorder: statueBorder(Colors.white),
         focusedBorder: statueBorder(kOrange),
