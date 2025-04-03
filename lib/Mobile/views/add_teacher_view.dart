@@ -107,8 +107,8 @@ class AddTeacherView extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              const CustomButton(
-                title: 'إضافة مادة',
+               CustomButton(
+                title: 'إضافة مادة',onPressed: () {}
               ),
               const SizedBox(
                 height: 35,
@@ -120,7 +120,7 @@ class AddTeacherView extends StatelessWidget {
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.021,
               ),
-              const CustomButton(
+               CustomButton(onPressed: () {},
                 title: 'حفظ',
               ),
             ],

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizapp/Cubits/admin/admin_cubit.dart';
+import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
@@ -10,6 +11,7 @@ import 'package:quizapp/Mobile/views/subjects_view.dart';
 import 'package:quizapp/Mobile/views/teacher_profile_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
 import 'package:quizapp/Mobile/views/teachers_view.dart';
+import 'package:quizapp/Mobile/views/reading_generated_questions.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -40,6 +42,9 @@ class QuizApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AdminCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CubitSubject(),
         )
       ],
       child: MaterialApp(
@@ -53,13 +58,13 @@ class QuizApp extends StatelessWidget {
           GeneratedQuestionsView.id: (context) =>
               const GeneratedQuestionsView(),
           TeacherProfileView.id: (context) => const TeacherProfileView(),
+          ReadingGeneratedQuestionsView.id: (context) =>
+              const ReadingGeneratedQuestionsView()
         },
         theme: ThemeData(
-            scaffoldBackgroundColor: kBackGround,
-            fontFamily: 'Exo2',
-            iconButtonTheme: IconButtonThemeData(
-                style:
-                    ButtonStyle(iconColor: WidgetStateProperty.all(kWhite)))),
+          scaffoldBackgroundColor: kBackGround,
+          fontFamily: 'Exo2',
+        ),
         debugShowCheckedModeBanner: false,
         initialRoute: LogInView.id,
       ),

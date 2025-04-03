@@ -6,6 +6,7 @@ import 'package:quizapp/services/admin_service.dart';
 
 class AdminCubit extends Cubit<AdminStatuses> {
   AdminCubit() : super(AdminInitStatus());
+  late AdminModel admin;
   Future<void> featchAdmin(int adminNumber) async {
     emit(AdminLoadingStatus());
     try {

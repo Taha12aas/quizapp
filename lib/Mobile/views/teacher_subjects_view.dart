@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/list_view_card_subjects.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/teacher_profile_card.dart';
+import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 
 class TeacherSubjects extends StatelessWidget {
@@ -12,19 +13,22 @@ class TeacherSubjects extends StatelessWidget {
       appBar: customAppBar(
         'مواد المدرس',
       ),
-      body: const Padding(
-        padding: EdgeInsets.all(18),
+      body: Padding(
+        padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TeacherProfileCard(
+            const TeacherProfileCard(
               text: 'salimo',
             ),
-            SizedBox(
+            const SizedBox(
               height: 20,
             ),
             Expanded(
-              child: ListViewCardSubjects(),
+              child: ListViewCardSubjects(
+                subjects: kPrimaryStage,
+                onTap: () {},
+              ),
             )
           ],
         ),

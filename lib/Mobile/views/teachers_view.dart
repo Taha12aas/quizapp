@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
-import 'package:quizapp/Mobile/widgets/home_view/teacher_card.dart';
-import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/list_view_buttin_class.dart';
+import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/class_classification.dart';
+import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
-import 'package:quizapp/utils/font_style.dart';
 
 class TeachersView extends StatelessWidget {
   const TeachersView({super.key});
@@ -14,27 +12,17 @@ class TeachersView extends StatelessWidget {
       appBar: customAppBar('المدرسين'),
       body: Padding(
         padding: const EdgeInsets.all(18),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            const FittedBox(
-              child: Text(
-                ' : تصنيف حسب الصفوف ',
-                style: FontStyleApp.whiteBold18,
+        child: ListView.builder(
+          itemCount: kClassesPrimaryStage.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 7),
+              child: ClassClassification(
+                label: kClassesPrimaryStage[index],
+                onTap: () {},
               ),
-            ),
-            const ListViewButtonClass(),
-            const SizedBox(
-              height: 30,
-            ),
-            TeacherCard(
-              subject: 'رياضيات',
-              teacherName: 'طه حوراني',
-              onTap: () {
-                Navigator.pushNamed(context, TeacherSubjects.id);
-              },
-            )
-          ],
+            );
+          },
         ),
       ),
     );

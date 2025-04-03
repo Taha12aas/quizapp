@@ -73,7 +73,9 @@ class TeacherProfileView extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const CustomButton(title: 'تغير كلمة المرور'),
+                 CustomButton(title: 'تغير كلمة المرور',onPressed: () {
+                   
+                 },),
                 const SizedBox(
                   height: 20,
                 ),
@@ -98,7 +100,9 @@ class TeacherProfileView extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const CustomButton(title: 'إضافة مادة'),
+                 CustomButton(title: 'إضافة مادة',onPressed: () {
+                   
+                 },),
                 const SizedBox(
                   height: 20,
                 ),
@@ -109,7 +113,10 @@ class TeacherProfileView extends StatelessWidget {
                 const SizedBox(
                   height: 30,
                 ),
-                const CustomButton(title: 'حفظ'),
+                CustomButton(
+                  title: 'حفظ',
+                  onPressed: () {},
+                ),
                 const SizedBox(
                   height: 20,
                 ),

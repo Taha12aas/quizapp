@@ -1,105 +1,104 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
+import 'package:quizapp/Mobile/widgets/home_view/row_home_view.dart';
 import 'package:quizapp/utils/constants.dart';
-import 'package:quizapp/utils/font_style.dart';
-import 'package:quizapp/utils/responsive_text.dart';
 
-class TeacherCard extends StatelessWidget {
-  const TeacherCard(
-      {super.key,
-      required this.onTap,
-      required this.teacherName,
-      required this.subject});
-  final void Function()? onTap;
+class CardSubjects extends StatelessWidget {
+  const CardSubjects({
+    super.key,
+    required this.onTap,
+    required this.subject,
+    required this.classTeacher,
+    required this.courseDate,
+    required this.seasonSubject,
+    this.onPressed,
+    required this.isdownlod,
+  });
 
-  final String teacherName;
+  final void Function() onTap;
   final String subject;
+  final String classTeacher;
+  final String courseDate;
+  final String seasonSubject;
+  final void Function()? onPressed;
+  final bool isdownlod;
+
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    double screenHeight = MediaQuery.of(context).size.height;
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Bounceable(
       onTap: onTap,
       child: Container(
         width: double.infinity,
         height: screenHeight * 0.12,
-        padding: const EdgeInsets.symmetric(horizontal: 10),
         decoration: BoxDecoration(
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.5),
               blurRadius: 5.0,
               offset: const Offset(3, 3),
-            )
+            ),
           ],
-          borderRadius: BorderRadius.circular(16),
+          border: Border.all(
+            color: kOrangeBlack,
+            width: 0.5,
+          ),
+          borderRadius: BorderRadius.circular(12),
           color: kAshen,
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
-                'assets/images/TeachersTaha.jpg',
-                height: screenHeight * 0.074,
-                fit: BoxFit.cover,
-              ),
+            const SizedBox(
+              width: 10,
+            ),
+            IconButton(
+              color: kOrange,
+              iconSize: 30,
+              onPressed: onPressed,
+              icon: isdownlod
+                  ? const Icon(
+                      Icons.download,
+                    )
+                  : const SizedBox(),
             ),
             Expanded(
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            teacherName,
-                            style: FontStyleApp.orange15.copyWith(
-                                fontSize: getResponsiveText(context, 15)),
-                          ),
-                        ),
-                        SizedBox(width: screenWidth * 0.02),
-                        Flexible(
-                          child: Text(
-                            ': اسم المدرس',
-                            style: FontStyleApp.wite15.copyWith(
-                                fontSize: getResponsiveText(context, 15)),
-                          ),
-                        ),
-                      ],
-                    ),
+                  RowText(
+                    classAndSubject: courseDate,
+                    screenWidth: screenWidth,
+                    subjectName: ' : دورة ',
                   ),
-                  Expanded(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            subject,
-                            style: FontStyleApp.orange15.copyWith(
-                                fontSize: getResponsiveText(context, 15)),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 10,
-                        ),
-                        Flexible(
-                          child: Text(
-                            ': اسم المادة',
-                            style: FontStyleApp.wite15.copyWith(
-                                fontSize: getResponsiveText(context, 15)),
-                          ),
-                        ),
-                      ],
-                    ),
+                  SizedBox(height: screenHeight * 0.01),
+                  RowText(
+                    classAndSubject: seasonSubject,
+                    screenWidth: screenWidth,
+                    subjectName: ': فصل',
                   ),
                 ],
               ),
             ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RowText(
+                    classAndSubject: subject,
+                    screenWidth: screenWidth,
+                    subjectName: ' : اسم المادة',
+                  ),
+                  SizedBox(height: screenHeight * 0.01),
+                  RowText(
+                    classAndSubject: classTeacher,
+                    screenWidth: screenWidth,
+                    subjectName: ': صف',
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(width: screenWidth * 0.02),
           ],
         ),
       ),
