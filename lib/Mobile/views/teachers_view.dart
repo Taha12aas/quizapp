@@ -10,7 +10,7 @@ class TeachersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar('المدرسين'),
-      body: Padding(
+      body:Padding(
         padding: const EdgeInsets.all(18),
         child: ListView.builder(
           itemCount: kClassesPrimaryStage.length,
