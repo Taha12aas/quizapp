@@ -38,7 +38,7 @@ class _LogInViewState extends State<LogInView> {
             } else if (state is AdminSuccessStatus) {
               Navigator.pushReplacementNamed(context, HomeView.id);
             } else if (state is AdminFaliureStatus) {
-              isActiv = true;
+              isActiv = false;
               ScaffoldMessenger.of(context).showSnackBar(
                 showSnackBar(context, 'رقم الهاتف غير صحيح'),
               );
