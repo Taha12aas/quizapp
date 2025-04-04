@@ -17,13 +17,13 @@ class _ReadingGeneratedQuestionsViewState
   Widget build(BuildContext context) {
     List subjectInfo = ModalRoute.of(context)!.settings.arguments as List;
     List<dynamic> course = [];
-    for (var i = 0; i < CubitSubject.result.length; i++) {
-      if (subjectInfo[0] == CubitSubject.result[i]['name_sabject'] &&
-          subjectInfo[1] == CubitSubject.result[i]['class'] &&
-          subjectInfo[2] == CubitSubject.result[i]['courses_date'] &&
-          subjectInfo[3] == CubitSubject.result[i]['season_subject'] &&
-          subjectInfo[4] == CubitSubject.result[i]['generate_time']) {
-        course.addAll(CubitSubject.result[i]['courses']);
+    for (var i = 0; i < CubitSubject.subjectsCount.length; i++) {
+      if (subjectInfo[0] == CubitSubject.subjectsCount[i].nameSubject &&
+          subjectInfo[1] == CubitSubject.subjectsCount[i].classSabject &&
+          subjectInfo[2] == CubitSubject.subjectsCount[i].coursesDate &&
+          subjectInfo[3] == CubitSubject.subjectsCount[i].seasonSubject &&
+          subjectInfo[4] == CubitSubject.subjectsCount[i].generateTime) {
+        course.addAll(CubitSubject.subjectsCount[i].courses);
       }
     }
     return Scaffold(

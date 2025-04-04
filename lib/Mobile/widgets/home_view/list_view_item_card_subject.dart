@@ -17,7 +17,7 @@ class ListViewItemCardSubject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (CubitSubject.result.isEmpty) {
+    if (CubitSubject.subjectsCount.isEmpty) {
       return Text(
         'لا يوجد اسئلة',
         style: FontStyleApp.orange18.copyWith(
@@ -28,14 +28,14 @@ class ListViewItemCardSubject extends StatelessWidget {
       return Expanded(
           child: ListView.builder(
         itemCount:
-            CubitSubject.result.length < 10 ? CubitSubject.result.length : 10,
+            CubitSubject.subjectsCount.length < 10 ? CubitSubject.subjectsCount.length : 10,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: CardSubjects(
               isdownlod: true,
               onPressed: () async {
-                List courses = CubitSubject.result[index]['courses'];
+                List courses = CubitSubject.subjectsCount[index].courses;
                 final arabicFont = pw.Font.ttf(
                   await rootBundle.load('assets/fonts/Amiri-Bold.ttf'),
                 );
@@ -48,7 +48,7 @@ class ListViewItemCardSubject extends StatelessWidget {
                         crossAxisAlignment: pw.CrossAxisAlignment.start,
                         children: [
                           pw.Text(
-                            'اسم الدورة : ${CubitSubject.result[index]['name_sabject']}',
+                            'اسم الدورة : ${CubitSubject.subjectsCount[index].nameSubject}',
                             style: pw.TextStyle(
                               fontSize: 24,
                               fontWeight: pw.FontWeight.bold,
@@ -96,19 +96,20 @@ class ListViewItemCardSubject extends StatelessWidget {
                 await file.writeAsBytes(await pdf.save());
                 print('File saved to $filePath');
               },
-              courseDate: CubitSubject.result[index]['courses_date'],
-              seasonSubject: CubitSubject.result[index]['season_subject'],
-              subject: CubitSubject.result[index]['name_sabject'],
-              classTeacher: CubitSubject.result[index]['class'],
-              onTap: () {
-                Navigator.pushNamed(context, ReadingGeneratedQuestionsView.id,
-                    arguments: [
-                      CubitSubject.result[index]['name_sabject'],
-                      CubitSubject.result[index]['class'],
-                      CubitSubject.result[index]['courses_date'],
-                      CubitSubject.result[index]['season_subject'],
-                      CubitSubject.result[index]['generate_time']
-                    ]);
+              courseDate: CubitSubject.subjectsCount[index].coursesDate,
+                  seasonSubject:
+                      CubitSubject.subjectsCount[index].seasonSubject,
+                  subject: CubitSubject.subjectsCount[index].nameSubject,
+                  classTeacher: CubitSubject.subjectsCount[index].classSabject,
+                  onTap: () {
+                    Navigator.pushNamed(context, ReadingGeneratedQuestionsView.id,
+                        arguments: [
+                          CubitSubject.subjectsCount[index].nameSubject,
+                          CubitSubject.subjectsCount[index].classSabject,
+                          CubitSubject.subjectsCount[index].coursesDate,
+                          CubitSubject.subjectsCount[index].seasonSubject,
+                          CubitSubject.subjectsCount[index].generateTime
+                        ]);
               },
             ),
           );

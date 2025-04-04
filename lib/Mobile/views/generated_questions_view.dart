@@ -1,57 +1,42 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Mobile/widgets/generated_question.dart/questions_list.dart';
-import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/button_class.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/teacher_profile_card.dart';
+import 'package:quizapp/models/subjects_generated_model.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 
 class GeneratedQuestionsView extends StatelessWidget {
   const GeneratedQuestionsView({super.key});
-  static String id = 'GeneratedSubject';
+  static String id = 'GeneratedQuestionsView';
   @override
   Widget build(BuildContext context) {
+    List<SubjectsGeneratedModel> subjectsInfo = [];
+    final List<String> info =
+        ModalRoute.of(context)!.settings.arguments as List<String>;
+    for (var i = 0; i < CubitSubject.subjectsCount.length; i++) {
+      if (info[1] == CubitSubject.subjectsCount[i].classSabject &&
+          info[0] == CubitSubject.subjectsCount[i].nameSubject) {
+        subjectsInfo.add(CubitSubject.subjectsCount[i]);
+      } else {
+        log('message');
+      }
+    }
     return Scaffold(
-      appBar: customAppBar('رياضيات'),
+      appBar: customAppBar(info[0]),
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const TeacherProfileCard(
-                text: 'salimo',
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 27),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    SizedBox(
-                      height: 60,
-                      child: ButtonClass(
-                        text: 'تكميلي',
-                        onTap: () {},
-                      ),
-                    ),
-                    SizedBox(
-                      height: 60,
-                      child: ButtonClass(
-                        text: 'فصل ثاني',
-                        onTap: () {},
-                      ),
-                    ),
-                    SizedBox(
-                      height: 60,
-                      child: ButtonClass(
-                        text: 'فصل اول',
-                        onTap: () {},
-                      ),
-                    ),
-                  ],
-                ),
+              TeacherProfileCard(
+                text: subjectsInfo[0].nameTeacher,
               ),
               const SizedBox(height: 15),
-              const Expanded(
-                child: QuestionsList(),
+               Expanded(
+                child: QuestionsList(subjectsInfo: subjectsInfo,),
               )
             ],
           ),

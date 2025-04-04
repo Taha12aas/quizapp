@@ -7,8 +7,10 @@ class YearQuestions extends StatelessWidget {
   const YearQuestions({
     super.key,
     required this.year,
+    required this.session,
   });
   final String year;
+  final String session;
   @override
   Widget build(BuildContext context) {
     ValueNotifier<bool> valueNotifier = ValueNotifier(false);
@@ -41,13 +43,42 @@ class YearQuestions extends StatelessWidget {
               const Spacer(),
               FittedBox(
                 child: Text(
+                  session,
+                  style: FontStyleApp.white18.copyWith(
+                    fontSize: getResponsiveText(context, 18),
+                  ),
+                ),
+              ),
+              const SizedBox(width: 10),
+              FittedBox(
+                child: Text(
+                  ': الفصل',
+                  style: FontStyleApp.orange10.copyWith(
+                    fontSize: getResponsiveText(context, 18),
+                  ),
+                ),
+              ),
+              const Spacer(),
+              FittedBox(
+                child: Text(
                   year,
                   style: FontStyleApp.white18.copyWith(
                     fontSize: getResponsiveText(context, 18),
                   ),
                 ),
               ),
-              const SizedBox(width: 20)
+              const SizedBox(width: 10),
+              FittedBox(
+                child: Text(
+                  ': السنة',
+                  style: FontStyleApp.orange15.copyWith(
+                    fontSize: getResponsiveText(context, 18),
+                  ),
+                ),
+              ),
+              const SizedBox(
+                width: 10,
+              )
             ],
           ),
         );
