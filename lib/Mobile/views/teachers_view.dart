@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/class_teachers_view.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/class_classification.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
@@ -10,7 +11,7 @@ class TeachersView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar('المدرسين'),
-      body:Padding(
+      body: Padding(
         padding: const EdgeInsets.all(18),
         child: ListView.builder(
           itemCount: kClassesPrimaryStage.length,
@@ -19,7 +20,10 @@ class TeachersView extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 7),
               child: ClassClassification(
                 label: kClassesPrimaryStage[index],
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, ClassTeachersView.id,
+                      arguments: kClassesPrimaryStage[index]);
+                },
               ),
             );
           },

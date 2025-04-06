@@ -49,8 +49,8 @@ class CardSubjects extends StatelessWidget {
         ),
         child: Row(
           children: [
-            const SizedBox(
-              width: 10,
+            SizedBox(
+              width: screenWidth * 0.05,
             ),
             IconButton(
               color: kOrange,
@@ -58,47 +58,69 @@ class CardSubjects extends StatelessWidget {
               onPressed: onPressed,
               icon: isdownlod
                   ? const Icon(
+                      color: kOrange,
                       Icons.download,
                     )
                   : const SizedBox(),
             ),
             Expanded(
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RowText(
-                    classAndSubject: courseDate,
-                    screenWidth: screenWidth,
-                    subjectName: ' : دورة ',
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RowText(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              classAndSubject: courseDate,
+                              subjectName: ' : دورة ',
+                            ),
+                            SizedBox(height: screenHeight * 0.01),
+                            RowText(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              classAndSubject: seasonSubject,
+                              subjectName: ': فصل',
+                            ),
+                          ],
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            RowText(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              classAndSubject: subject,
+                              subjectName: ' : المادة',
+                            ),
+                            SizedBox(height: screenHeight * 0.01),
+                            RowText(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              classAndSubject: classTeacher,
+                              subjectName: ': صف',
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  SizedBox(height: screenHeight * 0.01),
-                  RowText(
-                    classAndSubject: seasonSubject,
-                    screenWidth: screenWidth,
-                    subjectName: ': فصل',
+                  SizedBox(
+                    height: 10,
+                  ),
+                  const RowText(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    classAndSubject: 'taha',
+                    subjectName: ' : المدرس',
                   ),
                 ],
               ),
             ),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  RowText(
-                    classAndSubject: subject,
-                    screenWidth: screenWidth,
-                    subjectName: ' : اسم المادة',
-                  ),
-                  SizedBox(height: screenHeight * 0.01),
-                  RowText(
-                    classAndSubject: classTeacher,
-                    screenWidth: screenWidth,
-                    subjectName: ': صف',
-                  ),
-                ],
-              ),
-            ),
-            SizedBox(width: screenWidth * 0.02),
+            SizedBox(width: screenWidth * 0.05)
           ],
         ),
       ),

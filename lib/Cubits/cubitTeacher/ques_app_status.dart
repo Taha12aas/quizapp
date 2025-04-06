@@ -1,12 +1,13 @@
+import 'package:quizapp/models/teacher_model.dart';
 
 abstract class TeacherStatuses {}
 
 class InitStateTeacher extends TeacherStatuses {}
 
 class SuccessStateTeacher extends TeacherStatuses {
-  final List<Map<String, dynamic>>? result;
+  final List<TeacherModel>? teachers;
   SuccessStateTeacher({
-    this.result,
+    this.teachers,
   });
 }
 

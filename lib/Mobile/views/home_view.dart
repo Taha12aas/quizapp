@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject_status.dart';
+import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custom_drawer.dart';
 import 'package:quizapp/Mobile/widgets/home_view/list_view_item_card_subject.dart';
@@ -23,12 +24,13 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     BlocProvider.of<CubitSubject>(context).fetchSubject();
+    BlocProvider.of<CubitTeacher>(context).fetchUsers();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    //TODO:Create Refresh
+    //TODO:Create Refresh And NavBar
     return BlocBuilder<CubitSubject, SubjectsStates>(
       builder: (context, state) {
         if (state is SubjectsSuccessState) {
@@ -104,7 +106,7 @@ class _HomeViewState extends State<HomeView> {
               ],
             )),
           );
-        }else {
+        } else {
           return const Scaffold(
             body: Center(
               child: CircularProgressIndicator(

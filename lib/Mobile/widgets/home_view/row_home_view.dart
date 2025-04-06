@@ -6,26 +6,23 @@ class RowText extends StatelessWidget {
   const RowText({
     super.key,
     required this.classAndSubject,
-    required this.screenWidth,
-    required this.subjectName,
+    required this.subjectName, required this.mainAxisAlignment,
   });
 
   final String classAndSubject;
-  final double screenWidth;
   final String subjectName;
-
+  final MainAxisAlignment mainAxisAlignment;
   @override
   Widget build(BuildContext context) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisAlignment: mainAxisAlignment,
       children: [
         Flexible(
           child: Text(
             classAndSubject,
             style: FontStyleApp.orange15.copyWith(
-              fontSize: getResponsiveText(context, 15),
+              fontSize: getResponsiveText(context, 14),
             ),
-            overflow: TextOverflow.ellipsis,
           ),
         ),
         Flexible(

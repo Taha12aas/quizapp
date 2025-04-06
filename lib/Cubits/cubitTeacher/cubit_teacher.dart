@@ -1,19 +1,22 @@
 import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizapp/Cubits/cubitTeacher/ques_app_status.dart';
+import 'package:quizapp/models/teacher_model.dart';
 import 'package:quizapp/services/teacher_service.dart';
 
 class CubitTeacher extends Cubit<TeacherStatuses> {
   CubitTeacher() : super(InitStateTeacher());
 
   static late List<Map<String, dynamic>> result;
-  static int? verificationCode;
+  static late List<TeacherModel> teachers;
   void fetchUsers() async {
     emit(LoadingStateTeacher());
     try {
       result = await TeacherService.fetchTeacher();
-      log('------------Fetch User Data-----------------');
-      emit(SuccessStateTeacher(result: result));
+      for (var i = 0; i < result.length; i++) {
+        teachers.add(TeacherModel.fromJson(result[i]));
+      }
+      emit(SuccessStateTeacher(teachers: teachers));
     } catch (e) {
       log(e.toString());
       emit(FaliureStateTeacher());

@@ -1,5 +1,3 @@
-
-
 import 'package:quizapp/models/subjects_generated_model.dart';
 
 abstract class SubjectsStates {}
@@ -13,6 +11,7 @@ class SubjectsSuccessState extends SubjectsStates {
 }
 
 class InitSubjectState extends SubjectsStates {}
+
 class SubjectFaliureState extends SubjectsStates {}
 
 class SubjectLoadingState extends SubjectsStates {}
