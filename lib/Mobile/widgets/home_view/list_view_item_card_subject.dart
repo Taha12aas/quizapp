@@ -27,8 +27,9 @@ class ListViewItemCardSubject extends StatelessWidget {
     } else {
       return Expanded(
           child: ListView.builder(
-        itemCount:
-            CubitSubject.subjectsCount.length < 10 ? CubitSubject.subjectsCount.length : 10,
+        itemCount: CubitSubject.subjectsCount.length < 10
+            ? CubitSubject.subjectsCount.length
+            : 10,
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
@@ -97,19 +98,21 @@ class ListViewItemCardSubject extends StatelessWidget {
                 print('File saved to $filePath');
               },
               courseDate: CubitSubject.subjectsCount[index].coursesDate,
-                  seasonSubject:
-                      CubitSubject.subjectsCount[index].seasonSubject,
-                  subject: CubitSubject.subjectsCount[index].nameSubject,
-                  classTeacher: CubitSubject.subjectsCount[index].classSabject,
-                  onTap: () {
-                    Navigator.pushNamed(context, ReadingGeneratedQuestionsView.id,
-                        arguments: [
-                          CubitSubject.subjectsCount[index].nameSubject,
-                          CubitSubject.subjectsCount[index].classSabject,
-                          CubitSubject.subjectsCount[index].coursesDate,
-                          CubitSubject.subjectsCount[index].seasonSubject,
-                          CubitSubject.subjectsCount[index].generateTime
-                        ]);
+              seasonSubject: CubitSubject.subjectsCount[index].seasonSubject,
+              subject: CubitSubject.subjectsCount[index].nameSubject,
+              classTeacher: CubitSubject.subjectsCount[index].classSabject,
+              onTap: () {
+                Navigator.pushNamed(
+                  context,
+                  ReadingGeneratedQuestionsView.id,
+                  arguments: [
+                    CubitSubject.subjectsCount[index].nameSubject,
+                    CubitSubject.subjectsCount[index].classSabject,
+                    CubitSubject.subjectsCount[index].coursesDate,
+                    CubitSubject.subjectsCount[index].seasonSubject,
+                    CubitSubject.subjectsCount[index].generateTime
+                  ],
+                );
               },
             ),
           );

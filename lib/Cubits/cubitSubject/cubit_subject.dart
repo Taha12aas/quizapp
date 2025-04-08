@@ -9,6 +9,7 @@ class CubitSubject extends Cubit<SubjectsStates> {
   static late List<Map<String, dynamic>> result;
   static late List<SubjectsGeneratedModel> subjectsCount;
   void fetchSubject() async {
+    log('fetching');
     subjectsCount = [];
     emit(SubjectLoadingState());
     try {
