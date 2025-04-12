@@ -65,11 +65,12 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject_status.dart';
 import 'package:quizapp/Mobile/widgets/generated_question.dart/questions_list.dart';
 import 'package:quizapp/models/subjects_generated_model.dart';
-import 'package:quizapp/utils/custom_alert_dialog.dart';
+import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
@@ -103,13 +104,16 @@ class _GeneratedQuestionsViewState extends State<GeneratedQuestionsView> {
       appBar: customAppBar(info[0]),
       body: BlocBuilder<CubitSubject, SubjectsStates>(
         builder: (context, state) {
-          return RefreshIndicator(
+          log('build');
+          return LiquidPullToRefresh(
+            animSpeedFactor: 10,
+            backgroundColor: kAshen,
+            color: kOrange,
+            showChildOpacityTransition: false,
             onRefresh: () async {
               log('message');
-              showDialog(
-                context: context,
-                builder: (context) => const CustomAlertDialog(),
-              );
+              BlocProvider.of<CubitSubject>(context)
+                  .fetchSubject(refresh: true);
             },
             child: Padding(
               padding: const EdgeInsets.all(18),

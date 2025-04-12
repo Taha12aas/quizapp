@@ -1,4 +1,7 @@
-class SubjectsGeneratedModel {
+import 'package:equatable/equatable.dart';
+
+// ignore: must_be_immutable
+class SubjectsGeneratedModel extends Equatable {
   int? id;
   final String nameSubject;
   final String coursesDate;
@@ -37,7 +40,19 @@ class SubjectsGeneratedModel {
       'courses': courses,
       'name_teacher': nameTeacher,
       'class': classSabject,
-      'generate_time':generateTime
+      'generate_time': generateTime
     };
   }
+
+  @override
+  List<Object?> get props => [
+        id,
+        nameSubject,
+        coursesDate,
+        courses,
+        nameTeacher,
+        classSabject,
+        seasonSubject,
+        generateTime
+      ];
 }

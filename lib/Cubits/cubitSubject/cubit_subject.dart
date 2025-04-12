@@ -8,10 +8,11 @@ class CubitSubject extends Cubit<SubjectsStates> {
   CubitSubject() : super(InitSubjectState());
   static late List<Map<String, dynamic>> result;
   static late List<SubjectsGeneratedModel> subjectsCount;
-  void fetchSubject() async {
-    log('fetching');
+  void fetchSubject({bool refresh = false}) async {
     subjectsCount = [];
-    emit(SubjectLoadingState());
+    if (!refresh) {
+      emit(SubjectLoadingState());
+    }
     try {
       result = await SubjectService.fetchSubject();
       for (var i = 0; i < result.length; i++) {

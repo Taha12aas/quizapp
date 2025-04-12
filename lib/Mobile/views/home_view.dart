@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject_status.dart';
 import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
@@ -10,7 +11,6 @@ import 'package:quizapp/Mobile/widgets/home_view/custom_drawer.dart';
 import 'package:quizapp/Mobile/widgets/home_view/list_view_item_card_subject.dart';
 import 'package:quizapp/Mobile/widgets/home_view/main_sections.dart';
 import 'package:quizapp/utils/constants.dart';
-import 'package:quizapp/utils/custom_alert_dialog.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/main_view_app_bar.dart';
 import 'package:quizapp/utils/responsive_text.dart';
@@ -36,19 +36,22 @@ class _HomeViewState extends State<HomeView> {
     //TODO:Create Refresh And NavBar
     return BlocBuilder<CubitSubject, SubjectsStates>(
       builder: (context, state) {
+        log('build');
         if (state is SubjectsSuccessState) {
           return Scaffold(
             appBar: mainAppBar('الصفحة الرئيسية', context),
             drawer: const CustomDrawer(),
             body: Padding(
               padding: const EdgeInsets.all(18),
-              child: RefreshIndicator(
+              child: LiquidPullToRefresh(
+                animSpeedFactor: 10,
+                backgroundColor: kAshen,
+                color: kOrange,
+                showChildOpacityTransition: false,
                 onRefresh: () async {
                   log('message');
-                  showDialog(
-                    context: context,
-                    builder: (context) => const CustomAlertDialog(),
-                  );
+                  BlocProvider.of<CubitSubject>(context)
+                      .fetchSubject(refresh: true);
                 },
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
