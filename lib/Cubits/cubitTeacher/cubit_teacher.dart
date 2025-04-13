@@ -7,14 +7,15 @@ import 'package:quizapp/services/teacher_service.dart';
 class CubitTeacher extends Cubit<TeacherStatuses> {
   CubitTeacher() : super(InitStateTeacher());
 
-  static late List<Map<String, dynamic>> result;
+  static late List<Map<String, dynamic>> _result;
   static late List<TeacherModel> teachers;
   void fetchUsers() async {
+    teachers = [];
     emit(LoadingStateTeacher());
     try {
-      result = await TeacherService.fetchTeacher();
-      for (var i = 0; i < result.length; i++) {
-        teachers.add(TeacherModel.fromJson(result[i]));
+      _result = await TeacherService.fetchTeacher();
+      for (var i = 0; i < _result.length; i++) {
+        teachers.add(TeacherModel.fromJson(_result[i]));
       }
       emit(SuccessStateTeacher(teachers: teachers));
     } catch (e) {

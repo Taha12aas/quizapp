@@ -4,14 +4,27 @@ import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/teacher_p
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 
-class TeacherSubjects extends StatelessWidget {
-  const TeacherSubjects({super.key});
-  static String id = 'TeacherSubjects';
+class TeacherSubjectsView extends StatefulWidget {
+  const TeacherSubjectsView({super.key});
+  static String id = 'TeacherSubjectsView';
+
+  @override
+  State<TeacherSubjectsView> createState() => _TeacherSubjectsViewState();
+}
+
+class _TeacherSubjectsViewState extends State<TeacherSubjectsView> {
+  late String teacherName;
+  @override
+  void didChangeDependencies() {
+    teacherName = ModalRoute.of(context)!.settings.arguments.toString();
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        'مواد المدرس',
+        '$teacherName مواد المدرس',
       ),
       body: Padding(
         padding: const EdgeInsets.all(18),

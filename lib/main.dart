@@ -6,13 +6,13 @@ import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/views/class_subject_view.dart';
-import 'package:quizapp/Mobile/views/class_teachers_view.dart';
 import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/views/log_in_view.dart';
 import 'package:quizapp/Mobile/views/subjects_view.dart';
 import 'package:quizapp/Mobile/views/teacher_profile_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
+import 'package:quizapp/Mobile/views/teachers_class.dart';
 import 'package:quizapp/Mobile/views/teachers_view.dart';
 import 'package:quizapp/Mobile/views/reading_generated_questions.dart';
 import 'package:quizapp/utils/constants.dart';
@@ -59,15 +59,15 @@ class QuizApp extends StatelessWidget {
           LogInView.id: (context) => const LogInView(),
           AddTeacherView.id: (context) => const AddTeacherView(),
           SubjectsView.id: (context) => const SubjectsView(),
-          TeacherSubjects.id: (context) => const TeacherSubjects(),
+          TeacherSubjectsView.id: (context) => const TeacherSubjectsView(),
           TeachersView.id: (context) => const TeachersView(),
           GeneratedQuestionsView.id: (context) =>
               const GeneratedQuestionsView(),
           TeacherProfileView.id: (context) => const TeacherProfileView(),
           ReadingGeneratedQuestionsView.id: (context) =>
               const ReadingGeneratedQuestionsView(),
-              ClassSubjectView.id:(context)=>const ClassSubjectView(),
-              ClassTeachersView.id:(context)=>const ClassTeachersView()
+          ClassSubjectView.id: (context) => const ClassSubjectView(),
+          TeachersClass.id: (context) => const TeachersClass()
         },
         theme: ThemeData(
           scaffoldBackgroundColor: kBackGround,

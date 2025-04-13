@@ -6,6 +6,7 @@ import 'package:quizapp/utils/responsive_text.dart';
 
 AppBar mainAppBar(String title, BuildContext context) {
   return AppBar(
+    iconTheme: const IconThemeData(color: kWhite),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(16), bottomRight: Radius.circular(16)),

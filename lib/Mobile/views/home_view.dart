@@ -33,10 +33,11 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    //TODO:Create Refresh And NavBar
+    log('build');
+
     return BlocBuilder<CubitSubject, SubjectsStates>(
       builder: (context, state) {
-        log('build');
+        log('build----------------');
         if (state is SubjectsSuccessState) {
           return Scaffold(
             appBar: mainAppBar('الصفحة الرئيسية', context),

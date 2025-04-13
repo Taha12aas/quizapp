@@ -109,7 +109,7 @@ class CardSubjects extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   const RowText(
