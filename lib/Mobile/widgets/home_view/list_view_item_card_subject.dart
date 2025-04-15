@@ -99,7 +99,6 @@ class ListViewItemCardSubject extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    
     if (CubitSubject.subjectsCount.isEmpty) {
       return Center(
         child: Text(

@@ -9,42 +9,41 @@ import 'package:quizapp/utils/custom_app_bar.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
 
-class TeachersClass extends StatefulWidget {
-  const TeachersClass({super.key});
-  static String id = 'TeachersClass';
-
+class TeacherSubjectsInfoView extends StatefulWidget {
+  const TeacherSubjectsInfoView({super.key});
+  static String id = 'TeacherSubjectsInfoView';
   @override
-  State<TeachersClass> createState() => _TeachersClassState();
+  State<TeacherSubjectsInfoView> createState() =>
+      _TeacherSubjectsInfoViewState();
 }
 
-class _TeachersClassState extends State<TeachersClass> {
+class _TeacherSubjectsInfoViewState extends State<TeacherSubjectsInfoView> {
   late String calssTeacher;
   List<TeacherModel> teachers = [];
+  bool _isInit = true;
 
   @override
   void didChangeDependencies() {
-    calssTeacher = ModalRoute.of(context)!.settings.arguments.toString();
-    super.didChangeDependencies();
-  }
-
-  void teachersA() {
-    for (var i = 0; i < CubitTeacher.teachers.length; i++) {
-      List<dynamic> classLength =
-          CubitTeacher.teachers[i].classesSubjects['صف'];
-      for (var j = 0; j < classLength.length; j++) {
-        if (classLength[j] == calssTeacher) {
-          log('Addddd');
-          teachers.add(CubitTeacher.teachers[i]);
-          break;
+    if (_isInit) {
+      _isInit = false;
+      calssTeacher = ModalRoute.of(context)!.settings.arguments.toString();
+      for (var i = 0; i < CubitTeacher.teachers.length; i++) {
+        List<dynamic> classLength = CubitTeacher.teachers[i].classesSubjects['صف'];
+        for (var j = 0; j < classLength.length; j++) {
+          if (classLength[j] == calssTeacher) {
+            log('Addddd');
+            teachers.add(CubitTeacher.teachers[i]);
+            break;
+          }
         }
       }
     }
+    super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    teachersA();
-    log('build');
+    log('buidl');
     return Scaffold(
       appBar: customAppBar('مدرسين الصف ال$calssTeacher'),
       body: teachers.isEmpty

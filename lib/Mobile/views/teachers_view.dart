@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/views/teachers_class.dart';
+import 'package:quizapp/Mobile/views/teacher_subjects_info_view.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/class_classification.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
@@ -21,7 +21,7 @@ class TeachersView extends StatelessWidget {
               child: ClassClassification(
                 label: kClassesPrimaryStage[index],
                 onTap: () {
-                  Navigator.pushNamed(context, TeachersClass.id,
+                  Navigator.pushNamed(context, TeacherSubjectsInfoView.id,
                       arguments: kClassesPrimaryStage[index]);
                 },
               ),

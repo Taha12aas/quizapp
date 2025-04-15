@@ -33,6 +33,7 @@ class _GeneratedQuestionsViewState extends State<GeneratedQuestionsView> {
             item.classSabject == info[1] && item.nameSubject == info[0])
         .toList();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
