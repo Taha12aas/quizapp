@@ -9,12 +9,19 @@ class ColumnSubjectCheck extends StatelessWidget {
     super.key,
     required this.itemsSubject,
     required this.title,
-    required this.horizntalSize, required this.enabled,
+    required this.horizntalSize,
+    required this.enabled,
+    this.onChanged,
+    this.selectedValue,
   });
+
   final String title;
   final List<String> itemsSubject;
   final double horizntalSize;
   final bool enabled;
+  final void Function(String?)? onChanged;
+  final String? selectedValue;
+
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -31,15 +38,16 @@ class ColumnSubjectCheck extends StatelessWidget {
           HorizontalDivider(
             size: horizntalSize,
           ),
-          const SizedBox(
-            height: 5,
-          ),
+          const SizedBox(height: 5),
           SizedBox(
-              width: MediaQuery.of(context).size.width * 0.44,
-              child: DropdownCheckSubject(
-                enabled: enabled,
-                items: itemsSubject,
-              ))
+            width: MediaQuery.of(context).size.width * 0.44,
+            child: DropdownCheckSubject(
+              onChanged: onChanged,
+              enabled: enabled,
+              items: itemsSubject,
+              selectedValue: selectedValue,
+            ),
+          ),
         ],
       ),
     );
