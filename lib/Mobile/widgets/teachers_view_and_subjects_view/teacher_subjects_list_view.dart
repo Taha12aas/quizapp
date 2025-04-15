@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/teacher_subject_generated_view.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/card_subjects.dart';
+import 'package:quizapp/models/teacher_model.dart';
 
-class ListViewCardSubjects extends StatelessWidget {
-  const ListViewCardSubjects({
+class TeacherSubjectsListView extends StatelessWidget {
+  const TeacherSubjectsListView({
     super.key,
-    required this.subjects,
-    required this.onTap,
+    required this.subjects, required this.classTeacher, required this.teacher,
   });
   final List subjects;
-  final VoidCallback onTap;
+  final String classTeacher;
+  final TeacherModel teacher;
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -19,7 +21,10 @@ class ListViewCardSubjects extends StatelessWidget {
           child: CardSubjects(
             subject: subjects[index],
             teacherImag: 'assets/images/Teachers.png',
-            onTap: onTap,
+            onTap: () {
+              Navigator.pushNamed(context, TeacherSubjectGeneratedView.id,
+                  arguments: [teacher,classTeacher,subjects[index]]);
+            },
           ),
         );
       },

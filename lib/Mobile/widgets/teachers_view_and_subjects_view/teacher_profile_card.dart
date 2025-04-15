@@ -8,9 +8,10 @@ import 'package:quizapp/utils/responsive_text.dart';
 class TeacherProfileCard extends StatelessWidget {
   const TeacherProfileCard({
     super.key,
-    required this.text,
+    required this.text, required this.url,
   });
   final String text;
+final  String url;
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
@@ -68,9 +69,9 @@ class TeacherProfileCard extends StatelessWidget {
             const SizedBox(
               width: 10,
             ),
-            const CircleAvatar(
+            CircleAvatar(
               radius: 30.0,
-              backgroundImage: AssetImage('assets/images/TeachersTaha.jpg'),
+              backgroundImage: NetworkImage(url),
             ),
           ],
         ),

@@ -11,6 +11,7 @@ import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/views/log_in_view.dart';
 import 'package:quizapp/Mobile/views/subjects_view.dart';
 import 'package:quizapp/Mobile/views/teacher_profile_view.dart';
+import 'package:quizapp/Mobile/views/teacher_subject_generated_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subjects_info_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subjects_view.dart';
 import 'package:quizapp/Mobile/views/teachers_view.dart';
@@ -67,7 +68,10 @@ class QuizApp extends StatelessWidget {
           ReadingGeneratedQuestionsView.id: (context) =>
               const ReadingGeneratedQuestionsView(),
           ClassSubjectView.id: (context) => const ClassSubjectView(),
-          TeacherSubjectsInfoView.id:(context)=>const TeacherSubjectsInfoView()
+          TeacherSubjectsInfoView.id: (context) =>
+              const TeacherSubjectsInfoView(),
+          TeacherSubjectGeneratedView.id: (context) =>
+              const TeacherSubjectGeneratedView()
         },
         theme: ThemeData(
           scaffoldBackgroundColor: kBackGround,

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/list_view_card_subjects.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/teacher_profile_card.dart';
-import 'package:quizapp/utils/constants.dart';
+import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/teacher_subjects_list_view.dart';
+import 'package:quizapp/models/teacher_model.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 
 class TeacherSubjectsView extends StatefulWidget {
@@ -13,10 +13,12 @@ class TeacherSubjectsView extends StatefulWidget {
 }
 
 class _TeacherSubjectsViewState extends State<TeacherSubjectsView> {
-  late String teacherName;
+  late List respons;
+  late TeacherModel teacher;
   @override
   void didChangeDependencies() {
-    teacherName = ModalRoute.of(context)!.settings.arguments.toString();
+    respons = ModalRoute.of(context)!.settings.arguments as List;
+    teacher = respons[0];
     super.didChangeDependencies();
   }
 
@@ -24,23 +26,25 @@ class _TeacherSubjectsViewState extends State<TeacherSubjectsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: customAppBar(
-        '$teacherName مواد المدرس',
+        '${teacher.name} مواد المدرس',
       ),
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const TeacherProfileCard(
-              text: 'salimo',
+            TeacherProfileCard(
+              url: teacher.photo,
+              text: teacher.name,
             ),
             const SizedBox(
               height: 20,
             ),
             Expanded(
-              child: ListViewCardSubjects(
-                subjects: kPrimaryStage,
-                onTap: () {},
+              child: TeacherSubjectsListView(
+                subjects: teacher.classesSubjects['مواد'],
+                teacher: teacher,
+                classTeacher: respons[1],
               ),
             )
           ],

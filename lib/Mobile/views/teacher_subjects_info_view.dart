@@ -28,10 +28,10 @@ class _TeacherSubjectsInfoViewState extends State<TeacherSubjectsInfoView> {
       _isInit = false;
       calssTeacher = ModalRoute.of(context)!.settings.arguments.toString();
       for (var i = 0; i < CubitTeacher.teachers.length; i++) {
-        List<dynamic> classLength = CubitTeacher.teachers[i].classesSubjects['صف'];
+        List<dynamic> classLength =
+            CubitTeacher.teachers[i].classesSubjects['صف'];
         for (var j = 0; j < classLength.length; j++) {
           if (classLength[j] == calssTeacher) {
-            log('Addddd');
             teachers.add(CubitTeacher.teachers[i]);
             break;
           }
@@ -43,7 +43,6 @@ class _TeacherSubjectsInfoViewState extends State<TeacherSubjectsInfoView> {
 
   @override
   Widget build(BuildContext context) {
-    log('buidl');
     return Scaffold(
       appBar: customAppBar('مدرسين الصف ال$calssTeacher'),
       body: teachers.isEmpty
@@ -68,7 +67,7 @@ class _TeacherSubjectsInfoViewState extends State<TeacherSubjectsInfoView> {
                     onTap: () {
                       log(teachers.length.toString());
                       Navigator.pushNamed(context, TeacherSubjectsView.id,
-                          arguments: teachers[index].name);
+                          arguments: [teachers[index],calssTeacher]);
                     },
                     image: teachers[index].photo,
                     teacherName: teachers[index].name,
