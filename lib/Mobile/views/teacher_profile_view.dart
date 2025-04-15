@@ -73,6 +73,11 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
                         ),
                       ),
                     ),
+                  ),
+                  Text(
+                    ': الاسم',
+                    style: FontStyleApp.orange18
+                        .copyWith(fontSize: getResponsiveText(context, 18)),
                   )
                 ]),
                 const SizedBox(height: 15),
