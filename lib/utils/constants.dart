@@ -71,3 +71,18 @@ const List<String> kSecondaryStage = [
   "التربية الدينية المسيحية",
   "فلسفة",
 ];
+
+const Map<String, List<String>> schoolSubjects = {
+  'اول': kPrimaryStage,
+  'ثاني': kPrimaryStage,
+  'ثالث': kPrimaryStage,
+  'رابع': kPrimaryStage,
+  'خامس': kPrimaryStage,
+  'سادس': kPrimaryStage,
+  'سابع': kPreparatoryStage,
+  'ثامن': kPreparatoryStage,
+  'تاسع': kPreparatoryStage,
+  'عاشر': kSecondaryStage,
+  'حادي عشر': kSecondaryStage,
+  'بكلوريا': kSecondaryStage,
+};

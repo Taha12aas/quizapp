@@ -6,8 +6,9 @@ import 'package:quizapp/utils/responsive_text.dart';
 
 class TeacherName extends StatelessWidget {
   const TeacherName({
-    super.key,
+    super.key, required this.nameTeacher,
   });
+  final String nameTeacher;
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +42,7 @@ class TeacherName extends StatelessWidget {
         ),
         FittedBox(
           child: Text(
-            'طه الفاخوري',
+            nameTeacher,
             style: FontStyleApp.white18.copyWith(
               fontSize: getResponsiveText(context, 18),
             ),

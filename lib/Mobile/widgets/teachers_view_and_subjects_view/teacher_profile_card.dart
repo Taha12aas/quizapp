@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bounceable/flutter_bounceable.dart';
-import 'package:quizapp/Mobile/views/teacher_profile_view.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
@@ -8,18 +7,18 @@ import 'package:quizapp/utils/responsive_text.dart';
 class TeacherProfileCard extends StatelessWidget {
   const TeacherProfileCard({
     super.key,
-    required this.text, required this.url,
+    required this.text,
+    required this.url, this.onTap,
   });
   final String text;
-final  String url;
+  final String url;
+  final Function()? onTap;
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
     return Bounceable(
-      onTap: () {
-        Navigator.pushNamed(context, TeacherProfileView.id);
-      },
+      onTap: onTap,
       child: Container(
         width: screenWidth * 0.65,
         padding: EdgeInsets.symmetric(vertical: screenWidth * 0.001),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/teacher_profile_view.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/teacher_profile_card.dart';
 import 'package:quizapp/Mobile/widgets/teachers_view_and_subjects_view/teacher_subjects_list_view.dart';
 import 'package:quizapp/models/teacher_model.dart';
@@ -36,6 +37,9 @@ class _TeacherSubjectsViewState extends State<TeacherSubjectsView> {
             TeacherProfileCard(
               url: teacher.photo,
               text: teacher.name,
+              onTap: () {
+        Navigator.pushNamed(context, TeacherProfileView.id,arguments:teacher );
+      },
             ),
             const SizedBox(
               height: 20,

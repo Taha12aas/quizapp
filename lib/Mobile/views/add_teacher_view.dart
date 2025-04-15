@@ -89,7 +89,7 @@ class AddTeacherView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const ColumnSubjectCheck(
+                  const ColumnSubjectCheck(enabled: true,
                     horizntalSize: 52,
                     itemsSubject: itemsSubject,
                     title: ': المادة',
@@ -97,7 +97,7 @@ class AddTeacherView extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.022,
                   ),
-                  const ColumnSubjectCheck(
+                  const ColumnSubjectCheck(enabled: false,
                     horizntalSize: 55,
                     itemsSubject: itemsClass,
                     title: ': الصف',

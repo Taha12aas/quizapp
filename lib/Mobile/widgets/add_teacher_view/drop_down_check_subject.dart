@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/teacher_profile_view.dart';
 
 class DropdownCheckSubject extends StatefulWidget {
   const DropdownCheckSubject({
     super.key,
     required this.items,
+    required this.enabled,
   });
   final List<String> items;
+  final bool enabled;
 
   @override
   State<DropdownCheckSubject> createState() => _DropdownCheckSubjectState();
@@ -17,7 +20,7 @@ class _DropdownCheckSubjectState extends State<DropdownCheckSubject> {
   @override
   Widget build(BuildContext context) {
     return DropdownButtonFormField<String>(
-      isExpanded: true, // يجعل القائمة ممتدة أفقياً
+      isDense: false, isExpanded: true, // يجعل القائمة ممتدة أفقياً
       decoration: InputDecoration(
         filled: true, // تفعيل الخلفية
         fillColor: Colors.white, // لون الخلفية
@@ -37,11 +40,13 @@ class _DropdownCheckSubjectState extends State<DropdownCheckSubject> {
       value: selectedValue,
       onChanged: (String? newValue) {
         setState(() {
+          TeacherProfileView.chekedClass = newValue!;
           selectedValue = newValue;
         });
       },
       items: widget.items.map((String item) {
         return DropdownMenuItem<String>(
+          enabled: widget.enabled,
           value: item,
           child: Align(
             alignment: Alignment.centerRight, // محاذاة العنصر لليمين

@@ -9,11 +9,10 @@ class CardSubjects extends StatelessWidget {
       {super.key,
       required this.onTap,
       required this.subject,
-      required this.teacherImag});
+      });
   final void Function() onTap;
 
   final String subject;
-  final String teacherImag;
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;

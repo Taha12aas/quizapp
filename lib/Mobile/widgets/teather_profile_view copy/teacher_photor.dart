@@ -51,28 +51,25 @@ class _TeacherPhotoState extends State<TeacherPhoto> {
           Positioned(
             right: 0,
             bottom: 0,
-            child: GestureDetector(
+            child: Bounceable(
               onTap: widget.onPressed,
-              child: Bounceable(
-                onTap: () {},
-                child: Container(
-                  padding: const EdgeInsets.all(8),
-                  decoration: BoxDecoration(
-                    color: kOrange,
-                    shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.3),
-                        blurRadius: 5.0,
-                        offset: const Offset(2, 2),
-                      ),
-                    ],
-                  ),
-                  child: const Icon(
-                    Icons.add_a_photo,
-                    color: kBlack,
-                    size: 24,
-                  ),
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: kOrange,
+                  shape: BoxShape.circle,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.3),
+                      blurRadius: 5.0,
+                      offset: const Offset(2, 2),
+                    ),
+                  ],
+                ),
+                child: const Icon(
+                  Icons.add_a_photo,
+                  color: kBlack,
+                  size: 24,
                 ),
               ),
             ),

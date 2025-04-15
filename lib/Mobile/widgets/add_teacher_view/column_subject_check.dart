@@ -9,11 +9,12 @@ class ColumnSubjectCheck extends StatelessWidget {
     super.key,
     required this.itemsSubject,
     required this.title,
-    required this.horizntalSize,
+    required this.horizntalSize, required this.enabled,
   });
   final String title;
   final List<String> itemsSubject;
   final double horizntalSize;
+  final bool enabled;
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -36,6 +37,7 @@ class ColumnSubjectCheck extends StatelessWidget {
           SizedBox(
               width: MediaQuery.of(context).size.width * 0.44,
               child: DropdownCheckSubject(
+                enabled: enabled,
                 items: itemsSubject,
               ))
         ],

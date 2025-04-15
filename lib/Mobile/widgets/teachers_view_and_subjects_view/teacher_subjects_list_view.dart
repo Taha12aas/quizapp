@@ -6,7 +6,9 @@ import 'package:quizapp/models/teacher_model.dart';
 class TeacherSubjectsListView extends StatelessWidget {
   const TeacherSubjectsListView({
     super.key,
-    required this.subjects, required this.classTeacher, required this.teacher,
+    required this.subjects,
+    required this.classTeacher,
+    required this.teacher,
   });
   final List subjects;
   final String classTeacher;
@@ -20,10 +22,9 @@ class TeacherSubjectsListView extends StatelessWidget {
           padding: const EdgeInsets.only(top: 10),
           child: CardSubjects(
             subject: subjects[index],
-            teacherImag: 'assets/images/Teachers.png',
             onTap: () {
               Navigator.pushNamed(context, TeacherSubjectGeneratedView.id,
-                  arguments: [teacher,classTeacher,subjects[index]]);
+                  arguments: [teacher, classTeacher, subjects[index]]);
             },
           ),
         );
