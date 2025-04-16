@@ -32,10 +32,10 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
     super.didChangeDependencies();
   }
 
-  String selectedValue = 'اول';
-  String? selectedValuesubect;
-  bool isactev1 = false;
-  bool isactev2 = true;
+  String selectedClass = 'اول';
+  String? selectedSubject;
+  bool isactevSubject = false;
+  bool isactevClass = true;
 
   @override
   Widget build(BuildContext context) {
@@ -109,33 +109,33 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
                     ColumnSubjectCheck(
                       onChanged: (newSubject) {
                         setState(() {
-                          selectedValuesubect = newSubject;
+                          selectedSubject = newSubject;
                         });
                       },
-                      enabled: isactev1,
-                      itemsSubject: schoolSubjects[selectedValue]!,
+                      enabled: isactevSubject,
+                      itemsSubject: schoolSubjects[selectedClass]!,
                       horizntalSize: 52,
                       title: ': المادة',
-                      selectedValue: selectedValuesubect,
+                      selectedValue: selectedSubject,
                     ),
                     SizedBox(width: MediaQuery.of(context).size.width * 0.022),
                     ColumnSubjectCheck(
                       onChanged: (newClass) {
                         setState(() {
-                          selectedValue = newClass!;
-                          isactev1 = true;
-                          if (selectedValuesubect != null &&
-                              !schoolSubjects[selectedValue]!
-                                  .contains(selectedValuesubect)) {
-                            selectedValuesubect = null;
+                          selectedClass = newClass!;
+                          isactevSubject = true;
+                          if (selectedSubject != null &&
+                              !schoolSubjects[selectedClass]!
+                                  .contains(selectedSubject)) {
+                            selectedSubject = null;
                           }
                         });
                       },
-                      enabled: isactev2,
+                      enabled: isactevClass,
                       horizntalSize: 50,
                       itemsSubject: schoolSubjects.keys.toList(),
                       title: ': الصف',
-                      selectedValue: selectedValue,
+                      selectedValue: selectedClass,
                     ),
                   ],
                 ),
@@ -143,11 +143,11 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
                 CustomButton(
                   title: 'إضافة مادة',
                   onPressed: () {
-                    if (selectedValuesubect != null) {
+                    if (selectedSubject != null) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(
                           content: Text(
-                              'تمت إضافة مادة $selectedValuesubect للصف $selectedValue'),
+                              'تمت إضافة مادة $selectedSubject للصف $selectedClass'),
                         ),
                       );
                     } else {
