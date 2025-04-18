@@ -72,7 +72,7 @@ const List<String> kSecondaryStage = [
   "فلسفة",
 ];
 
-const Map<String, List<String>> schoolSubjects = {
+const Map<String, List<String>> kSchoolSubjects = {
   'اول': kPrimaryStage,
   'ثاني': kPrimaryStage,
   'ثالث': kPrimaryStage,

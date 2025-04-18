@@ -49,7 +49,7 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                       0: FlexColumnWidth(2),
                       1: FlexColumnWidth(1),
                       2: FlexColumnWidth(1),
-                    },
+                      },
                     children: List.generate(classes.length, (index) {
                       final color =
                           index.isEven ? kWhite : const Color(0xffE4E4E4);
@@ -73,7 +73,7 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                                         ),
                                         content: Text(
                                             textAlign: TextAlign.right,
-                                            'هل أنت متأكد من حذف ${subjects[index]}؟'),
+                                            ' هل أنت متأكد من حذف مادة ${subjects[index]}؟'),
                                         actions: [
                                           TextButton(
                                             onPressed: () {
@@ -95,7 +95,7 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                                   );
                                 },
                                 child: Text(
-                                  'حذف', // تغيير النص إلى "حذف"
+                                  'حذف', 
                                   style: FontStyleApp.orange10.copyWith(
                                     fontSize: getResponsiveText(context, 18),
                                   ),
@@ -118,7 +118,7 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                             child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: Text(
-                                classes[index].toString(),
+                                classes[index],
                                 style: FontStyleApp.blackBold16.copyWith(
                                   fontSize: getResponsiveText(context, 18),
                                 ),

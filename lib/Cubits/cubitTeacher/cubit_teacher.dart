@@ -28,7 +28,7 @@ class CubitTeacher extends Cubit<TeacherStatuses> {
     emit(LoadingStateTeacher());
     try {
       await TeacherService.updateTeacher(columnName, teacherName, value);
-      emit(LoadingStateTeacher());
+      emit(SuccessStateTeacher());
     } catch (e) {
       emit(FaliureStateTeacher());
     }

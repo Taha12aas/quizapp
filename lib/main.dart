@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizapp/Cubits/admin/admin_cubit.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
+import 'package:quizapp/Mobile/views/add_subject_in_teacher_view.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/views/class_subject_view.dart';
 import 'package:quizapp/Mobile/views/generated_questions_view.dart';
@@ -62,12 +63,14 @@ class QuizApp extends StatelessWidget {
           SubjectsView.id: (context) => const SubjectsView(),
           TeacherSubjectsView.id: (context) => const TeacherSubjectsView(),
           TeachersView.id: (context) => const TeachersView(),
+          TeacherProfileView.id: (context) => const TeacherProfileView(),
+          ClassSubjectView.id: (context) => const ClassSubjectView(),
+          AddSubjectInTeacherView.id: (context) =>
+              const AddSubjectInTeacherView(),
           GeneratedQuestionsView.id: (context) =>
               const GeneratedQuestionsView(),
-          TeacherProfileView.id: (context) => const TeacherProfileView(),
           ReadingGeneratedQuestionsView.id: (context) =>
               const ReadingGeneratedQuestionsView(),
-          ClassSubjectView.id: (context) => const ClassSubjectView(),
           TeacherSubjectsInfoView.id: (context) =>
               const TeacherSubjectsInfoView(),
           TeacherSubjectGeneratedView.id: (context) =>

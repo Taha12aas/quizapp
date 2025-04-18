@@ -1,9 +1,8 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:font_awesome_icon_class/font_awesome_icon_class.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:quizapp/Mobile/widgets/add_teacher_view/column_subject_check.dart';
+import 'package:quizapp/Mobile/views/add_subject_in_teacher_view.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/column_teacher_info.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/container_teache_subjects_display.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/custom_button.dart';
@@ -31,11 +30,6 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
     teacherModel = ModalRoute.of(context)!.settings.arguments as TeacherModel;
     super.didChangeDependencies();
   }
-
-  String selectedClass = 'اول';
-  String? selectedSubject;
-  bool isactevSubject = false;
-  bool isactevClass = true;
 
   @override
   Widget build(BuildContext context) {
@@ -103,60 +97,10 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
                   onPressed: () {},
                 ),
                 const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    ColumnSubjectCheck(
-                      onChanged: (newSubject) {
-                        setState(() {
-                          selectedSubject = newSubject;
-                        });
-                      },
-                      enabled: isactevSubject,
-                      itemsSubject: schoolSubjects[selectedClass]!,
-                      horizntalSize: 52,
-                      title: ': المادة',
-                      selectedValue: selectedSubject,
-                    ),
-                    SizedBox(width: MediaQuery.of(context).size.width * 0.022),
-                    ColumnSubjectCheck(
-                      onChanged: (newClass) {
-                        setState(() {
-                          selectedClass = newClass!;
-                          isactevSubject = true;
-                          if (selectedSubject != null &&
-                              !schoolSubjects[selectedClass]!
-                                  .contains(selectedSubject)) {
-                            selectedSubject = null;
-                          }
-                        });
-                      },
-                      enabled: isactevClass,
-                      horizntalSize: 50,
-                      itemsSubject: schoolSubjects.keys.toList(),
-                      title: ': الصف',
-                      selectedValue: selectedClass,
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 20),
                 CustomButton(
                   title: 'إضافة مادة',
                   onPressed: () {
-                    if (selectedSubject != null) {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text(
-                              'تمت إضافة مادة $selectedSubject للصف $selectedClass'),
-                        ),
-                      );
-                    } else {
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                          content: Text('الرجاء اختيار مادة أولاً'),
-                        ),
-                      );
-                    }
+                    Navigator.pushNamed(context, AddSubjectInTeacherView.id,arguments: teacherModel);
                   },
                 ),
                 const SizedBox(height: 20),

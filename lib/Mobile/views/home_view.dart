@@ -1,4 +1,3 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -6,6 +5,7 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject_status.dart';
 import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
+import 'package:quizapp/Cubits/cubitTeacher/ques_app_status.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custom_drawer.dart';
 import 'package:quizapp/Mobile/widgets/home_view/list_view_item_card_subject.dart';
@@ -33,65 +33,114 @@ class _HomeViewState extends State<HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    log('build');
-
-    return BlocBuilder<CubitSubject, SubjectsStates>(
+    return BlocBuilder<CubitTeacher, TeacherStatuses>(
       builder: (context, state) {
-        log('build----------------');
-        if (state is SubjectsSuccessState) {
-          return Scaffold(
-            appBar: mainAppBar('الصفحة الرئيسية', context),
-            drawer: const CustomDrawer(),
-            body: Padding(
-              padding: const EdgeInsets.all(18),
-              child: LiquidPullToRefresh(
-                animSpeedFactor: 10,
-                backgroundColor: kAshen,
-                color: kOrange,
-                showChildOpacityTransition: false,
-                onRefresh: () async {
-                  log('message');
-                  BlocProvider.of<CubitSubject>(context)
-                      .fetchSubject(refresh: true);
-                },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    const MainSections(),
-                    const SizedBox(height: 20),
-                    Container(
-                      width: 158,
-                      padding: const EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: FittedBox(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            const Icon(Icons.trending_up, color: kOrange),
-                            const SizedBox(width: 8),
-                            Text(
-                              "أحدث النشاطات",
-                              style: TextStyle(
-                                fontSize: getResponsiveText(context, 18),
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
+        if (state is SuccessStateTeacher) {
+          return BlocBuilder<CubitSubject, SubjectsStates>(
+            builder: (context, state) {
+              if (state is SubjectsSuccessState) {
+                return Scaffold(
+                  appBar: mainAppBar('الصفحة الرئيسية', context),
+                  drawer: const CustomDrawer(),
+                  body: Padding(
+                    padding: const EdgeInsets.all(18),
+                    child: LiquidPullToRefresh(
+                      animSpeedFactor: 10,
+                      backgroundColor: kAshen,
+                      color: kOrange,
+                      showChildOpacityTransition: false,
+                      onRefresh: () async {
+                        BlocProvider.of<CubitSubject>(context)
+                            .fetchSubject(refresh: true);
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          const MainSections(),
+                          const SizedBox(height: 20),
+                          Container(
+                            width: 158,
+                            padding: const EdgeInsets.all(10),
+                            decoration: BoxDecoration(
+                              color: Colors.black.withOpacity(0.1),
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: FittedBox(
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  const Icon(Icons.trending_up, color: kOrange),
+                                  const SizedBox(width: 8),
+                                  Text(
+                                    "أحدث النشاطات",
+                                    style: TextStyle(
+                                      fontSize: getResponsiveText(context, 18),
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                          const SizedBox(height: 10),
+                          const ListViewItemCardSubject()
+                        ],
                       ),
                     ),
-                    const SizedBox(height: 10),
-                    const ListViewItemCardSubject()
-                  ],
-                ),
+                  ),
+                );
+              } else if (state is SubjectFaliureState) {
+                return Scaffold(
+                  body: Center(
+                      child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '😉 تأكد من اتصالك بالانترنت ',
+                        style: FontStyleApp.orange25
+                            .copyWith(fontSize: getResponsiveText(context, 25)),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      SizedBox(
+                        width: MediaQuery.sizeOf(context).width * .5,
+                        child: CustomButton(
+                          title: 'حاول مجدداً',
+                          onPressed: () {
+                            Navigator.pushNamedAndRemoveUntil(
+                              arguments: false,
+                              context,
+                              HomeView.id,
+                              (route) => false,
+                            );
+                          },
+                        ),
+                      )
+                    ],
+                  )),
+                );
+              } else {
+                return const Scaffold(
+                  body: Center(
+                    child: CircularProgressIndicator(
+                      color: kOrange,
+                    ),
+                  ),
+                );
+              }
+            },
+          );
+        } else if (state is LoadingStateTeacher) {
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(
+                color: kOrange,
               ),
             ),
           );
-        } else if (state is SubjectFaliureState) {
+        } else {
           return Scaffold(
             body: Center(
                 child: Column(
@@ -121,14 +170,6 @@ class _HomeViewState extends State<HomeView> {
                 )
               ],
             )),
-          );
-        } else {
-          return const Scaffold(
-            body: Center(
-              child: CircularProgressIndicator(
-                color: kOrange,
-              ),
-            ),
           );
         }
       },
