@@ -33,4 +33,14 @@ class CubitTeacher extends Cubit<TeacherStatuses> {
       emit(FaliureStateTeacher());
     }
   }
+
+  void updateMultiColumns(Map columnsValue, String teacherName) async {
+    emit(LoadingStateTeacher());
+    try {
+      await TeacherService.updateMultiValue(columnsValue, teacherName);
+      emit(SuccessStateTeacher());
+    } catch (e) {
+      emit(FaliureStateTeacher());
+    }
+  }
 }

@@ -11,11 +11,16 @@ class ColumnTeacherInfo extends StatelessWidget {
     required this.hintText,
     required this.iconData,
     required this.horizntalSize,
+    required this.controller,
+    this.validator, this.keyboardType,
   });
   final double horizntalSize;
   final String labelText;
   final String hintText;
   final IconData iconData;
+  final TextEditingController controller;
+  final String? Function(String?)? validator;
+  final TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
     return Flexible(
@@ -36,7 +41,13 @@ class ColumnTeacherInfo extends StatelessWidget {
             const SizedBox(
               height: 5,
             ),
-            InfoTextField(hintText: hintText, iconData: iconData)
+            InfoTextField(
+              keyboardType: keyboardType,
+              validator: validator,
+              hintText: hintText,
+              iconData: iconData,
+              controller: controller,
+            )
           ],
         ),
       ),

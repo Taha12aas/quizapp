@@ -60,22 +60,25 @@ class AddTeacherView extends StatelessWidget {
               const SizedBox(
                 height: 18,
               ),
-              const InfoTextField(
+              InfoTextField(
+                controller: TextEditingController(),
                 hintText: 'أسم المدرس',
                 iconData: FontAwesomeIcons.userPlus,
               ),
               const SizedBox(
                 height: 16,
               ),
-              const Row(
+              Row(
                 children: [
                   ColumnTeacherInfo(
+                    controller: TextEditingController(),
                     labelText: ': العنوان',
                     hintText: 'ادخل عنوان',
                     iconData: FontAwesomeIcons.locationDot,
                     horizntalSize: 64,
                   ),
                   ColumnTeacherInfo(
+                    controller: TextEditingController(),
                     labelText: ': رقم الهاتف',
                     hintText: 'ادخل رقم',
                     iconData: FontAwesomeIcons.phone,
@@ -89,7 +92,8 @@ class AddTeacherView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const ColumnSubjectCheck(enabled: true,
+                  const ColumnSubjectCheck(
+                    enabled: true,
                     horizntalSize: 52,
                     itemsSubject: itemsSubject,
                     title: ': المادة',
@@ -97,7 +101,8 @@ class AddTeacherView extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.022,
                   ),
-                  const ColumnSubjectCheck(enabled: false,
+                  const ColumnSubjectCheck(
+                    enabled: false,
                     horizntalSize: 55,
                     itemsSubject: itemsClass,
                     title: ': الصف',
@@ -107,20 +112,20 @@ class AddTeacherView extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-               CustomButton(
-                title: 'إضافة مادة',onPressed: () {}
-              ),
+              CustomButton(title: 'إضافة مادة', onPressed: () {}),
               const SizedBox(
                 height: 35,
               ),
               const ContainerTeacherSubjectsDisplay(
+                nameTeacher: '',
                 classes: ['صف'],
                 subjects: ['علوم'],
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.021,
               ),
-               CustomButton(onPressed: () {},
+              CustomButton(
+                onPressed: () {},
                 title: 'حفظ',
               ),
             ],

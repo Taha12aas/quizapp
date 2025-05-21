@@ -122,6 +122,7 @@ class _AddSubjectInTeacherViewState extends State<AddSubjectInTeacherView> {
                         ),
                         const SizedBox(height: 20),
                         ContainerTeacherSubjectsDisplay(
+                          nameTeacher: teacherModel.name,
                           classes: newTeacherClass.value,
                           subjects: newTeacherSubject.value,
                         ),

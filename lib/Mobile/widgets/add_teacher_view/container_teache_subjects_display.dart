@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
+import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/widgets/teather_profile_view%20copy/header_row.dart';
 import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/font_style.dart';
@@ -9,17 +12,17 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
     super.key,
     required this.classes,
     required this.subjects,
+    required this.nameTeacher,
   });
 
   final List<dynamic> classes;
   final List<dynamic> subjects;
-
-  void _deleteItem(int index) {
-    print('تم حذف العنصر: ${classes[index]} - ${subjects[index]}');
-  }
+  final String nameTeacher;
 
   @override
   Widget build(BuildContext context) {
+    List<dynamic> newClasses = [];
+    List<dynamic> newSubjects = [];
     return Container(
       margin: EdgeInsets.zero,
       width: MediaQuery.of(context).size.width * 0.99,
@@ -49,8 +52,8 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                       0: FlexColumnWidth(2),
                       1: FlexColumnWidth(1),
                       2: FlexColumnWidth(1),
-                      },
-                    children: List.generate(classes.length, (index) {
+                    },
+                    children: List.generate(subjects.length, (index) {
                       final color =
                           index.isEven ? kWhite : const Color(0xffE4E4E4);
                       return TableRow(
@@ -83,8 +86,27 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                                           ),
                                           TextButton(
                                             onPressed: () {
-                                              _deleteItem(index);
-                                              Navigator.pop(context);
+                                              for (var i = 0;
+                                                  i < subjects.length;
+                                                  i++) {
+                                                if (i != index) {
+                                                  newSubjects.add(subjects[i]);
+                                                  newClasses.add(classes[i]);
+                                                }
+                                              }
+                                              context
+                                                  .read<CubitTeacher>()
+                                                  .updateUsers(
+                                                      'classes_subjects',
+                                                      nameTeacher, {
+                                                'صف': newClasses,
+                                                'مواد': newSubjects
+                                              });
+                                              Navigator.pushNamedAndRemoveUntil(
+                                                context,
+                                                HomeView.id,
+                                                (route) => false,
+                                              );
                                             },
                                             child: const Text('حذف',
                                                 style: TextStyle(color: kred)),
@@ -95,7 +117,7 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
                                   );
                                 },
                                 child: Text(
-                                  'حذف', 
+                                  'حذف',
                                   style: FontStyleApp.orange10.copyWith(
                                     fontSize: getResponsiveText(context, 18),
                                   ),
