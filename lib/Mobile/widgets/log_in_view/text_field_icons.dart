@@ -23,14 +23,6 @@ class TextFieldIcons extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Container(
-          color: Colors.black,
-          height: 25,
-          width: 2,
-        ),
-        const SizedBox(
-          width: 10,
-        )
       ],
     );
   }

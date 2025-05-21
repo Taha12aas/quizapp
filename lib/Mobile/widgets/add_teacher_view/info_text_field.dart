@@ -9,7 +9,8 @@ class InfoTextField extends StatelessWidget {
     required this.hintText,
     required this.iconData,
     required this.controller,
-    this.validator, this.keyboardType,
+    this.validator,
+    this.keyboardType,
   });
   final String hintText;
   final IconData iconData;

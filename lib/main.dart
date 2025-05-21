@@ -6,6 +6,7 @@ import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
 import 'package:quizapp/Mobile/views/add_subject_in_teacher_view.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
+import 'package:quizapp/Mobile/views/change_password_view.dart';
 import 'package:quizapp/Mobile/views/class_subject_view.dart';
 import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
@@ -65,6 +66,7 @@ class QuizApp extends StatelessWidget {
           TeachersView.id: (context) => const TeachersView(),
           TeacherProfileView.id: (context) => const TeacherProfileView(),
           ClassSubjectView.id: (context) => const ClassSubjectView(),
+          ChangePasswordView.id: (context) => const ChangePasswordView(),
           AddSubjectInTeacherView.id: (context) =>
               const AddSubjectInTeacherView(),
           GeneratedQuestionsView.id: (context) =>

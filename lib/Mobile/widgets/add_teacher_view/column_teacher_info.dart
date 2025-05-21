@@ -12,7 +12,8 @@ class ColumnTeacherInfo extends StatelessWidget {
     required this.iconData,
     required this.horizntalSize,
     required this.controller,
-    this.validator, this.keyboardType,
+    this.validator,
+    this.keyboardType,
   });
   final double horizntalSize;
   final String labelText;
@@ -23,33 +24,31 @@ class ColumnTeacherInfo extends StatelessWidget {
   final TextInputType? keyboardType;
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: Padding(
-        padding: const EdgeInsets.only(left: 8),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Text(
-              labelText,
-              textAlign: TextAlign.end,
-              style: FontStyleApp.whiteBold18
-                  .copyWith(fontSize: getResponsiveText(context, 18)),
-            ),
-            HorizontalDivider(
-              size: horizntalSize,
-            ),
-            const SizedBox(
-              height: 5,
-            ),
-            InfoTextField(
-              keyboardType: keyboardType,
-              validator: validator,
-              hintText: hintText,
-              iconData: iconData,
-              controller: controller,
-            )
-          ],
-        ),
+    return Padding(
+      padding: const EdgeInsets.only(left: 8),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Text(
+            labelText,
+            textAlign: TextAlign.end,
+            style: FontStyleApp.whiteBold18
+                .copyWith(fontSize: getResponsiveText(context, 18)),
+          ),
+          HorizontalDivider(
+            size: horizntalSize,
+          ),
+          const SizedBox(
+            height: 5,
+          ),
+          InfoTextField(
+            keyboardType: keyboardType,
+            validator: validator,
+            hintText: hintText,
+            iconData: iconData,
+            controller: controller,
+          )
+        ],
       ),
     );
   }

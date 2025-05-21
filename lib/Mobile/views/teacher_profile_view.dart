@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
 import 'package:quizapp/Cubits/cubitTeacher/ques_app_status.dart';
 import 'package:quizapp/Mobile/views/add_subject_in_teacher_view.dart';
+import 'package:quizapp/Mobile/views/change_password_view.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/column_teacher_info.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/container_teache_subjects_display.dart';
@@ -101,48 +102,59 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
                                   ),
                                 ),
                               ),
-                              Text(
-                                ': الاسم',
-                                style: FontStyleApp.orange18.copyWith(
-                                    fontSize: getResponsiveText(context, 18)),
+                              Flexible(
+                                child: Text(
+                                  ': الاسم',
+                                  style: FontStyleApp.orange18.copyWith(
+                                      fontSize: getResponsiveText(context, 18)),
+                                ),
                               )
                             ]),
                         const SizedBox(height: 15),
                         Row(
                           children: [
-                            ColumnTeacherInfo(
-                              validator: (p0) {
-                                if (p0 == null || p0 == '') {
-                                  return 'العنوان مطلوب';
-                                }
-                                return null;
-                              },
-                              controller: addressTeacherController,
-                              labelText: ': العنوان',
-                              hintText: addressTeacherController.text,
-                              iconData: FontAwesomeIcons.locationDot,
-                              horizntalSize: 64,
+                            Expanded(
+                              child: ColumnTeacherInfo(
+                                validator: (p0) {
+                                  if (p0 == null || p0 == '') {
+                                    return 'العنوان مطلوب';
+                                  }
+                                  return null;
+                                },
+                                controller: addressTeacherController,
+                                labelText: ': العنوان',
+                                hintText: addressTeacherController.text,
+                                iconData: FontAwesomeIcons.locationDot,
+                                horizntalSize: 64,
+                              ),
                             ),
-                            ColumnTeacherInfo(
-                              keyboardType: TextInputType.phone,
-                              validator: (p0) {
-                                if (p0 == null || p0 == '' || p0.length != 12) {
-                                  return 'ادخال خاطئ';
-                                }
-                                return null;
-                              },
-                              controller: phoneTeacherController,
-                              labelText: ': رقم الهاتف',
-                              hintText: phoneTeacherController.text,
-                              iconData: FontAwesomeIcons.phone,
-                              horizntalSize: 89,
+                            Expanded(
+                              child: ColumnTeacherInfo(
+                                keyboardType: TextInputType.phone,
+                                validator: (p0) {
+                                  if (p0 == null ||
+                                      p0 == '' ||
+                                      p0.length != 12) {
+                                    return 'ادخال خاطئ';
+                                  }
+                                  return null;
+                                },
+                                controller: phoneTeacherController,
+                                labelText: ': رقم الهاتف',
+                                hintText: phoneTeacherController.text,
+                                iconData: FontAwesomeIcons.phone,
+                                horizntalSize: 89,
+                              ),
                             ),
                           ],
                         ),
                         const SizedBox(height: 20),
                         CustomButton(
                           title: 'تغير كلمة المرور',
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.pushNamed(context, ChangePasswordView.id,
+                                arguments: teacherModel);
+                          },
                         ),
                         const SizedBox(height: 20),
                         CustomButton(
