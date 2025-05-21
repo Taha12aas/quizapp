@@ -5,14 +5,16 @@ import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
 
 class CardSubjects extends StatelessWidget {
-  const CardSubjects(
-      {super.key,
-      required this.onTap,
-      required this.subject,
-      });
+  const CardSubjects({
+    super.key,
+    required this.onTap,
+    required this.subject,
+    required this.classSubject,
+  });
   final void Function() onTap;
 
   final String subject;
+  final String classSubject;
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -44,6 +46,26 @@ class CardSubjects extends StatelessWidget {
                 children: [
                   FittedBox(
                     child: Text(
+                      classSubject,
+                      style: FontStyleApp.orange15.copyWith(
+                        fontSize: getResponsiveText(context, 15),
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  SizedBox(width: screenWidth * 0.01),
+                  FittedBox(
+                    child: Text(
+                      ': صف',
+                      style: FontStyleApp.wite15.copyWith(
+                        fontSize: getResponsiveText(context, 15),
+                      ),
+                      overflow: TextOverflow.ellipsis,
+                    ),
+                  ),
+                  SizedBox(width: screenWidth * 0.03),
+                  FittedBox(
+                    child: Text(
                       subject,
                       style: FontStyleApp.orange15.copyWith(
                         fontSize: getResponsiveText(context, 15),
@@ -61,7 +83,7 @@ class CardSubjects extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                     ),
                   ),
-                  SizedBox(width: screenWidth * 0.03),
+                  SizedBox(width: screenWidth * 0.03)
                 ],
               ),
             ),

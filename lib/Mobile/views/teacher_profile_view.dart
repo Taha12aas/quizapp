@@ -167,6 +167,7 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
                         ),
                         const SizedBox(height: 20),
                         ContainerTeacherSubjectsDisplay(
+                          height: MediaQuery.of(context).size.height * 0.24,
                           nameTeacher: teacherModel.name,
                           classes: teacherModel.classesSubjects['صف'],
                           subjects: teacherModel.classesSubjects['مواد'],

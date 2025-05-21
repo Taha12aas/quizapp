@@ -12,13 +12,13 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
     super.key,
     required this.classes,
     required this.subjects,
-    required this.nameTeacher,
+    required this.nameTeacher, required this.height,
   });
 
   final List<dynamic> classes;
   final List<dynamic> subjects;
   final String nameTeacher;
-
+  final double height;
   @override
   Widget build(BuildContext context) {
     List<dynamic> newClasses = [];
@@ -26,7 +26,7 @@ class ContainerTeacherSubjectsDisplay extends StatelessWidget {
     return Container(
       margin: EdgeInsets.zero,
       width: MediaQuery.of(context).size.width * 0.99,
-      height: MediaQuery.of(context).size.height * 0.24,
+      height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
         color: kWhite,

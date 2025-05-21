@@ -14,12 +14,10 @@ class TeacherSubjectsView extends StatefulWidget {
 }
 
 class _TeacherSubjectsViewState extends State<TeacherSubjectsView> {
-  late List respons;
   late TeacherModel teacher;
   @override
   void didChangeDependencies() {
-    respons = ModalRoute.of(context)!.settings.arguments as List;
-    teacher = respons[0];
+    teacher = ModalRoute.of(context)!.settings.arguments as TeacherModel;
     super.didChangeDependencies();
   }
 
@@ -48,7 +46,7 @@ class _TeacherSubjectsViewState extends State<TeacherSubjectsView> {
               child: TeacherSubjectsListView(
                 subjects: teacher.classesSubjects['مواد'],
                 teacher: teacher,
-                classTeacher: respons[1],
+                classTeacher: teacher.classesSubjects['صف'],
               ),
             )
           ],

@@ -56,8 +56,10 @@ class _AddSubjectInTeacherViewState extends State<AddSubjectInTeacherView> {
 
   @override
   Widget build(BuildContext context) {
-      final ValueNotifier<List> newTeacherSubject = ValueNotifier(teacherModel.classesSubjects['مواد']);
-  final ValueNotifier<List> newTeacherClass = ValueNotifier(teacherModel.classesSubjects['صف']);
+    final ValueNotifier<List> newTeacherSubject =
+        ValueNotifier(teacherModel.classesSubjects['مواد']);
+    final ValueNotifier<List> newTeacherClass =
+        ValueNotifier(teacherModel.classesSubjects['صف']);
 
     return BlocBuilder<CubitTeacher, TeacherStatuses>(
       builder: (context, state) {
@@ -122,6 +124,7 @@ class _AddSubjectInTeacherViewState extends State<AddSubjectInTeacherView> {
                         ),
                         const SizedBox(height: 20),
                         ContainerTeacherSubjectsDisplay(
+                          height: MediaQuery.of(context).size.height * 0.6,
                           nameTeacher: teacherModel.name,
                           classes: newTeacherClass.value,
                           subjects: newTeacherSubject.value,
@@ -131,10 +134,8 @@ class _AddSubjectInTeacherViewState extends State<AddSubjectInTeacherView> {
                           title: 'إضافة مادة',
                           onPressed: () {
                             if (subjectValue.value != null) {
-                            
                               newTeacherClass.value.add(classValue.value);
 
-                         
                               newTeacherSubject.value.add(subjectValue.value!);
 
                               context.read<CubitTeacher>().updateUsers(
@@ -145,7 +146,6 @@ class _AddSubjectInTeacherViewState extends State<AddSubjectInTeacherView> {
                                   'مواد': newTeacherSubject.value
                                 },
                               );
-                              
                             }
                           },
                         ),

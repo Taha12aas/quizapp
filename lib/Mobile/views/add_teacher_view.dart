@@ -70,19 +70,23 @@ class AddTeacherView extends StatelessWidget {
               ),
               Row(
                 children: [
-                  ColumnTeacherInfo(
-                    controller: TextEditingController(),
-                    labelText: ': العنوان',
-                    hintText: 'ادخل عنوان',
-                    iconData: FontAwesomeIcons.locationDot,
-                    horizntalSize: 64,
+                  Expanded(
+                    child: ColumnTeacherInfo(
+                      controller: TextEditingController(),
+                      labelText: ': العنوان',
+                      hintText: 'ادخل عنوان',
+                      iconData: FontAwesomeIcons.locationDot,
+                      horizntalSize: 64,
+                    ),
                   ),
-                  ColumnTeacherInfo(
-                    controller: TextEditingController(),
-                    labelText: ': رقم الهاتف',
-                    hintText: 'ادخل رقم',
-                    iconData: FontAwesomeIcons.phone,
-                    horizntalSize: 89,
+                  Expanded(
+                    child: ColumnTeacherInfo(
+                      controller: TextEditingController(),
+                      labelText: ': رقم الهاتف',
+                      hintText: 'ادخل رقم',
+                      iconData: FontAwesomeIcons.phone,
+                      horizntalSize: 89,
+                    ),
                   ),
                 ],
               ),
@@ -116,10 +120,11 @@ class AddTeacherView extends StatelessWidget {
               const SizedBox(
                 height: 35,
               ),
-              const ContainerTeacherSubjectsDisplay(
+               ContainerTeacherSubjectsDisplay(
+                height: MediaQuery.of(context).size.height * 0.24,
                 nameTeacher: '',
-                classes: ['صف'],
-                subjects: ['علوم'],
+                classes: const ['صف'],
+                subjects: const ['علوم'],
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.021,

@@ -53,7 +53,7 @@ class TeacherCardDropDownSearchItem extends StatelessWidget {
             ),
             ClipRRect(
               borderRadius: BorderRadius.circular(8),
-              child: Image.asset(
+              child: Image.network(
                 teacherImge,
                 height: screenHeight * 0.074,
                 fit: BoxFit.cover,

@@ -67,7 +67,7 @@ class _TeacherSubjectsInfoViewState extends State<TeacherSubjectsInfoView> {
                     onTap: () {
                       log(teachers.length.toString());
                       Navigator.pushNamed(context, TeacherSubjectsView.id,
-                          arguments: [teachers[index],calssTeacher]);
+                          arguments: teachers[index]);
                     },
                     image: teachers[index].photo,
                     teacherName: teachers[index].name,

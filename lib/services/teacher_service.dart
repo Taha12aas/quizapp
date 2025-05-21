@@ -22,7 +22,7 @@ class TeacherService {
   }
   static Future<void> updateMultiValue(
       Map columnsValue, String teacherName) async {
-    final data = await supabase
+     await supabase
         .from('teachers')
         .update(columnsValue).eq('name', teacherName);
   }

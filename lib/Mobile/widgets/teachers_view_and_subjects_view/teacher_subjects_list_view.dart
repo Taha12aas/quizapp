@@ -11,7 +11,7 @@ class TeacherSubjectsListView extends StatelessWidget {
     required this.teacher,
   });
   final List subjects;
-  final String classTeacher;
+  final List classTeacher;
   final TeacherModel teacher;
   @override
   Widget build(BuildContext context) {
@@ -21,10 +21,11 @@ class TeacherSubjectsListView extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(top: 10),
           child: CardSubjects(
+            classSubject: classTeacher[index],
             subject: subjects[index],
             onTap: () {
               Navigator.pushNamed(context, TeacherSubjectGeneratedView.id,
-                  arguments: [teacher, classTeacher, subjects[index]]);
+                  arguments: [teacher, classTeacher[index], subjects[index]]);
             },
           ),
         );
