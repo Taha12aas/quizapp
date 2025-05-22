@@ -20,17 +20,21 @@ class TeacherService {
         .update({columnName: value}).eq('name', teacherName);
     debugPrint('تمت تعديل البيانات: $data');
   }
+
   static Future<void> updateMultiValue(
       Map columnsValue, String teacherName) async {
-     await supabase
+    await supabase
         .from('teachers')
-        .update(columnsValue).eq('name', teacherName);
+        .update(columnsValue)
+        .eq('name', teacherName);
   }
-    static Future<void> deleteSubjectInTeacher(
- String teacherName, dynamic subjectName,String subjectClass) async {
-    final data = await supabase
-        .from('teachers')
-        .delete() .eq('name', teacherName,);
-    debugPrint('تمت تعديل البيانات: $data');
+
+  static Future<void> deleteTeacher(String teacherName) async {
+    final data = await supabase.from('teachers').delete().eq(
+          'name',
+          teacherName,
+        );
+    debugPrint(
+        'تمت تعديل البياsssssssssssssssssssssssssssssssssssssنات: $data');
   }
 }

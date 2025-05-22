@@ -43,4 +43,14 @@ class CubitTeacher extends Cubit<TeacherStatuses> {
       emit(FaliureStateTeacher());
     }
   }
+
+  void deleteUsers( String teacherName) async {
+    emit(LoadingStateTeacher());
+    try {
+      await TeacherService.deleteTeacher(teacherName);
+      emit(SuccessStateTeacher());
+    } catch (e) {
+      emit(FaliureStateTeacher());
+    }
+  }
 }
