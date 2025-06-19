@@ -12,7 +12,6 @@ import 'package:quizapp/utils/responsive_text.dart';
 
 class ListViewItemCardSubject extends StatelessWidget {
   const ListViewItemCardSubject({super.key});
-
   Future<void> _generatePdf(BuildContext context, int index) async {
     try {
       final subject = CubitSubject.subjectsCount[index];
@@ -81,19 +80,41 @@ class ListViewItemCardSubject extends StatelessWidget {
         ),
       );
 
-      final outputDir = await getApplicationDocumentsDirectory();
-      final filePath = '${outputDir.path}/courses_details.pdf';
+      String filePath;
+
+      if (Platform.isAndroid) {
+        // مجلد التنزيلات في أندرويد
+        final downloadsDirs = await getExternalStorageDirectories(
+          type: StorageDirectory.downloads,
+        );
+        final downloadsDir = downloadsDirs?.first;
+        if (downloadsDir == null) {
+          throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات');
+        }
+        filePath = '${downloadsDir.path}/courses_details.pdf';
+      } else if (Platform.isWindows) {
+        // مجلد التنزيلات في ويندوز
+        final downloadsDir = await getDownloadsDirectory();
+        if (downloadsDir == null) {
+          throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات في ويندوز');
+        }
+        filePath = '${downloadsDir.path}/courses_details.pdf';
+      } else {
+        // مجلد المستندات للأنظمة الأخرى
+        final docDir = await getApplicationDocumentsDirectory();
+        filePath = '${docDir.path}/courses_details.pdf';
+      }
+
       final file = File(filePath);
       await file.writeAsBytes(await pdf.save());
 
-      print('File saved to $filePath');
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context)
-          .showSnackBar(const SnackBar(content: Text('تم حفظ الملف بنجاح')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('تم حفظ الملف بنجاح في $filePath')),
+      );
     } catch (e) {
-      // ignore: use_build_context_synchronously
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text('حدث خطأ: ${e.toString()}')));
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('حدث خطأ: ${e.toString()}')),
+      );
     }
   }
 
