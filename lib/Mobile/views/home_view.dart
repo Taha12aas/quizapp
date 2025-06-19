@@ -41,17 +41,17 @@ class _HomeViewState extends State<HomeView> {
                 return Scaffold(
                   appBar: mainAppBar('الصفحة الرئيسية', context),
                   drawer: const CustomDrawer(),
-                  body: Padding(
-                    padding: const EdgeInsets.all(18),
-                    child: LiquidPullToRefresh(
-                      animSpeedFactor: 10,
-                      backgroundColor: kAshen,
-                      color: kOrange,
-                      showChildOpacityTransition: false,
-                      onRefresh: () async {
-                        BlocProvider.of<CubitSubject>(context)
-                            .fetchSubject(refresh: true);
-                      },
+                  body: LiquidPullToRefresh(
+                    animSpeedFactor: 10,
+                    backgroundColor: kAshen,
+                    color: kOrange,
+                    showChildOpacityTransition: false,
+                    onRefresh: () async {
+                      BlocProvider.of<CubitSubject>(context)
+                          .fetchSubject(refresh: true);
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.all(18),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [

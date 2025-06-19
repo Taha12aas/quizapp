@@ -24,13 +24,15 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 void main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   // تعيين شريط النظام بشكل صريح
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: kBackGround, // إزالة اللون الأبيض في شريط الحالة
-    systemNavigationBarColor:
-        kBackGround, // إزالة اللون الأبيض في شريط التنقل السفلي
-    systemNavigationBarIconBrightness:
-        Brightness.dark, // ضبط سطوع الأيقونات في شريط التنقل
-  ));
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: kBackGround, // إزالة اللون الأبيض في شريط الحالة
+      systemNavigationBarColor:
+          kBackGround, // إزالة اللون الأبيض في شريط التنقل السفلي
+      systemNavigationBarIconBrightness:
+          Brightness.dark, // ضبط سطوع الأيقونات في شريط التنقل
+    ),
+  );
   await Supabase.initialize(
     url: 'https://gewushokramjbiqcbpng.supabase.co',
     anonKey:
@@ -46,15 +48,9 @@ class QuizApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => AdminCubit(),
-        ),
-        BlocProvider(
-          create: (context) => CubitSubject(),
-        ),
-        BlocProvider(
-          create: (context) => CubitTeacher(),
-        )
+        BlocProvider(create: (context) => AdminCubit()),
+        BlocProvider(create: (context) => CubitSubject()),
+        BlocProvider(create: (context) => CubitTeacher()),
       ],
       child: MaterialApp(
         routes: {
@@ -67,16 +63,16 @@ class QuizApp extends StatelessWidget {
           TeacherProfileView.id: (context) => const TeacherProfileView(),
           ClassSubjectView.id: (context) => const ClassSubjectView(),
           ChangePasswordView.id: (context) => const ChangePasswordView(),
-          AddSubjectInTeacherView.id: (context) =>
-              const AddSubjectInTeacherView(),
-          GeneratedQuestionsView.id: (context) =>
-              const GeneratedQuestionsView(),
-          ReadingGeneratedQuestionsView.id: (context) =>
-              const ReadingGeneratedQuestionsView(),
-          TeacherSubjectsInfoView.id: (context) =>
-              const TeacherSubjectsInfoView(),
-          TeacherSubjectGeneratedView.id: (context) =>
-              const TeacherSubjectGeneratedView()
+          AddSubjectInTeacherView.id:
+              (context) => const AddSubjectInTeacherView(),
+          GeneratedQuestionsView.id:
+              (context) => const GeneratedQuestionsView(),
+          ReadingGeneratedQuestionsView.id:
+              (context) => const ReadingGeneratedQuestionsView(),
+          TeacherSubjectsInfoView.id:
+              (context) => const TeacherSubjectsInfoView(),
+          TeacherSubjectGeneratedView.id:
+              (context) => const TeacherSubjectGeneratedView(),
         },
         theme: ThemeData(
           scaffoldBackgroundColor: kBackGround,
