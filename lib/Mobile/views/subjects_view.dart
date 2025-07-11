@@ -10,20 +10,21 @@ class SubjectsView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> classes = kSchoolSubjects.keys.toList();
     return Scaffold(
       appBar: customAppBar('المواد'),
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: ListView.builder(
-          itemCount: kClassesPrimaryStage.length,
+          itemCount: classes.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 7),
               child: ClassClassification(
-                label: kClassesPrimaryStage[index],
+                label: classes[index],
                 onTap: () {
                   Navigator.pushNamed(context, ClassSubjectView.id,
-                      arguments: kClassesPrimaryStage[index]);
+                      arguments: classes[index]);
                 },
               ),
             );

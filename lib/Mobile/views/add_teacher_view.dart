@@ -141,6 +141,7 @@ class _AddTeacherViewState extends State<AddTeacherView> {
                           if (globalKey.currentState!.validate()) {
                             context.read<CubitTeacher>().insertUsers(
                                   TeacherModel(
+                                      password: ' ',
                                       name: teacherName.text,
                                       photo: kImage,
                                       phone: int.parse(teacherPhone.text),
