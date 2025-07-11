@@ -6,30 +6,30 @@ import 'package:quizapp/Mobile/widgets/add_teacher_view/container_teache_subject
 import 'package:quizapp/Mobile/widgets/add_teacher_view/custom_button.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/horizontal_divider.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/info_text_field.dart';
+import 'package:quizapp/utils/constants.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 import 'package:quizapp/utils/font_style.dart';
 import 'package:quizapp/utils/responsive_text.dart';
 
-class AddTeacherView extends StatelessWidget {
+class AddTeacherView extends StatefulWidget {
   const AddTeacherView({super.key});
-  static const List<String> itemsClass = [
-    'صف أول',
-    'صف ثاني',
-    'صف ثالث',
-    'صف رابع',
-    'صف خامس',
-    'صف سادس'
-  ];
-  static const List<String> itemsSubject = [
-    'علوم',
-    'رياضيات',
-    'انكليزي',
-    'عربي',
-    'فرنسي',
-    'تاريخ',
-    'جغرافيا'
-  ];
+
   static String id = 'AddTeacher';
+
+  @override
+  State<AddTeacherView> createState() => _AddTeacherViewState();
+}
+
+class _AddTeacherViewState extends State<AddTeacherView> {
+  TextEditingController teacherName = TextEditingController();
+  TextEditingController teacherPhone = TextEditingController();
+  TextEditingController teacherAddress = TextEditingController();
+  bool enable = false;
+  bool selected = false;
+  String selectedClass = 'بكلوريا';
+  String selectedSubject = '';
+  List<String> classes = [];
+  List<String> subjects = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,19 +96,32 @@ class AddTeacherView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  const ColumnSubjectCheck(
-                    enabled: true,
+                  ColumnSubjectCheck(
+                    onChanged: (p0) {
+                      selectedSubject = p0!;
+                    },
+                    enabled: enable,
+                    selectedValue: kSchoolSubjects[selectedClass]![0],
                     horizntalSize: 52,
-                    itemsSubject: itemsSubject,
-                    title: ': المادة',
+                    itemsSubject: kSchoolSubjects[selectedClass]!,
+
+title: ': المادة',
                   ),
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.022,
                   ),
-                  const ColumnSubjectCheck(
-                    enabled: false,
+                  ColumnSubjectCheck(
+                    onChanged: (p0) {
+                      setState(() {
+                        enable = true;
+                        selectedClass = p0!;
+                        selected = true;
+                      });
+                    },
+                    enabled: true,
                     horizntalSize: 55,
-                    itemsSubject: itemsClass,
+                    selectedValue: selectedClass,
+                    itemsSubject: kSchoolSubjects.keys.toList(),
                     title: ': الصف',
                   ),
                 ],
@@ -116,15 +129,24 @@ class AddTeacherView extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              CustomButton(title: 'إضافة مادة', onPressed: () {}),
+              CustomButton(
+                  title: 'إضافة مادة',
+                  onPressed: () {
+                    setState(() {
+                      if (selected && selectedSubject != '') {
+                        classes.add(selectedClass);
+                        subjects.add(selectedSubject);
+                      }
+                    });
+                  }),
               const SizedBox(
                 height: 35,
               ),
-               ContainerTeacherSubjectsDisplay(
+              ContainerTeacherSubjectsDisplay(
                 height: MediaQuery.of(context).size.height * 0.24,
                 nameTeacher: '',
-                classes: const ['صف'],
-                subjects: const ['علوم'],
+                classes: classes,
+                subjects: subjects,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.021,
