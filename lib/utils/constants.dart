@@ -9,6 +9,8 @@ const kBlack = Colors.black;
 const kWhite = Colors.white;
 const kred = Colors.red;
 const klogo = 'assets/images/loogo.png';
+const kImage =
+    'https://static.vecteezy.com/system/resources/thumbnails/039/612/043/small/ai-generated-portrait-of-professional-teacher-on-transparent-background-image-free-png.png';
 const List<String> kClassesPrimaryStage = [
   'اول',
   'ثاني',

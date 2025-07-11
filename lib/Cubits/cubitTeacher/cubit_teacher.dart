@@ -44,10 +44,20 @@ class CubitTeacher extends Cubit<TeacherStatuses> {
     }
   }
 
-  void deleteUsers( String teacherName) async {
+  void deleteUsers(String teacherName) async {
     emit(LoadingStateTeacher());
     try {
       await TeacherService.deleteTeacher(teacherName);
+      emit(SuccessStateTeacher());
+    } catch (e) {
+      emit(FaliureStateTeacher());
+    }
+  }
+
+  void insertUsers(TeacherModel teacher) async {
+    emit(LoadingStateTeacher());
+    try {
+      await TeacherService.insertTeacher(teacher);
       emit(SuccessStateTeacher());
     } catch (e) {
       emit(FaliureStateTeacher());

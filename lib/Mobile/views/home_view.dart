@@ -49,6 +49,7 @@ class _HomeViewState extends State<HomeView> {
                     onRefresh: () async {
                       BlocProvider.of<CubitSubject>(context)
                           .fetchSubject(refresh: true);
+                          BlocProvider.of<CubitTeacher>(context).fetchUsers();
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(18),

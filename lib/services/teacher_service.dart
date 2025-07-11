@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/models/teacher_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class TeacherService {
@@ -19,6 +20,10 @@ class TeacherService {
         .from('teachers')
         .update({columnName: value}).eq('name', teacherName);
     debugPrint('تمت تعديل البيانات: $data');
+  }
+
+  static Future<void> insertTeacher(TeacherModel teacher) async {
+    await supabase.from('teachers').insert(teacher.toJson());
   }
 
   static Future<void> updateMultiValue(
