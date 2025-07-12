@@ -60,138 +60,144 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
             key: globalKey,
             child: Scaffold(
               appBar: customAppBar(teacherModel.name),
-              body: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
-                child: Center(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        const SizedBox(height: 20),
-                        TeacherPhoto(
-                          selectedImage: selectedImage,
-                          onPressed: _pickImage,
-                          image: teacherModel.photo,
-                        ),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              SizedBox(
-                                width: 175,
-                                child: TextFormField(
-                                  validator: (value) {
-                                    if (value == null || value == '') {
-                                      return 'الاسم مطلوب';
-                                    }
-                                    return null;
-                                  },
-                                  controller: nameTeacherController,
-                                  textAlign: TextAlign.center,
-                                  style: FontStyleApp.white18.copyWith(
-                                    fontSize: getResponsiveText(context, 18),
-                                  ),
-                                  textDirection: TextDirection.rtl,
-                                  decoration: const InputDecoration(
-                                    contentPadding:
-                                        EdgeInsets.symmetric(vertical: 1),
-                                    hintTextDirection: TextDirection.rtl,
-                                    hintStyle: TextStyle(color: Colors.black),
-                                    focusedBorder: UnderlineInputBorder(
-                                      borderSide: BorderSide(color: kOrange),
+              body: SafeArea(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 18),
+                  child: Center(
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          const SizedBox(height: 20),
+                          TeacherPhoto(
+                            selectedImage: selectedImage,
+                            onPressed: _pickImage,
+                            image: teacherModel.photo,
+                          ),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 175,
+                                  child: TextFormField(
+                                    validator: (value) {
+                                      if (value == null || value == '') {
+                                        return 'الاسم مطلوب';
+                                      }
+                                      return null;
+                                    },
+                                    controller: nameTeacherController,
+                                    textAlign: TextAlign.center,
+                                    style: FontStyleApp.white18.copyWith(
+                                      fontSize: getResponsiveText(context, 18),
+                                    ),
+                                    textDirection: TextDirection.rtl,
+                                    decoration: const InputDecoration(
+                                      contentPadding:
+                                          EdgeInsets.symmetric(vertical: 1),
+                                      hintTextDirection: TextDirection.rtl,
+                                      hintStyle: TextStyle(color: Colors.black),
+                                      focusedBorder: UnderlineInputBorder(
+                                        borderSide: BorderSide(color: kOrange),
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
-                              Flexible(
-                                child: Text(
-                                  ': الاسم',
-                                  style: FontStyleApp.orange18.copyWith(
-                                      fontSize: getResponsiveText(context, 18)),
+                                Flexible(
+                                  child: Text(
+                                    ': الاسم',
+                                    style: FontStyleApp.orange18.copyWith(
+                                        fontSize:
+                                            getResponsiveText(context, 18)),
+                                  ),
+                                )
+                              ]),
+                          const SizedBox(height: 15),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: ColumnTeacherInfo(
+                                  validator: (p0) {
+                                    if (p0 == null || p0 == '') {
+                                      return 'العنوان مطلوب';
+                                    }
+                                    return null;
+                                  },
+                                  controller: addressTeacherController,
+                                  labelText: ': العنوان',
+                                  hintText: addressTeacherController.text,
+                                  iconData: FontAwesomeIcons.locationDot,
+                                  horizntalSize: 64,
                                 ),
-                              )
-                            ]),
-                        const SizedBox(height: 15),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: ColumnTeacherInfo(
-                                validator: (p0) {
-                                  if (p0 == null || p0 == '') {
-                                    return 'العنوان مطلوب';
-                                  }
-                                  return null;
-                                },
-                                controller: addressTeacherController,
-                                labelText: ': العنوان',
-                                hintText: addressTeacherController.text,
-                                iconData: FontAwesomeIcons.locationDot,
-                                horizntalSize: 64,
                               ),
-                            ),
-                            Expanded(
-                              child: ColumnTeacherInfo(
-                                keyboardType: TextInputType.phone,
-                                validator: (p0) {
-                                  if (p0 == null ||
-                                      p0 == '' ||
-                                      p0.length != 12) {
-                                    return 'ادخال خاطئ';
-                                  }
-                                  return null;
-                                },
-                                controller: phoneTeacherController,
-                                labelText: ': رقم الهاتف',
-                                hintText: phoneTeacherController.text,
-                                iconData: FontAwesomeIcons.phone,
-                                horizntalSize: 89,
+                              Expanded(
+                                child: ColumnTeacherInfo(
+                                  keyboardType: TextInputType.phone,
+                                  validator: (p0) {
+                                    if (p0 == null ||
+                                        p0 == '' ||
+                                        p0.length != 12) {
+                                      return 'ادخال خاطئ';
+                                    }
+                                    return null;
+                                  },
+                                  controller: phoneTeacherController,
+                                  labelText: ': رقم الهاتف',
+                                  hintText: phoneTeacherController.text,
+                                  iconData: FontAwesomeIcons.phone,
+                                  horizntalSize: 89,
+                                ),
                               ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        CustomButton(
-                          title: 'تغير كلمة المرور',
-                          onPressed: () {
-                            Navigator.pushNamed(context, ChangePasswordView.id,
-                                arguments: teacherModel);
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        CustomButton(
-                          title: 'إضافة مادة',
-                          onPressed: () {
-                            Navigator.pushNamed(
-                                context, AddSubjectInTeacherView.id,
-                                arguments: teacherModel);
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                        ContainerTeacherSubjectsDisplay(
-                          height: MediaQuery.of(context).size.height * 0.24,
-                          nameTeacher: teacherModel.name,
-                          classes: teacherModel.classesSubjects['صف'],
-                          subjects: teacherModel.classesSubjects['مواد'],
-                        ),
-                        const SizedBox(height: 30),
-                        CustomButton(
-                          title: 'حفظ',
-                          onPressed: () {
-                            if (globalKey.currentState!.validate()) {
-                              context.read<CubitTeacher>().updateMultiColumns({
-                                'name': nameTeacherController.text,
-                                'phone': phoneTeacherController.text,
-                                'address': addressTeacherController.text
-                              }, teacherModel.name);
-                              Navigator.pushNamedAndRemoveUntil(
-                                context,
-                                HomeView.id,
-                                (route) => false,
-                              );
-                            }
-                          },
-                        ),
-                        const SizedBox(height: 20),
-                      ],
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          CustomButton(
+                            title: 'تغير كلمة المرور',
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, ChangePasswordView.id,
+                                  arguments: teacherModel);
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          CustomButton(
+                            title: 'إضافة مادة',
+                            onPressed: () {
+                              Navigator.pushNamed(
+                                  context, AddSubjectInTeacherView.id,
+                                  arguments: teacherModel);
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                          ContainerTeacherSubjectsDisplay(
+                            height: MediaQuery.of(context).size.height * 0.24,
+                            nameTeacher: teacherModel.name,
+                            classes: teacherModel.classesSubjects['صف'],
+                            subjects: teacherModel.classesSubjects['مواد'],
+                          ),
+                          const SizedBox(height: 30),
+                          CustomButton(
+                            title: 'حفظ',
+                            onPressed: () {
+                              if (globalKey.currentState!.validate()) {
+                                context
+                                    .read<CubitTeacher>()
+                                    .updateMultiColumns({
+                                  'name': nameTeacherController.text,
+                                  'phone': phoneTeacherController.text,
+                                  'address': addressTeacherController.text
+                                }, teacherModel.name);
+                                Navigator.pushNamedAndRemoveUntil(
+                                  context,
+                                  HomeView.id,
+                                  (route) => false,
+                                );
+                              }
+                            },
+                          ),
+                          const SizedBox(height: 20),
+                        ],
+                      ),
                     ),
                   ),
                 ),
