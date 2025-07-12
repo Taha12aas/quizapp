@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizapp/Mobile/views/about_view.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/views/change_password_admin_view.dart';
 import 'package:quizapp/Mobile/views/change_phone_admin_view.dart';
@@ -86,12 +87,13 @@ class CustomDrawerState extends State<CustomDrawer> {
             },
           ),
           CustomeTileDrawerItem(
-            text: 'About',
+            text: 'حول التطبيق',
             icon: Icons.info_outline,
             isSelected: _selectedIndex == 5,
             onTap: () {
               _onItemTapped(5);
               Scaffold.of(context).closeDrawer();
+              Navigator.pushNamed(context, AboutView.id);
             },
           ),
         ],

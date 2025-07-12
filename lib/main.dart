@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizapp/Cubits/admin/admin_cubit.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
+import 'package:quizapp/Mobile/views/about_view.dart';
 import 'package:quizapp/Mobile/views/add_subject_in_teacher_view.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/views/change_password_admin_view.dart';
@@ -77,7 +78,8 @@ class QuizApp extends StatelessWidget {
               const TeacherSubjectGeneratedView(),
           ChangePhoneAdminView.id: (context) => const ChangePhoneAdminView(),
           ChangePasswordAdminView.id: (context) =>
-              const ChangePasswordAdminView()
+              const ChangePasswordAdminView(),
+          AboutView.id: (context) => const AboutView()
         },
         theme: ThemeData(
           scaffoldBackgroundColor: kBackGround,
