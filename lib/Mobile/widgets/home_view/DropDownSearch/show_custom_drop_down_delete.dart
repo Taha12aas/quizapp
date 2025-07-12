@@ -149,6 +149,9 @@ class CustomAlertDialogButton extends StatelessWidget {
                 iconData: Icons.close,
               ),
             ),
+            const SizedBox(
+              width: 10,
+            ),
             Expanded(
               child: CustomButton(
                 onPressed: () {

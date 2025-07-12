@@ -10,46 +10,28 @@ class CustomButton extends StatelessWidget {
     required this.title,
     required this.onPressed,
   });
+
   final String title;
   final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        border: Border.all(
-          color: kOrangeBlack,
-          width: 0.5,
+    return SizedBox(
+      width: double.infinity,
+      child: ElevatedButton(
+        onPressed: onPressed,
+        style: ElevatedButton.styleFrom(
+          backgroundColor: kOrange,
+          foregroundColor: Colors.white,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(20),
+          ),
+          elevation: 3,
         ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.5),
-            blurRadius: 5.0,
-            offset: const Offset(3, 3),
-          ),
-        ],
-        borderRadius: BorderRadius.circular(24),
-      ),
-      child: Center(
-        child: ElevatedButton(
-          onPressed: onPressed,
-          style: ElevatedButton.styleFrom(
-            backgroundColor: kOrange,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(24),
-            ),
-            minimumSize: Size(
-              double.infinity,
-              clampDouble(MediaQuery.of(context).size.height * 0.05, 40, 60),
-            ),
-          ),
-          child: FittedBox(
-            child: Text(
-              title,
-              style: FontStyleApp.white15.copyWith(
-                fontSize: getResponsiveText(context, 20),
-              ),
-            ),
+        child: Text(
+          title,
+          style: FontStyleApp.white15.copyWith(
+            fontSize: getResponsiveText(context, 18),
           ),
         ),
       ),
