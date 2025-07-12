@@ -16,15 +16,15 @@ class ClassSubjectView extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(18),
         child: ListView.builder(
-          itemCount: kPrimaryStage.length,
+          itemCount: kSchoolSubjects[className]!.length,
           itemBuilder: (context, index) {
             return Padding(
               padding: const EdgeInsets.symmetric(vertical: 7),
               child: ClassClassification(
-                label: kPrimaryStage[index],
+                label: kSchoolSubjects[className]![index],
                 onTap: () {
                   Navigator.pushNamed(context, GeneratedQuestionsView.id,
-                      arguments: [kPrimaryStage[index], className]);
+                      arguments: [kSchoolSubjects[className]![index], className]);
                 },
               ),
             );

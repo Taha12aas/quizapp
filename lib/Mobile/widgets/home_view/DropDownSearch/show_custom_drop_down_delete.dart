@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/widgets/add_teacher_view/column_teacher_info.dart';
-import 'package:quizapp/Mobile/widgets/log_in_view/auth_text_field.dart';
 import 'package:quizapp/Mobile/widgets/home_view/DropDownSearch/teacher_card_drop_down_search_item.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/custom_button.dart';
 import 'package:quizapp/utils/constants.dart';
