@@ -56,59 +56,61 @@ class _LogInViewState extends State<LogInView> {
                     constraints: BoxConstraints(
                         minHeight: MediaQuery.sizeOf(context).height),
                     child: IntrinsicHeight(
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 18, right: 18, top: 120),
-                        child: Column(
-                          children: [
-                            const LogoImage(),
-                            const SizedBox(height: 20),
-                            const SizedBox(height: 30),
-                            const Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Flexible(
-                                  child: Text(
-                                    'تسجيل الدخول',
-                                    textAlign: TextAlign.end,
-                                    style: ArabicTextStyle(
-                                        arabicFont: ArabicFont.aalooBhaijaan,
-                                        fontSize: 20,
-                                        color: kOrange),
+                      child: SafeArea(
+                        child: Padding(
+                          padding: const EdgeInsets.only(
+                              left: 18, right: 18, top: 120),
+                          child: Column(
+                            children: [
+                              const LogoImage(),
+                              const SizedBox(height: 20),
+                              const SizedBox(height: 30),
+                              const Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Flexible(
+                                    child: Text(
+                                      'تسجيل الدخول',
+                                      textAlign: TextAlign.end,
+                                      style: ArabicTextStyle(
+                                          arabicFont: ArabicFont.aalooBhaijaan,
+                                          fontSize: 20,
+                                          color: kOrange),
+                                    ),
                                   ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 18),
-                            LogInTextField(
-                              initialValue: '963988818024',
-                              validator: validateToPhoneNumber,
-                              hintText: '963988888888',
-                              iconData: FontAwesomeIcons.phone,
-                              keyboardType: true,
-                            ),
-                            const SizedBox(height: 18),
-                            LogInTextField(
-                              initialValue: 'Taha!@#taha123',
-                              validator: validateToPassword,
-                              hintText: 'كلمة المرور',
-                              iconData: FontAwesomeIcons.lock,
-                              obscureText: true,
-                            ),
-                            const Spacer(),
-                            CustomButtonIcon(
-                              iconData: Icons.login,
-                              label: 'تسجيل الدخول',
-                              onPressed: () async {
-                                isActiv = true;
-                                if (globalKey.currentState!.validate()) {
-                                  await BlocProvider.of<AdminCubit>(context)
-                                      .featchAdmin(phoneNumber);
-                                }
-                              },
-                            ),
-                            const SizedBox(height: 65),
-                          ],
+                                ],
+                              ),
+                              const SizedBox(height: 18),
+                              LogInTextField(
+                                initialValue: '963988818024',
+                                validator: validateToPhoneNumber,
+                                hintText: '963988888888',
+                                iconData: FontAwesomeIcons.phone,
+                                keyboardType: true,
+                              ),
+                              const SizedBox(height: 18),
+                              LogInTextField(
+                                initialValue: 'Taha!@#taha123',
+                                validator: validateToPassword,
+                                hintText: 'كلمة المرور',
+                                iconData: FontAwesomeIcons.lock,
+                                obscureText: true,
+                              ),
+                              const Spacer(),
+                              CustomButtonIcon(
+                                iconData: Icons.login,
+                                label: 'تسجيل الدخول',
+                                onPressed: () async {
+                                  isActiv = true;
+                                  if (globalKey.currentState!.validate()) {
+                                    await BlocProvider.of<AdminCubit>(context)
+                                        .featchAdmin(phoneNumber);
+                                  }
+                                },
+                              ),
+                              const SizedBox(height: 15),
+                            ],
+                          ),
                         ),
                       ),
                     ),
