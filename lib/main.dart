@@ -63,16 +63,16 @@ class QuizApp extends StatelessWidget {
           TeacherProfileView.id: (context) => const TeacherProfileView(),
           ClassSubjectView.id: (context) => const ClassSubjectView(),
           ChangePasswordView.id: (context) => const ChangePasswordView(),
-          AddSubjectInTeacherView.id:
-              (context) => const AddSubjectInTeacherView(),
-          GeneratedQuestionsView.id:
-              (context) => const GeneratedQuestionsView(),
-          ReadingGeneratedQuestionsView.id:
-              (context) => const ReadingGeneratedQuestionsView(),
-          TeacherSubjectsInfoView.id:
-              (context) => const TeacherSubjectsInfoView(),
-          TeacherSubjectGeneratedView.id:
-              (context) => const TeacherSubjectGeneratedView(),
+          AddSubjectInTeacherView.id: (context) =>
+              const AddSubjectInTeacherView(),
+          GeneratedQuestionsView.id: (context) =>
+              const GeneratedQuestionsView(),
+          ReadingGeneratedQuestionsView.id: (context) =>
+              const ReadingGeneratedQuestionsView(),
+          TeacherSubjectsInfoView.id: (context) =>
+              const TeacherSubjectsInfoView(),
+          TeacherSubjectGeneratedView.id: (context) =>
+              const TeacherSubjectGeneratedView(),
         },
         theme: ThemeData(
           scaffoldBackgroundColor: kBackGround,
