@@ -24,6 +24,7 @@ class CustomDrawerState extends State<CustomDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: kAshen,
       child: ListView(
         children: [
           const DrawerHeader(

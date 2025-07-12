@@ -39,13 +39,13 @@ class CustomeTileDrawerItem extends StatelessWidget {
                 text,
                 style: TextStyle(
                   fontSize: getResponsiveText(context, 15),
-                  color: isSelected ? kOrange : Colors.black,
+                  color: isSelected ? kOrange : Colors.white,
                 ),
               ),
               const SizedBox(width: 10),
               Icon(
                 icon,
-                color: isSelected ? kOrange : Colors.black,
+                color: isSelected ? kOrange : Colors.white,
               ),
               const SizedBox(width: 10),
             ],

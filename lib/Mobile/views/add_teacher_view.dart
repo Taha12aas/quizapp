@@ -50,7 +50,7 @@ class _AddTeacherViewState extends State<AddTeacherView> {
                     Text(
                       ': الاسم',
                       textAlign: TextAlign.end,
-                      style: FontStyleApp.white18
+                      style: FontStyleApp.whiteBold18
                           .copyWith(fontSize: getResponsiveText(context, 18)),
                     ),
                   ],
@@ -59,7 +59,7 @@ class _AddTeacherViewState extends State<AddTeacherView> {
                   size: 50,
                 ),
                 const SizedBox(
-                  height: 18,
+                  height: 10,
                 ),
                 InfoTextField(
                   validator: (p0) {
@@ -73,7 +73,7 @@ class _AddTeacherViewState extends State<AddTeacherView> {
                   iconData: FontAwesomeIcons.userPlus,
                 ),
                 const SizedBox(
-                  height: 16,
+                  height: 10,
                 ),
                 ColumnTeacherInfo(
                   validator: (p0) {
@@ -87,6 +87,9 @@ class _AddTeacherViewState extends State<AddTeacherView> {
                   hintText: 'ادخل عنوان',
                   iconData: FontAwesomeIcons.locationDot,
                   horizntalSize: 64,
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 ColumnTeacherInfo(
                   keyboardType: TextInputType.number,

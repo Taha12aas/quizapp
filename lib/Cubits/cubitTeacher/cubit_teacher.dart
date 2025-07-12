@@ -28,7 +28,7 @@ class CubitTeacher extends Cubit<TeacherStatuses> {
     emit(LoadingStateTeacher());
     try {
       await TeacherService.updateTeacher(columnName, teacherName, value);
-      emit(SuccessStateTeacher());
+      fetchUsers();
     } catch (e) {
       emit(FaliureStateTeacher());
     }
@@ -38,7 +38,7 @@ class CubitTeacher extends Cubit<TeacherStatuses> {
     emit(LoadingStateTeacher());
     try {
       await TeacherService.updateMultiValue(columnsValue, teacherName);
-      emit(SuccessStateTeacher());
+      fetchUsers();
     } catch (e) {
       emit(FaliureStateTeacher());
     }
@@ -48,7 +48,7 @@ class CubitTeacher extends Cubit<TeacherStatuses> {
     emit(LoadingStateTeacher());
     try {
       await TeacherService.deleteTeacher(teacherName);
-      emit(SuccessStateTeacher());
+      fetchUsers();
     } catch (e) {
       emit(FaliureStateTeacher());
     }
@@ -58,7 +58,8 @@ class CubitTeacher extends Cubit<TeacherStatuses> {
     emit(LoadingStateTeacher());
     try {
       await TeacherService.insertTeacher(teacher);
-      emit(SuccessStateTeacher());
+
+      fetchUsers();
     } catch (e) {
       emit(FaliureStateTeacher());
     }

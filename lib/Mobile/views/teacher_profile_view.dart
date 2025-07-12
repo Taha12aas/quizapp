@@ -29,6 +29,7 @@ class TeacherProfileView extends StatefulWidget {
 class _TeacherProfileViewState extends State<TeacherProfileView> {
   late TeacherModel teacherModel;
   File? selectedImage;
+  bool printingPermission = false;
 
   TextEditingController nameTeacherController = TextEditingController();
   TextEditingController phoneTeacherController = TextEditingController();
@@ -40,6 +41,7 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
     nameTeacherController.text = teacherModel.name;
     phoneTeacherController.text = teacherModel.phone.toString();
     addressTeacherController.text = teacherModel.address;
+    printingPermission = teacherModel.printingPermission;
     super.didChangeDependencies();
   }
 
@@ -175,7 +177,32 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
                             classes: teacherModel.classesSubjects['صف'],
                             subjects: teacherModel.classesSubjects['مواد'],
                           ),
-                          const SizedBox(height: 30),
+                          const SizedBox(height: 15),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              TextButton(
+                                onPressed: () {
+                                  setState(() {
+                                    printingPermission = !printingPermission;
+                                  });
+                                },
+                                child: Text('السماح بالطباعة',
+                                    style: FontStyleApp.white18.copyWith(
+                                        fontSize:
+                                            getResponsiveText(context, 18))),
+                              ),
+                              Checkbox(
+                                value: printingPermission,
+                                onChanged: (value) {
+                                  setState(() {
+                                    printingPermission = !printingPermission;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 15),
                           CustomButton(
                             title: 'حفظ',
                             onPressed: () {
@@ -183,6 +210,7 @@ class _TeacherProfileViewState extends State<TeacherProfileView> {
                                 context
                                     .read<CubitTeacher>()
                                     .updateMultiColumns({
+                                  'printing_permission': printingPermission,
                                   'name': nameTeacherController.text,
                                   'phone': phoneTeacherController.text,
                                   'address': addressTeacherController.text
