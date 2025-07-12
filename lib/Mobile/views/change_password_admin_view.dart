@@ -10,25 +10,26 @@ import 'package:quizapp/models/admin_model.dart';
 import 'package:quizapp/utils/custom_app_bar.dart';
 import 'package:quizapp/utils/show_snack_bar.dart';
 
-class ChangePhoneAdmin extends StatefulWidget {
-  const ChangePhoneAdmin({super.key});
-  static String id = 'ChangePhoneAdmin';
+class ChangePasswordAdminView extends StatefulWidget {
+  const ChangePasswordAdminView({super.key});
+  static String id = 'ChangePasswordAdminView';
 
   @override
-  State<ChangePhoneAdmin> createState() => _ChangePhoneAdminState();
+  State<ChangePasswordAdminView> createState() =>
+      _ChangePasswordAdminViewState();
 }
 
-class _ChangePhoneAdminState extends State<ChangePhoneAdmin> {
+class _ChangePasswordAdminViewState extends State<ChangePasswordAdminView> {
+  TextEditingController oldPassword = TextEditingController();
+  TextEditingController newPassword = TextEditingController();
+  TextEditingController confirmPassword = TextEditingController();
   late AdminModel admin;
+
   GlobalKey<FormState> globalKey = GlobalKey();
-  TextEditingController oldPohne = TextEditingController();
-  TextEditingController newPhone = TextEditingController();
-  TextEditingController confirmNewPhone = TextEditingController();
   @override
   void initState() {
     admin = BlocProvider.of<AdminCubit>(context).admin;
-    oldPohne.text = admin.adminPhone.toString();
-
+    oldPassword.text = admin.adminPassword;
     super.initState();
   }
 
@@ -37,7 +38,7 @@ class _ChangePhoneAdminState extends State<ChangePhoneAdmin> {
     return Form(
       key: globalKey,
       child: Scaffold(
-        appBar: customAppBar('تغيير رقم الهاتف'),
+        appBar: customAppBar('تغيير كلمة المرور'),
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18),
           child: Center(
@@ -53,10 +54,10 @@ class _ChangePhoneAdminState extends State<ChangePhoneAdmin> {
                     width: double.infinity,
                     child: ColumnTeacherInfo(
                       canRead: true,
-                      labelText: ': رقم الهاتف القديم',
+                      labelText: ': كلمة المرور القديمة',
                       horizntalSize: 165,
-                      controller: oldPohne,
-                      hintText: 'رقم الهاتف القديم',
+                      controller: oldPassword,
+                      hintText: 'كلمة المرور القديمة',
                       iconData: FontAwesomeIcons.lock,
                     ),
                   ),
@@ -66,17 +67,11 @@ class _ChangePhoneAdminState extends State<ChangePhoneAdmin> {
                   SizedBox(
                     width: double.infinity,
                     child: ColumnTeacherInfo(
-                      keyboardType: TextInputType.number,
-                      labelText: ': رقم الهاتف الجديد',
+                      labelText: ': كلمة المرور الجديدة',
                       horizntalSize: 160,
-                      controller: newPhone,
-                      validator: (p0) {
-                        if (p0!.isEmpty || p0 == '') {
-                          return 'الرجاء ادخال رقم جديد';
-                        }
-                        return null;
-                      },
-                      hintText: 'رقم الهاتف الجديد',
+                      controller: newPassword,
+                      validator: validateToPasswordNew,
+                      hintText: 'كلمة المرور الجديدة',
                       iconData: FontAwesomeIcons.lock,
                     ),
                   ),
@@ -86,17 +81,11 @@ class _ChangePhoneAdminState extends State<ChangePhoneAdmin> {
                   SizedBox(
                     width: double.infinity,
                     child: ColumnTeacherInfo(
-                      keyboardType: TextInputType.number,
-                      labelText: ': تأكيد رقم الهاتف',
+                      labelText: ': تأكيد كلمة المرور',
                       horizntalSize: 145,
-                      validator: (p0) {
-                        if (p0 != newPhone.text) {
-                          return 'رقم الهاتف غير مطابق';
-                        }
-                        return null;
-                      },
-                      controller: confirmNewPhone,
-                      hintText: ' تأكيد رقم الهاتف',
+                      controller: confirmPassword,
+                      validator: validateToPasswordConfirm,
+                      hintText: 'تأكيد كلمة المرور',
                       iconData: FontAwesomeIcons.lock,
                     ),
                   ),
@@ -114,7 +103,8 @@ class _ChangePhoneAdminState extends State<ChangePhoneAdmin> {
                       }
                       if (state is AdminFaliureStatus) {
                         ScaffoldMessenger.of(context).showSnackBar(showSnackBar(
-                            context, 'حدث خطأ اeناء تغيير الرقم اعد المحاولة'));
+                            context,
+                            'حدث خطأ ا ثناء تغيير كلمة المرور اعد المحاولة'));
                       }
                     },
                     builder: (context, state) {
@@ -126,9 +116,9 @@ class _ChangePhoneAdminState extends State<ChangePhoneAdmin> {
                           onPressed: () {
                             if (globalKey.currentState!.validate()) {
                               context.read<AdminCubit>().updateAdmin(
-                                  'admin_phone',
+                                  'admin_password',
                                   admin.adminPhone,
-                                  newPhone.text);
+                                  newPassword.text);
                             }
                           },
                         );
@@ -142,5 +132,43 @@ class _ChangePhoneAdminState extends State<ChangePhoneAdmin> {
         ),
       ),
     );
+  }
+
+  String? validateToPasswordConfirm(passwordd) {
+    if (passwordd != newPassword.text) {
+      return 'كلمة المرور غير متطابقة';
+    }
+
+    confirmPassword.text = passwordd;
+    return null;
+  }
+
+  String? validateToPasswordNew(password2) {
+    if (password2 == null || password2.isEmpty) {
+      return 'كلمة المرور مطلوبة';
+    }
+    if (password2.length < 8) {
+      return 'كلمة المرور يجب أن تكون أطول من 8 محارف';
+    }
+    final hasUpperCase = password2.contains(RegExp(r'[A-Z]'));
+    final hasLowerCase = password2.contains(RegExp(r'[a-z]'));
+    final hasDigits = password2.contains(RegExp(r'[0-9]'));
+    final hasSpecialCharacters = password2.contains(RegExp(r'[!@#\$&*~]'));
+
+    if (!hasUpperCase) {
+      return 'يجب أن تحتوي كلمة المرور على حرف كبير واحد على الأقل';
+    }
+    if (!hasLowerCase) {
+      return 'يجب أن تحتوي كلمة المرور على حرف صغير واحد على الأقل';
+    }
+    if (!hasDigits) {
+      return 'يجب أن تحتوي كلمة المرور على رقم واحد على الأقل';
+    }
+    if (!hasSpecialCharacters) {
+      return 'يجب أن تحتوي كلمة المرور على رمز خاص واحد على الأقل';
+    }
+
+    newPassword.text = password2;
+    return null;
   }
 }
