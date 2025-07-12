@@ -73,7 +73,7 @@ class _SearchTeacherSheetState extends State<_SearchTeacherSheet> {
         const Padding(
           padding: EdgeInsets.only(top: 15, right: 15),
           child: Text(
-            'ابحث عن المدرس',
+            ' ابحث عن المدرس الذي تريد حذفه',
             style: FontStyleApp.orange18,
           ),
         ),
