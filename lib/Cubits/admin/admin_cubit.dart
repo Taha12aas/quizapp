@@ -12,6 +12,7 @@ class AdminCubit extends Cubit<AdminStatuses> {
     try {
       List<Map<String, dynamic>> res =
           await AdminService.fetchAdmin(adminNumber);
+      admin = AdminModel.fromJson(res[0]);
       emit(
         AdminSuccessStatus(
           admin: AdminModel.fromJson(
@@ -21,6 +22,16 @@ class AdminCubit extends Cubit<AdminStatuses> {
       );
     } catch (e) {
       log(e.toString());
+      emit(AdminFaliureStatus(error: e.toString()));
+    }
+  }
+
+  void updateAdmin(String columnName, int adminPhone, dynamic value) async {
+    emit(AdminLoadingStatus());
+    try {
+      await AdminService.updateAdmin(columnName, adminPhone, value);
+      emit(AdminSuccessStatus(admin: admin));
+    } catch (e) {
       emit(AdminFaliureStatus(error: e.toString()));
     }
   }

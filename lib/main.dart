@@ -7,6 +7,7 @@ import 'package:quizapp/Cubits/cubitTeacher/cubit_teacher.dart';
 import 'package:quizapp/Mobile/views/add_subject_in_teacher_view.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
 import 'package:quizapp/Mobile/views/change_password_view.dart';
+import 'package:quizapp/Mobile/views/change_phone_admin.dart';
 import 'package:quizapp/Mobile/views/class_subject_view.dart';
 import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
@@ -73,6 +74,7 @@ class QuizApp extends StatelessWidget {
               const TeacherSubjectsInfoView(),
           TeacherSubjectGeneratedView.id: (context) =>
               const TeacherSubjectGeneratedView(),
+          ChangePhoneAdmin.id: (context) => const ChangePhoneAdmin(),
         },
         theme: ThemeData(
           scaffoldBackgroundColor: kBackGround,

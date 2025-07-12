@@ -8,20 +8,14 @@ class CustomButtonIcon extends StatelessWidget {
     super.key,
     required this.onPressed,
     required this.label,
-    required this.iconData,
   });
   final VoidCallback onPressed;
   final String label;
-  final IconData iconData;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      child: ElevatedButton.icon(
-        icon: Icon(
-          iconData,
-          color: kOrange,
-        ),
+      child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.orange[50],
           side: const BorderSide(color: kOrange, width: 2),
@@ -31,10 +25,10 @@ class CustomButtonIcon extends StatelessWidget {
           backgroundColor: Colors.transparent,
         ),
         onPressed: onPressed,
-        label: Text(
+        child: Text(
           label,
           style: FontStyleApp.orange18.copyWith(
-            fontSize: getResponsiveText(context, 20),
+            fontSize: getResponsiveText(context, 18),
           ),
         ),
       ),

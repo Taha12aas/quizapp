@@ -22,10 +22,10 @@ class AdminService {
   }
 
   static Future<void> updateAdmin(
-      String columnName, String adminName, dynamic value) async {
+      String columnName, int adminPhone, dynamic value) async {
     await supabase
         .from('admin')
-        .update({columnName: value}).eq('admin_name', adminName);
+        .update({columnName: value}).eq('admin_phone', adminPhone);
   }
 
   // ignore: body_might_complete_normally_nullable

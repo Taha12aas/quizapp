@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:quizapp/Mobile/views/add_teacher_view.dart';
+import 'package:quizapp/Mobile/views/change_phone_admin.dart';
 import 'package:quizapp/Mobile/widgets/home_view/DropDownSearch/show_custom_drop_down_delete.dart';
 import 'package:quizapp/Mobile/widgets/home_view/custome_tile_drawer_item.dart';
 import 'package:quizapp/Mobile/widgets/log_in_view/logo_image.dart';
@@ -66,6 +67,8 @@ class CustomDrawerState extends State<CustomDrawer> {
             icon: Icons.phone,
             isSelected: _selectedIndex == 3,
             onTap: () {
+              Navigator.pushNamed(context, ChangePhoneAdmin.id);
+
               _onItemTapped(3);
               Scaffold.of(context).closeDrawer();
             },

@@ -10,16 +10,18 @@ class InfoTextField extends StatelessWidget {
     required this.iconData,
     required this.controller,
     this.validator,
-    this.keyboardType,
+    this.keyboardType, this.canRead=false,
   });
   final String hintText;
   final IconData iconData;
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
+  final bool? canRead;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      readOnly: canRead!,
       keyboardType: keyboardType,
       controller: controller,
       validator: validator,

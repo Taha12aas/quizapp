@@ -13,7 +13,7 @@ class ColumnTeacherInfo extends StatelessWidget {
     required this.horizntalSize,
     required this.controller,
     this.validator,
-    this.keyboardType,
+    this.keyboardType, this.canRead=false,
   });
   final double horizntalSize;
   final String labelText;
@@ -22,6 +22,7 @@ class ColumnTeacherInfo extends StatelessWidget {
   final TextEditingController controller;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
+  final bool? canRead;
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,6 +43,7 @@ class ColumnTeacherInfo extends StatelessWidget {
             height: 5,
           ),
           InfoTextField(
+            canRead: canRead,
             keyboardType: keyboardType,
             validator: validator,
             hintText: hintText,

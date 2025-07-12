@@ -98,7 +98,6 @@ class _LogInViewState extends State<LogInView> {
                               ),
                               const Spacer(),
                               CustomButtonIcon(
-                                iconData: Icons.login,
                                 label: 'تسجيل الدخول',
                                 onPressed: () async {
                                   isActiv = true;
