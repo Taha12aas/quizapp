@@ -14,8 +14,7 @@ import 'package:quizapp/utils/responsive_text.dart';
 class ListViewItemCardSubject extends StatelessWidget {
   const ListViewItemCardSubject({super.key});
 
-  /// يفتح إعدادات التطبيق للمستخدم
-  Future<void> openAppSettingsDialog(BuildContext context) async {
+  Future<void> _openAppSettingsDialog(BuildContext context) async {
     bool opened = await openAppSettings();
     if (!opened) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -24,15 +23,15 @@ class ListViewItemCardSubject extends StatelessWidget {
     }
   }
 
-  /// طلب صلاحيات التخزين مع شرح مبسط للمستخدم إذا رفض
-  Future<bool> checkStoragePermissions(BuildContext context) async {
-    // طلب صلاحية التخزين العادية أولاً
+  /// دالة تطلب صلاحيات التخزين بشكل واضح ومبسط
+  Future<bool> _checkStoragePermissions(BuildContext context) async {
+    // أولاً: صلاحية التخزين العادية
     var status = await Permission.storage.status;
     if (!status.isGranted) {
       status = await Permission.storage.request();
       if (!status.isGranted) {
-        // إذا رفض المستخدم الطلب، نعرض له حوار شرح وندعوه لفتح الإعدادات
-        bool? openSettings = await showDialog<bool>(
+        // عرض حوار للمستخدم مع خيار فتح الإعدادات
+        await showDialog(
           context: context,
           builder: (context) => AlertDialog(
             title: const Text('الصلاحيات مطلوبة'),
@@ -41,37 +40,49 @@ class ListViewItemCardSubject extends StatelessWidget {
             ),
             actions: [
               TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
+                onPressed: () => Navigator.of(context).pop(),
                 child: const Text('لا'),
               ),
               TextButton(
-                onPressed: () => Navigator.of(context).pop(true),
+                onPressed: () {
+                  _openAppSettingsDialog(context);
+                  Navigator.of(context).pop();
+                },
                 child: const Text('فتح الإعدادات'),
               ),
             ],
           ),
         );
-
-        if (openSettings == true) {
-          await openAppSettingsDialog(context);
-        }
         return false;
       }
     }
 
-    // في أندرويد 11 فأعلى نحتاج صلاحية إدارة التخزين الكامل
+    // للأندرويد 11 فأعلى، طلب صلاحية التخزين الكامل
     if (Platform.isAndroid && await _isAndroid11orHigher()) {
       var manageStatus = await Permission.manageExternalStorage.status;
       if (!manageStatus.isGranted) {
         manageStatus = await Permission.manageExternalStorage.request();
         if (!manageStatus.isGranted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: const Text("يجب منح صلاحية التخزين الكامل"),
-              action: SnackBarAction(
-                label: 'فتح الإعدادات',
-                onPressed: () => openAppSettingsDialog(context),
+          await showDialog(
+            context: context,
+            builder: (context) => AlertDialog(
+              title: const Text('الصلاحيات مطلوبة'),
+              content: const Text(
+                'يجب منح صلاحية التخزين الكامل لحفظ الملف. هل تريد فتح إعدادات التطبيق لمنح الصلاحية؟',
               ),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.of(context).pop(),
+                  child: const Text('لا'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    _openAppSettingsDialog(context);
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('فتح الإعدادات'),
+                ),
+              ],
             ),
           );
           return false;
@@ -82,19 +93,17 @@ class ListViewItemCardSubject extends StatelessWidget {
     return true;
   }
 
-  /// دالة مساعدة لمعرفة إصدار أندرويد إذا كان 11 أو أعلى
+  // التحقق من إصدار أندرويد
   Future<bool> _isAndroid11orHigher() async {
     if (!Platform.isAndroid) return false;
     try {
-      final sdkInt = await const MethodChannel('flutter/platform')
-          .invokeMethod<int>('getAndroidSdkInt');
-      return (sdkInt ?? 0) >= 30;
+      var sdkInt = (await const MethodChannel('flutter/platform').invokeMethod<int>('getAndroidSdkInt')) ?? 0;
+      return sdkInt >= 30;
     } catch (_) {
       return false;
     }
   }
 
-  /// دالة لإنشاء ملف Word وحفظه مع طلب صلاحيات قبل التنفيذ
   Future<void> _generateWord(BuildContext context, int index) async {
     try {
       final subject = CubitSubject.subjectsCount[index];
@@ -102,10 +111,10 @@ class ListViewItemCardSubject extends StatelessWidget {
         throw Exception('لا يوجد أسئلة في هذه الدورة');
       }
 
-      final hasPermission = await checkStoragePermissions(context);
+      // التأكد من الصلاحيات
+      final hasPermission = await _checkStoragePermissions(context);
       if (!hasPermission) return;
 
-      // تكوين ملف XML لملف Word
       final documentXmlBuffer = StringBuffer();
       documentXmlBuffer.writeln(
         '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -114,7 +123,11 @@ class ListViewItemCardSubject extends StatelessWidget {
       );
 
       documentXmlBuffer.writeln('''
-    <w:p><w:r><w:t>اسم الدورة: ${subject.nameSubject}</w:t></w:r></w:p>
+    <w:p>
+      <w:r>
+        <w:t>اسم الدورة: ${subject.nameSubject}</w:t>
+      </w:r>
+    </w:p>
     ''');
 
       int counter = 1;
@@ -125,8 +138,12 @@ class ListViewItemCardSubject extends StatelessWidget {
         if (question == null || answers == null) continue;
 
         documentXmlBuffer.writeln('''
-      <w:p><w:r><w:t>سؤال $counter: $question</w:t></w:r></w:p>
-      <w:p><w:r><w:t>الإجابات: $answers</w:t></w:r></w:p>
+      <w:p>
+        <w:r><w:t>سؤال $counter: $question</w:t></w:r>
+      </w:p>
+      <w:p>
+        <w:r><w:t>الإجابات: $answers</w:t></w:r>
+      </w:p>
       <w:p><w:r><w:t> </w:t></w:r></w:p>
       ''');
 
@@ -235,7 +252,7 @@ class ListViewItemCardSubject extends StatelessWidget {
                     subject.classSabject,
                     subject.coursesDate,
                     subject.seasonSubject,
-                    subject.generateTime,
+                    subject.generateTime
                   ],
                 );
               },
