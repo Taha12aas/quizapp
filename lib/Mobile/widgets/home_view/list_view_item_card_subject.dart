@@ -2,6 +2,7 @@ import 'dart:io';
 import 'dart:math';
 import 'package:archive/archive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Mobile/views/reading_generated_questions.dart';
@@ -22,19 +23,49 @@ class ListViewItemCardSubject extends StatelessWidget {
     }
   }
 
-  Future<void> _generateWord(BuildContext context, int index) async {
-    try {
-      final subject = CubitSubject.subjectsCount[index];
-      if (subject.courses.isEmpty) {
-        throw Exception('لا يوجد أسئلة في هذه الدورة');
+  /// دالة تطلب صلاحيات التخزين بشكل واضح ومبسط
+  Future<bool> checkStoragePermissions(BuildContext context) async {
+    // أولاً نطلب صلاحية التخزين العادية
+    var status = await Permission.storage.status;
+    if (!status.isGranted) {
+      status = await Permission.storage.request();
+      if (!status.isGranted) {
+        // عرض حوار ليشرح للمستخدم ويفتح الإعدادات إذا رغب
+        await showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: const Text('الصلاحيات مطلوبة'),
+            content: const Text(
+              'يجب منح صلاحية التخزين لحفظ الملف. هل تريد فتح إعدادات التطبيق لمنح الصلاحية؟',
+            ),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(),
+                child: const Text('لا'),
+              ),
+              TextButton(
+                onPressed: () {
+                  openAppSettingsDialog(context);
+                  Navigator.of(context).pop();
+                },
+                child: const Text('فتح الإعدادات'),
+              ),
+            ],
+          ),
+        );
+        return false;
       }
+    }
 
-      if (Platform.isAndroid) {
-        final status = await Permission.manageExternalStorage.request();
-        if (!status.isGranted) {
+    // لو جهاز أندرويد 11 أو أحدث، يمكن تطلب صلاحية manageExternalStorage (اختياري حسب حاجتك)
+    if (Platform.isAndroid && (await _isAndroid11orHigher())) {
+      var manageStatus = await Permission.manageExternalStorage.status;
+      if (!manageStatus.isGranted) {
+        manageStatus = await Permission.manageExternalStorage.request();
+        if (!manageStatus.isGranted) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: const Text("يجب منح صلاحية التخزين أولاً"),
+              content: const Text("يجب منح صلاحية التخزين الكامل"),
               action: SnackBarAction(
                 label: 'فتح الإعدادات',
                 onPressed: () {
@@ -43,9 +74,36 @@ class ListViewItemCardSubject extends StatelessWidget {
               ),
             ),
           );
-          return;
+          return false;
         }
       }
+    }
+
+    return true;
+  }
+
+  // دالة مساعدة لمعرفة إصدار أندرويد
+  Future<bool> _isAndroid11orHigher() async {
+    if (!Platform.isAndroid) return false;
+    try {
+      // استخدام كود للتحقق من إصدار أندرويد (مثال)
+      var sdkInt = (await const MethodChannel('flutter/platform').invokeMethod<int>('getAndroidSdkInt')) ?? 0;
+      return sdkInt >= 30;
+    } catch (_) {
+      return false;
+    }
+  }
+
+  Future<void> _generateWord(BuildContext context, int index) async {
+    try {
+      final subject = CubitSubject.subjectsCount[index];
+      if (subject.courses.isEmpty) {
+        throw Exception('لا يوجد أسئلة في هذه الدورة');
+      }
+
+      // تحقق من صلاحيات التخزين قبل المتابعة
+      final hasPermission = await checkStoragePermissions(context);
+      if (!hasPermission) return;
 
       final documentXmlBuffer = StringBuffer();
       documentXmlBuffer.writeln(
