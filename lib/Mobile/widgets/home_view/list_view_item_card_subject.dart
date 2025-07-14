@@ -12,31 +12,49 @@ import 'package:quizapp/utils/responsive_text.dart';
 
 class ListViewItemCardSubject extends StatelessWidget {
   const ListViewItemCardSubject({super.key});
+
+  Future<void> openAppSettingsDialog(BuildContext context) async {
+    bool opened = await openAppSettings();
+    if (!opened) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("تعذر فتح إعدادات التطبيق")),
+      );
+    }
+  }
+
   Future<void> _generateWord(BuildContext context, int index) async {
-  try {
-    final subject = CubitSubject.subjectsCount[index];
-    if (subject.courses.isEmpty) {
-      throw Exception('لا يوجد أسئلة في هذه الدورة');
-    }
-
-    if (Platform.isAndroid) {
-      final status = await Permission.manageExternalStorage.request();
-      if (!status.isGranted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("يجب منح صلاحية التخزين أولاً")),
-        );
-        return;
+    try {
+      final subject = CubitSubject.subjectsCount[index];
+      if (subject.courses.isEmpty) {
+        throw Exception('لا يوجد أسئلة في هذه الدورة');
       }
-    }
 
-    final documentXmlBuffer = StringBuffer();
-    documentXmlBuffer.writeln(
-      '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+      if (Platform.isAndroid) {
+        final status = await Permission.manageExternalStorage.request();
+        if (!status.isGranted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Text("يجب منح صلاحية التخزين أولاً"),
+              action: SnackBarAction(
+                label: 'فتح الإعدادات',
+                onPressed: () {
+                  openAppSettingsDialog(context);
+                },
+              ),
+            ),
+          );
+          return;
+        }
+      }
+
+      final documentXmlBuffer = StringBuffer();
+      documentXmlBuffer.writeln(
+        '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
   <w:body>'''
-    );
+      );
 
-    documentXmlBuffer.writeln('''
+      documentXmlBuffer.writeln('''
     <w:p>
       <w:r>
         <w:t>اسم الدورة: ${subject.nameSubject}</w:t>
@@ -44,14 +62,14 @@ class ListViewItemCardSubject extends StatelessWidget {
     </w:p>
     ''');
 
-    int counter = 1;
-    for (var course in subject.courses) {
-      final question = course['question'];
-      final answers = course['answers'];
+      int counter = 1;
+      for (var course in subject.courses) {
+        final question = course['question'];
+        final answers = course['answers'];
 
-      if (question == null || answers == null) continue;
+        if (question == null || answers == null) continue;
 
-      documentXmlBuffer.writeln('''
+        documentXmlBuffer.writeln('''
       <w:p>
         <w:r><w:t>سؤال $counter: $question</w:t></w:r>
       </w:p>
@@ -61,17 +79,17 @@ class ListViewItemCardSubject extends StatelessWidget {
       <w:p><w:r><w:t> </w:t></w:r></w:p>
       ''');
 
-      counter++;
-    }
+        counter++;
+      }
 
-    documentXmlBuffer.writeln('''
+      documentXmlBuffer.writeln('''
     <w:sectPr/>
   </w:body>
 </w:document>''');
 
-    final documentXml = documentXmlBuffer.toString();
+      final documentXml = documentXmlBuffer.toString();
 
-    const contentTypesXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+      const contentTypesXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
   <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
   <Default Extension="xml" ContentType="application/xml"/>
@@ -79,53 +97,52 @@ class ListViewItemCardSubject extends StatelessWidget {
 </Types>
 ''';
 
-    const relsXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+      const relsXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
 </Relationships>
 ''';
 
-    final archive = Archive();
-    archive.addFile(ArchiveFile('[Content_Types].xml', contentTypesXml.length, contentTypesXml.codeUnits));
-    archive.addFile(ArchiveFile('_rels/.rels', relsXml.length, relsXml.codeUnits));
-    archive.addFile(ArchiveFile('word/document.xml', documentXml.length, documentXml.codeUnits));
+      final archive = Archive();
+      archive.addFile(ArchiveFile('[Content_Types].xml', contentTypesXml.length, contentTypesXml.codeUnits));
+      archive.addFile(ArchiveFile('_rels/.rels', relsXml.length, relsXml.codeUnits));
+      archive.addFile(ArchiveFile('word/document.xml', documentXml.length, documentXml.codeUnits));
 
-    final zipData = ZipEncoder().encode(archive);
-    if (zipData == null) throw Exception("فشل في ضغط الملف");
+      final zipData = ZipEncoder().encode(archive);
+      if (zipData == null) throw Exception("فشل في ضغط الملف");
 
-    String filePath;
+      String filePath;
 
-    if (Platform.isAndroid) {
-      final downloadsDirs = await getExternalStorageDirectories(type: StorageDirectory.downloads);
-      final downloadsDir = downloadsDirs?.first;
-      if (downloadsDir == null) {
-        throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات');
+      if (Platform.isAndroid) {
+        final downloadsDirs = await getExternalStorageDirectories(type: StorageDirectory.downloads);
+        final downloadsDir = downloadsDirs?.first;
+        if (downloadsDir == null) {
+          throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات');
+        }
+        filePath = '${downloadsDir.path}/courses_details.docx';
+      } else if (Platform.isWindows) {
+        final downloadsDir = await getDownloadsDirectory();
+        if (downloadsDir == null) {
+          throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات في ويندوز');
+        }
+        filePath = '${downloadsDir.path}/courses_details.docx';
+      } else {
+        final docDir = await getApplicationDocumentsDirectory();
+        filePath = '${docDir.path}/courses_details.docx';
       }
-      filePath = '${downloadsDir.path}/courses_details.docx';
-    } else if (Platform.isWindows) {
-      final downloadsDir = await getDownloadsDirectory();
-      if (downloadsDir == null) {
-        throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات في ويندوز');
-      }
-      filePath = '${downloadsDir.path}/courses_details.docx';
-    } else {
-      final docDir = await getApplicationDocumentsDirectory();
-      filePath = '${docDir.path}/courses_details.docx';
+
+      final file = File(filePath);
+      await file.writeAsBytes(zipData);
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('تم حفظ ملف Word في $filePath')),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('حدث خطأ: ${e.toString()}')),
+      );
     }
-
-    final file = File(filePath);
-    await file.writeAsBytes(zipData);
-
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('تم حفظ ملف Word في $filePath')),
-    );
-  } catch (e) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('حدث خطأ: ${e.toString()}')),
-    );
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
