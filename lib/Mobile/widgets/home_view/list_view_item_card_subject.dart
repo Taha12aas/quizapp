@@ -23,14 +23,19 @@ class ListViewItemCardSubject extends StatelessWidget {
     }
   }
 
-  Future<void> _generateWord(BuildContext context, int index) async {
+  Future<void> _generateWord(
+    BuildContext context,
+    int index, {
+    required String studentName,
+    required String schoolName,
+    required String courseDate,
+  }) async {
     try {
       final subject = CubitSubject.subjectsCount[index];
       if (subject.courses.isEmpty) {
         throw Exception('لا يوجد أسئلة في هذه الدورة');
       }
 
-      // طلب صلاحيات التخزين على أندرويد
       if (Platform.isAndroid) {
         final status = await Permission.manageExternalStorage.request();
         if (!status.isGranted) {
@@ -39,9 +44,7 @@ class ListViewItemCardSubject extends StatelessWidget {
               content: const Text("يجب منح صلاحية التخزين أولاً"),
               action: SnackBarAction(
                 label: 'فتح الإعدادات',
-                onPressed: () {
-                  openAppSettingsDialog(context);
-                },
+                onPressed: () => openAppSettingsDialog(context),
               ),
             ),
           );
@@ -49,67 +52,70 @@ class ListViewItemCardSubject extends StatelessWidget {
         }
       }
 
-      // بناء محتوى ملف الـ Word بصيغة XML كما في الكود الأول
       final buffer = StringBuffer();
-
       buffer.writeln(r'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
   <w:body>''');
 
-      // عنوان الدورة
-      buffer.writeln('''
-    <w:p>
-      <w:r>
-        <w:b/>
-        <w:color w:val="2E74B5"/>
-        <w:sz w:val="32"/>
-        <w:t>اسم الدورة: ${subject.nameSubject}</w:t>
-      </w:r>
-    </w:p>
-    ''');
+      String createRightAlignedParagraph(String text,
+          {bool bold = false, int fontSize = 28}) {
+        return '''
+<w:p>
+  <w:pPr>
+    <w:jc w:val="right"/>
+    <w:bidi/>
+  </w:pPr>
+  <w:r>
+    <w:rPr>
+      ${bold ? "<w:b/>" : ""}
+      <w:sz w:val="$fontSize"/>
+      <w:bidi/>
+    </w:rPr>
+    <w:t xml:lang="ar-SA" xml:space="preserve">$text</w:t>
+  </w:r>
+</w:p>''';
+      }
+
+      buffer.writeln(createRightAlignedParagraph('الجمهورية العربية السورية',
+          bold: true, fontSize: 28));
+      buffer.writeln(createRightAlignedParagraph('وزارة التربية',
+          bold: true, fontSize: 26));
+      buffer.writeln(
+          createRightAlignedParagraph('مدرسة: $schoolName', bold: true));
+      buffer.writeln(
+          createRightAlignedParagraph('اسم الطالب: $studentName', bold: true));
+      buffer.writeln(
+          createRightAlignedParagraph('تاريخ الدورة: $courseDate', bold: true));
+      buffer.writeln('<w:p><w:r><w:t></w:t></w:r></w:p>');
+
+      buffer.writeln(createRightAlignedParagraph(
+          'امتحان في مادة: ${subject.nameSubject}',
+          bold: true,
+          fontSize: 32));
+      buffer.writeln(createRightAlignedParagraph(
+          'الصف: ${subject.classSabject}    الفصل: ${subject.seasonSubject}'));
+      buffer.writeln('<w:p><w:r><w:t></w:t></w:r></w:p>');
 
       int counter = 1;
       for (var course in subject.courses) {
         final question = course['question'];
         final answers = course['answers'];
-
         if (question == null || answers == null) continue;
 
-        buffer.writeln('''
-    <w:p>
-      <w:r>
-        <w:b/>
-        <w:color w:val="2E74B5"/>
-        <w:sz w:val="28"/>
-        <w:t>سؤال $counter: $question</w:t>
-      </w:r>
-    </w:p>
-    ''');
+        buffer.writeln(createRightAlignedParagraph('سؤال $counter: $question',
+            bold: true, fontSize: 28));
 
-        // عرض كل إجابة مع نقطة (bullet)
         for (final answer in answers) {
-          buffer.writeln('''
-    <w:p>
-      <w:r>
-        <w:t>• $answer</w:t>
-      </w:r>
-    </w:p>
-    ''');
+          buffer.writeln(createRightAlignedParagraph('• $answer'));
         }
 
-        buffer.writeln('<w:p><w:r><w:t></w:t></w:r></w:p>'); // فراغ بين الأسئلة
+        buffer.writeln('<w:p><w:r><w:t></w:t></w:r></w:p>');
         counter++;
       }
 
-      buffer.writeln('''
-  </w:body>
-</w:document>
-''');
+      buffer.writeln('</w:body></w:document>');
 
-      final documentXml = buffer.toString();
-
-      // محتويات الملف كما هي
-      const contentTypesXml =
+      final contentTypesXml =
           '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
   <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
@@ -118,7 +124,7 @@ class ListViewItemCardSubject extends StatelessWidget {
 </Types>
 ''';
 
-      const relsXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+      final relsXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
   <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
 </Relationships>
@@ -130,32 +136,19 @@ class ListViewItemCardSubject extends StatelessWidget {
       archive.addFile(
           ArchiveFile('_rels/.rels', relsXml.length, utf8.encode(relsXml)));
       archive.addFile(ArchiveFile(
-          'word/document.xml', documentXml.length, utf8.encode(documentXml)));
+          'word/document.xml', buffer.length, utf8.encode(buffer.toString())));
 
       final zipData = ZipEncoder().encode(archive);
       if (zipData == null) throw Exception("فشل في ضغط الملف");
 
-      String filePath;
+      final dir = Platform.isAndroid
+          ? (await getExternalStorageDirectories(
+                  type: StorageDirectory.downloads))
+              ?.first
+          : await getDownloadsDirectory();
+      if (dir == null) throw Exception('لم أتمكن من تحديد مجلد الحفظ');
 
-      if (Platform.isAndroid) {
-        final downloadsDirs = await getExternalStorageDirectories(
-            type: StorageDirectory.downloads);
-        final downloadsDir = downloadsDirs?.first;
-        if (downloadsDir == null) {
-          throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات');
-        }
-        filePath = '${downloadsDir.path}/courses_details.docx';
-      } else if (Platform.isWindows) {
-        final downloadsDir = await getDownloadsDirectory();
-        if (downloadsDir == null) {
-          throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات في ويندوز');
-        }
-        filePath = '${downloadsDir.path}/courses_details.docx';
-      } else {
-        final docDir = await getApplicationDocumentsDirectory();
-        filePath = '${docDir.path}/courses_details.docx';
-      }
-
+      final filePath = '${dir.path}/exam_questions.docx';
       final file = File(filePath);
       await file.writeAsBytes(zipData);
 
@@ -186,16 +179,18 @@ class ListViewItemCardSubject extends StatelessWidget {
       child: ListView.builder(
         itemCount: min(10, CubitSubject.subjectsCount.length),
         itemBuilder: (context, index) {
-          if (index >= CubitSubject.subjectsCount.length) {
-            return const SizedBox.shrink();
-          }
-
           final subject = CubitSubject.subjectsCount[index];
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 10),
             child: CardSubjects(
               isdownlod: true,
-              onPressed: () => _generateWord(context, index),
+              onPressed: () => _generateWord(
+                context,
+                index,
+                studentName: '_____________',
+                schoolName: '_____________',
+                courseDate: '00/00/0000',
+              ),
               courseDate: subject.coursesDate,
               seasonSubject: subject.seasonSubject,
               subject: subject.nameSubject,
