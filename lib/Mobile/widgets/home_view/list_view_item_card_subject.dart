@@ -1,8 +1,8 @@
+import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 import 'package:archive/archive.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:quizapp/Cubits/cubitSubject/cubit_subject.dart';
 import 'package:quizapp/Mobile/views/reading_generated_questions.dart';
@@ -14,7 +14,6 @@ import 'package:quizapp/utils/responsive_text.dart';
 class ListViewItemCardSubject extends StatelessWidget {
   const ListViewItemCardSubject({super.key});
 
-  /// يفتح إعدادات التطبيق للمستخدم
   Future<void> openAppSettingsDialog(BuildContext context) async {
     bool opened = await openAppSettings();
     if (!opened) {
@@ -24,77 +23,6 @@ class ListViewItemCardSubject extends StatelessWidget {
     }
   }
 
-  /// طلب صلاحيات التخزين مع شرح مبسط للمستخدم إذا رفض
-  Future<bool> checkStoragePermissions(BuildContext context) async {
-    // طلب صلاحية التخزين العادية أولاً
-    var status = await Permission.storage.status;
-    if (!status.isGranted) {
-      status = await Permission.storage.request();
-      if (!status.isGranted) {
-        // إذا رفض المستخدم الطلب، نعرض له حوار شرح وندعوه لفتح الإعدادات
-        bool? openSettings = await showDialog<bool>(
-          context: context,
-          builder: (context) => AlertDialog(
-            title: const Text('الصلاحيات مطلوبة'),
-            content: const Text(
-              'يجب منح صلاحية التخزين لحفظ الملف. هل تريد فتح إعدادات التطبيق لمنح الصلاحية؟',
-            ),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(false),
-                child: const Text('لا'),
-              ),
-              TextButton(
-                onPressed: () => Navigator.of(context).pop(true),
-                child: const Text('فتح الإعدادات'),
-              ),
-            ],
-          ),
-        );
-
-        if (openSettings == true) {
-          await openAppSettingsDialog(context);
-        }
-        return false;
-      }
-    }
-
-    // في أندرويد 11 فأعلى نحتاج صلاحية إدارة التخزين الكامل
-    if (Platform.isAndroid && await _isAndroid11orHigher()) {
-      var manageStatus = await Permission.manageExternalStorage.status;
-      if (!manageStatus.isGranted) {
-        manageStatus = await Permission.manageExternalStorage.request();
-        if (!manageStatus.isGranted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: const Text("يجب منح صلاحية التخزين الكامل"),
-              action: SnackBarAction(
-                label: 'فتح الإعدادات',
-                onPressed: () => openAppSettingsDialog(context),
-              ),
-            ),
-          );
-          return false;
-        }
-      }
-    }
-
-    return true;
-  }
-
-  /// دالة مساعدة لمعرفة إصدار أندرويد إذا كان 11 أو أعلى
-  Future<bool> _isAndroid11orHigher() async {
-    if (!Platform.isAndroid) return false;
-    try {
-      final sdkInt = await const MethodChannel('flutter/platform')
-          .invokeMethod<int>('getAndroidSdkInt');
-      return (sdkInt ?? 0) >= 30;
-    } catch (_) {
-      return false;
-    }
-  }
-
-  /// دالة لإنشاء ملف Word وحفظه مع طلب صلاحيات قبل التنفيذ
   Future<void> _generateWord(BuildContext context, int index) async {
     try {
       final subject = CubitSubject.subjectsCount[index];
@@ -102,19 +30,42 @@ class ListViewItemCardSubject extends StatelessWidget {
         throw Exception('لا يوجد أسئلة في هذه الدورة');
       }
 
-      final hasPermission = await checkStoragePermissions(context);
-      if (!hasPermission) return;
+      // طلب صلاحيات التخزين على أندرويد
+      if (Platform.isAndroid) {
+        final status = await Permission.manageExternalStorage.request();
+        if (!status.isGranted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              content: const Text("يجب منح صلاحية التخزين أولاً"),
+              action: SnackBarAction(
+                label: 'فتح الإعدادات',
+                onPressed: () {
+                  openAppSettingsDialog(context);
+                },
+              ),
+            ),
+          );
+          return;
+        }
+      }
 
-      // تكوين ملف XML لملف Word
-      final documentXmlBuffer = StringBuffer();
-      documentXmlBuffer.writeln(
-        '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+      // بناء محتوى ملف الـ Word بصيغة XML كما في الكود الأول
+      final buffer = StringBuffer();
+
+      buffer.writeln(r'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
-  <w:body>'''
-      );
+  <w:body>''');
 
-      documentXmlBuffer.writeln('''
-    <w:p><w:r><w:t>اسم الدورة: ${subject.nameSubject}</w:t></w:r></w:p>
+      // عنوان الدورة
+      buffer.writeln('''
+    <w:p>
+      <w:r>
+        <w:b/>
+        <w:color w:val="2E74B5"/>
+        <w:sz w:val="32"/>
+        <w:t>اسم الدورة: ${subject.nameSubject}</w:t>
+      </w:r>
+    </w:p>
     ''');
 
       int counter = 1;
@@ -124,23 +75,42 @@ class ListViewItemCardSubject extends StatelessWidget {
 
         if (question == null || answers == null) continue;
 
-        documentXmlBuffer.writeln('''
-      <w:p><w:r><w:t>سؤال $counter: $question</w:t></w:r></w:p>
-      <w:p><w:r><w:t>الإجابات: $answers</w:t></w:r></w:p>
-      <w:p><w:r><w:t> </w:t></w:r></w:p>
-      ''');
+        buffer.writeln('''
+    <w:p>
+      <w:r>
+        <w:b/>
+        <w:color w:val="2E74B5"/>
+        <w:sz w:val="28"/>
+        <w:t>سؤال $counter: $question</w:t>
+      </w:r>
+    </w:p>
+    ''');
 
+        // عرض كل إجابة مع نقطة (bullet)
+        for (final answer in answers) {
+          buffer.writeln('''
+    <w:p>
+      <w:r>
+        <w:t>• $answer</w:t>
+      </w:r>
+    </w:p>
+    ''');
+        }
+
+        buffer.writeln('<w:p><w:r><w:t></w:t></w:r></w:p>'); // فراغ بين الأسئلة
         counter++;
       }
 
-      documentXmlBuffer.writeln('''
-    <w:sectPr/>
+      buffer.writeln('''
   </w:body>
-</w:document>''');
+</w:document>
+''');
 
-      final documentXml = documentXmlBuffer.toString();
+      final documentXml = buffer.toString();
 
-      const contentTypesXml = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+      // محتويات الملف كما هي
+      const contentTypesXml =
+          '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
   <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
   <Default Extension="xml" ContentType="application/xml"/>
@@ -155,9 +125,12 @@ class ListViewItemCardSubject extends StatelessWidget {
 ''';
 
       final archive = Archive();
-      archive.addFile(ArchiveFile('[Content_Types].xml', contentTypesXml.length, contentTypesXml.codeUnits));
-      archive.addFile(ArchiveFile('_rels/.rels', relsXml.length, relsXml.codeUnits));
-      archive.addFile(ArchiveFile('word/document.xml', documentXml.length, documentXml.codeUnits));
+      archive.addFile(ArchiveFile('[Content_Types].xml', contentTypesXml.length,
+          utf8.encode(contentTypesXml)));
+      archive.addFile(
+          ArchiveFile('_rels/.rels', relsXml.length, utf8.encode(relsXml)));
+      archive.addFile(ArchiveFile(
+          'word/document.xml', documentXml.length, utf8.encode(documentXml)));
 
       final zipData = ZipEncoder().encode(archive);
       if (zipData == null) throw Exception("فشل في ضغط الملف");
@@ -165,7 +138,8 @@ class ListViewItemCardSubject extends StatelessWidget {
       String filePath;
 
       if (Platform.isAndroid) {
-        final downloadsDirs = await getExternalStorageDirectories(type: StorageDirectory.downloads);
+        final downloadsDirs = await getExternalStorageDirectories(
+            type: StorageDirectory.downloads);
         final downloadsDir = downloadsDirs?.first;
         if (downloadsDir == null) {
           throw Exception('لم أتمكن من الوصول إلى مجلد التنزيلات');
@@ -186,11 +160,11 @@ class ListViewItemCardSubject extends StatelessWidget {
       await file.writeAsBytes(zipData);
 
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('تم حفظ ملف Word في $filePath')),
+        SnackBar(content: Text('✅ تم حفظ ملف Word في: $filePath')),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('حدث خطأ: ${e.toString()}')),
+        SnackBar(content: Text('❌ حدث خطأ: ${e.toString()}')),
       );
     }
   }
@@ -235,7 +209,7 @@ class ListViewItemCardSubject extends StatelessWidget {
                     subject.classSabject,
                     subject.coursesDate,
                     subject.seasonSubject,
-                    subject.generateTime,
+                    subject.generateTime
                   ],
                 );
               },
