@@ -14,6 +14,7 @@ import 'package:quizapp/Mobile/views/class_subject_view.dart';
 import 'package:quizapp/Mobile/views/generated_questions_view.dart';
 import 'package:quizapp/Mobile/views/home_view.dart';
 import 'package:quizapp/Mobile/views/log_in_view.dart';
+import 'package:quizapp/Mobile/views/splash_screen.dart';
 import 'package:quizapp/Mobile/views/subjects_view.dart';
 import 'package:quizapp/Mobile/views/teacher_profile_view.dart';
 import 'package:quizapp/Mobile/views/teacher_subject_generated_view.dart';
@@ -79,14 +80,15 @@ class QuizApp extends StatelessWidget {
           ChangePhoneAdminView.id: (context) => const ChangePhoneAdminView(),
           ChangePasswordAdminView.id: (context) =>
               const ChangePasswordAdminView(),
-          AboutView.id: (context) => const AboutView()
+          AboutView.id: (context) => const AboutView(),
+          SplashScreen.id: (context) => SplashScreen()
         },
         theme: ThemeData(
           scaffoldBackgroundColor: kBackGround,
           fontFamily: 'Exo2',
         ),
         debugShowCheckedModeBanner: false,
-        initialRoute: LogInView.id,
+        initialRoute: SplashScreen.id,
       ),
     );
   }

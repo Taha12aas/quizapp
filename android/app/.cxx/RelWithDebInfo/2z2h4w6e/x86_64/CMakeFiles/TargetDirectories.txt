@@ -1,0 +1,2 @@
+C:/Users/asdfg/Documents/GitHub/quizapp/android/app/.cxx/RelWithDebInfo/2z2h4w6e/x86_64/CMakeFiles/edit_cache.dir
+C:/Users/asdfg/Documents/GitHub/quizapp/android/app/.cxx/RelWithDebInfo/2z2h4w6e/x86_64/CMakeFiles/rebuild_cache.dir
